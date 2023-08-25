@@ -3,7 +3,7 @@ import React from "react";
 const Card = ({props}) => {
 
   return (
-    <div className=" max-w-xs bg-[#222331] opacity-40 shadow-xl rounded-lg p-8">
+    <div className=" min-w-xs bg-[#222331] opacity-40 shadow-xl rounded-lg p-8">
       
         
           <div className="flex flex-col justify-start gap-6">
