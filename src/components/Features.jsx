@@ -18,25 +18,25 @@ const Features = () => {
      {
       id: 3,
       icon: '/Audio.svg',
-      name:"Versatility",
+      name:"DictAssist",
       desc:"Let SAAI adapt to your needs - whether it's via live listening during patient visits (ScribeAssist) or via dictating your encounters to SAAI later (DictAssist).",
     },
      {
       id: 4,
       icon: '/Astronomy.svg',
-      name:"Versatility",
+      name:"Multilingual",
       desc:"Let SAAI adapt to your needs - whether it's via live listening during patient visits (ScribeAssist) or via dictating your encounters to SAAI later (DictAssist).",
     },
      {
       id: 5,
       icon: '/Time.svg',
-      name:"Versatility",
+      name:"36 Hours",
       desc:"Let SAAI adapt to your needs - whether it's via live listening during patient visits (ScribeAssist) or via dictating your encounters to SAAI later (DictAssist).",
     },
      {
       id: 6,
       icon: '/Flawless.svg',
-      name:"Versatility",
+      name:"Flawless Precision",
       desc:"Let SAAI adapt to your needs - whether it's via live listening during patient visits (ScribeAssist) or via dictating your encounters to SAAI later (DictAssist).",
     },
   ]
