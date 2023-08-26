@@ -4,8 +4,8 @@ import Image from "next/image";
 const HeroSection = () => {
   return (
     <div className="max-w-screen-2xl mx-auto  ">
-      <div className="flex justify-between items-center">
-        <div className="max-w-xs flex flex-col gap-12 mx-48">
+      <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="max-w-xs flex flex-col gap-12 mx-4 md:mx-48">
           <h1 className="text-3xl text-white">
             <span className="text-violet-700">Write</span>Better Notes
           </h1>
