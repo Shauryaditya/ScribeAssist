@@ -12,7 +12,7 @@ const Pricing = () => {
             </h1>
           </div>
 
-          <div class="my-16 sm:flex flex-wrap justify-center items-center gap-8 p-12">
+          <div class="my-16 sm:flex flex-wrap justify-center items-center gap-8 md:p-12 p-4">
             <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4  bg-[#222331] mt-6 shadow-lg rounded-lg">
               <div class="px-6 py-8 sm:p-10 sm:pb-6">
                 <div class="flex flex-col justify-center items-center">
