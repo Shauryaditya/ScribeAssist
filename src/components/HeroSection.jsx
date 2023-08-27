@@ -3,18 +3,20 @@ import Image from "next/image";
 
 const HeroSection = () => {
   return (
-    <div className="max-w-screen-2xl mx-auto  ">
-      <div className="flex flex-col md:flex-row justify-between items-center">
-        <div className="max-w-xs flex flex-col gap-12 mx-4 md:mx-48">
-          <h1 className="text-4xl text-white">
+    <div className="max-w-screen-2xl h-[25rem] sm:h-[30rem] md:h-[40rem] mx-auto -mt-20 bg-no-repeat bg-right bg-cover font-sans"
+      style={{ backgroundImage: `url('/Dna.png')` }}
+    >
+      <div className="w-full h-full flex flex-row justify-start items-center">
+        <div className="max-w-lg flex flex-col p-5 mx-auto sm:ml-16 md:ml-24 lg:mx-32 max-sm:mt-10">
+          <h1 className="text-4xl text-white leading-10">
             <span className="text-violet-500">Write</span> Better Notes
           </h1>
-          <p className="text-white">
+          <p className="text-white leading-6 py-5">
             ScribeAssist AI (SAAI) takes care of your notes so you can take
             better care of your patients. Ready to experience the power of AI
             assisted care?
           </p>
-          <div className="flex gap-8">
+          <div className="flex gap-8 mt-10 md:mt-20">
             <button className="px-6 py-2 bg-violet-600 rounded-lg text-white text-xs">
               Launch SAAI
             </button>
@@ -22,7 +24,7 @@ const HeroSection = () => {
               Learn More
             </button>
           </div>
-          <div className="">
+          {/* <div className="">
             <svg
               width="24"
               height="24"
@@ -42,10 +44,7 @@ const HeroSection = () => {
                 stroke-linecap="round"
               />
             </svg>
-          </div>
-        </div>
-        <div className="overflow-hidden">
-          <Image src="/Dna.png" width={700} height={400} objectFit="contain" />
+          </div> */}
         </div>
       </div>
     </div>
