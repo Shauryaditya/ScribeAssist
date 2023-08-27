@@ -129,7 +129,7 @@ const Pricing = () => {
 
               <button
                 type="button"
-                class="w-full px-3 py-3 text-sm shadow rounded-lg text-indigo-500 hover:text-black bg-[#8167E6] hover:bg-white transition-colors duration-700 transform"
+                class="w-full px-3 py-3 text-sm shadow rounded-lg text-white hover:text-black bg-[#8167E6] hover:bg-white transition-colors duration-700 transform"
               >
                 Subscribe
               </button>
