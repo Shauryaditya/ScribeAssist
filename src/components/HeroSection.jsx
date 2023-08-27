@@ -44,7 +44,7 @@ const HeroSection = () => {
             </svg>
           </div>
         </div>
-        <div className="overflow-hidden">
+        <div className="overflow-hidden" >
           <Image src="/Dna.png" width={700} height={400} objectFit="contain" />
         </div>
       </div>
