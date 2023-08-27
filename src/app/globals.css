@@ -21,3 +21,16 @@
 .rotate-on-hover:hover:before {
   transform: rotate(45deg);
 }
+
+.rotate-on-hover:hover svg path {
+  fill: #8167E6; /* Change this to the desired color */
+}
+
+/* CSS for changing specific SVG color on hover */
+.rotate-on-hover:hover .color-change-on-hover path {
+  fill: blue; /* Change this to the desired color */
+}
+
+
+
+

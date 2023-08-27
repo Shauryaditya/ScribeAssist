@@ -16,14 +16,14 @@ const Working = () => {
             Resade.{" "}
           </p>
         </div>
-        <div className="flex flex-col md:flex-row gap-20 py-12">
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 py-12 mx-auto gap-6 ">
           <div className="relative flex justify-center items-center shrink-0 w-40 h-40   rounded-full  rotate-on-hover">
             <div className="" >
               <svg
                 width="30"
                 height="35"
                 viewBox="0 0 30 35"
-                fill="none"
+                fill="violet"
                 xmlns="http://www.w3.org/2000/svg"
                 className=""
               >
@@ -67,7 +67,7 @@ const Working = () => {
             </div>
 
           </div>
-          <div className="relative flex justify-center items-center shrink-0 w-40 h-40  rounded-full  items-center rotate-on-hover">
+          <div className="relative flex justify-center  shrink-0 w-40 h-40  rounded-full  items-center rotate-on-hover">
             <div className="">
               <svg
                 width="30"
