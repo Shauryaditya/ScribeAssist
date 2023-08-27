@@ -6,8 +6,8 @@ const HeroSection = () => {
     <div className="max-w-screen-2xl mx-auto  ">
       <div className="flex flex-col md:flex-row justify-between items-center">
         <div className="max-w-xs flex flex-col gap-12 mx-4 md:mx-48">
-          <h1 className="text-3xl text-white">
-            <span className="text-violet-700">Write</span>Better Notes
+          <h1 className="text-4xl text-white">
+            <span className="text-violet-500">Write</span> Better Notes
           </h1>
           <p className="text-white">
             ScribeAssist AI (SAAI) takes care of your notes so you can take

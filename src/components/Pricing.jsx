@@ -28,7 +28,7 @@ const Pricing = () => {
               </div>
               <div className="p-4">
                 <ul class="text-sm w-full mt-6 mb-6">
-                  <li class="mb-3 flex items-center ">
+                  <li class="mb-3 flex items-center text-white ">
                     <svg
                       class="h-6 w-6 mr-2"
                       xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +42,7 @@ const Pricing = () => {
                     </svg>
                     Own custom Tailwind styles
                   </li>
-                  <li class="mb-3 flex items-center ">
+                  <li class="mb-3 flex items-center text-white">
                     <svg
                       class="h-6 w-6 mr-2"
                       xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,21 @@ const Pricing = () => {
                     </svg>
                     Unlimited Templates
                   </li>
-                  <li class="mb-3 flex items-center ">
+                  <li class="mb-3 flex items-center text-white">
+                    <svg
+                      class="h-6 w-6 mr-2"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="6"
+                      height="6"
+                      stroke="currentColor"
+                      fill="white"
+                      viewBox="0 0 1792 1792"
+                    >
+                      <path d="M1412 734q0-28-18-46l-91-90q-19-19-45-19t-45 19l-408 407-226-226q-19-19-45-19t-45 19l-91 90q-18 18-18 46 0 27 18 45l362 362q19 19 45 19 27 0 46-19l543-543q18-18 18-45zm252 162q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>
+                    </svg>
+                    Unlimited Templates
+                  </li>
+                  <li class="mb-3 flex items-center text-white">
                     <svg
                       class="h-6 w-6 mr-2"
                       xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +84,7 @@ const Pricing = () => {
                     </svg>
                     Free premium dashboard
                   </li>
-                  <li class="mb-3 flex items-center ">
+                  <li class="mb-3 flex items-center  text-white">
                     <svg
                       class="h-6 w-6 mr-2"
                       xmlns="http://www.w3.org/2000/svg"
@@ -84,26 +98,26 @@ const Pricing = () => {
                     </svg>
                     Best ranking
                   </li>
-                  <li class="mb-3 flex items-center opacity-50">
+                  <li class="mb-3 flex items-center opacity-50 text-white">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="6"
                       height="6"
                       class="h-6 w-6 mr-2"
-                      fill="red"
+                      fill="currentColor"
                       viewBox="0 0 1792 1792"
                     >
                       <path d="M1277 1122q0-26-19-45l-181-181 181-181q19-19 19-45 0-27-19-46l-90-90q-19-19-46-19-26 0-45 19l-181 181-181-181q-19-19-45-19-27 0-46 19l-90 90q-19 19-19 46 0 26 19 45l181 181-181 181q-19 19-19 45 0 27 19 46l90 90q19 19 46 19 26 0 45-19l181-181 181 181q19 19 45 19 27 0 46-19l90-90q19-19 19-46zm387-226q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>
                     </svg>
                     Prenium svg
                   </li>
-                  <li class="mb-3 flex items-center opacity-50">
+                  <li class="mb-3 flex items-center opacity-50 text-white">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="6"
                       height="6"
                       class="h-6 w-6 mr-2"
-                      fill="red"
+                      fill="currentColor"
                       viewBox="0 0 1792 1792"
                     >
                       <path d="M1277 1122q0-26-19-45l-181-181 181-181q19-19 19-45 0-27-19-46l-90-90q-19-19-46-19-26 0-45 19l-181 181-181-181q-19-19-45-19-27 0-46 19l-90 90q-19 19-19 46 0 26 19 45l181 181-181 181q-19 19-19 45 0 27 19 46l90 90q19 19 46 19 26 0 45-19l181-181 181 181q19 19 45 19 27 0 46-19l90-90q19-19 19-46zm387-226q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>
@@ -115,7 +129,7 @@ const Pricing = () => {
 
               <button
                 type="button"
-                class="w-full px-3 py-3 text-sm shadow rounded-lg text-indigo-500 hover:text-white bg-white hover:bg-indigo-500 transition-colors duration-700 transform"
+                class="w-full px-3 py-3 text-sm shadow rounded-lg text-indigo-500 hover:text-black bg-[#8167E6] hover:bg-white transition-colors duration-700 transform"
               >
                 Subscribe
               </button>
@@ -136,7 +150,7 @@ const Pricing = () => {
               </div>
               <div className="p-4">
                 <ul class="text-sm w-full mt-6 mb-6">
-                  <li class="mb-3 flex items-center ">
+                  <li class="mb-3 flex items-center text-white">
                     <svg
                       class="h-6 w-6 mr-2"
                       xmlns="http://www.w3.org/2000/svg"
@@ -150,7 +164,7 @@ const Pricing = () => {
                     </svg>
                     All illimited components
                   </li>
-                  <li class="mb-3 flex items-center ">
+                  <li class="mb-3 flex items-center text-white ">
                     <svg
                       class="h-6 w-6 mr-2"
                       xmlns="http://www.w3.org/2000/svg"
@@ -164,7 +178,7 @@ const Pricing = () => {
                     </svg>
                     Own custom Tailwind styles
                   </li>
-                  <li class="mb-3 flex items-center ">
+                  <li class="mb-3 flex items-center text-white">
                     <svg
                       class="h-6 w-6 mr-2"
                       xmlns="http://www.w3.org/2000/svg"
@@ -192,7 +206,7 @@ const Pricing = () => {
                     </svg>
                     Free premium dashboard
                   </li>
-                  <li class="mb-3 flex items-center ">
+                  <li class="mb-3 flex items-center text-white ">
                     <svg
                       class="h-6 w-6 mr-2"
                       xmlns="http://www.w3.org/2000/svg"
@@ -206,7 +220,7 @@ const Pricing = () => {
                     </svg>
                     Best ranking
                   </li>
-                  <li class="mb-3 flex items-center opacity-50">
+                  <li class="mb-3 flex items-center opacity-50 ">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="6"
@@ -237,7 +251,7 @@ const Pricing = () => {
 
               <button
                 type="button"
-                class="w-full px-3 py-3 text-sm shadow rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition-colors duration-700 transform"
+                class="w-full px-3 py-3 text-sm shadow rounded-lg text-white hover:text-black bg-[#8167E6] hover:bg-white transition-colors duration-700 transform"
               >
                 Subscribe
               </button>
@@ -259,7 +273,7 @@ const Pricing = () => {
 
               <div className="p-4">
                 <ul class="text-sm w-full mt-6 mb-6">
-                  <li class="mb-3 flex items-center ">
+                  <li class="mb-3 flex items-center text-white">
                     <svg
                       class="h-6 w-6 mr-2"
                       xmlns="http://www.w3.org/2000/svg"
@@ -273,7 +287,7 @@ const Pricing = () => {
                     </svg>
                     All illimited components
                   </li>
-                  <li class="mb-3 flex items-center ">
+                  <li class="mb-3 flex items-center text-white">
                     <svg
                       class="h-6 w-6 mr-2"
                       xmlns="http://www.w3.org/2000/svg"
@@ -287,7 +301,7 @@ const Pricing = () => {
                     </svg>
                     Own custom Tailwind styles
                   </li>
-                  <li class="mb-3 flex items-center ">
+                  <li class="mb-3 flex items-center text-white">
                     <svg
                       class="h-6 w-6 mr-2"
                       xmlns="http://www.w3.org/2000/svg"
@@ -301,7 +315,7 @@ const Pricing = () => {
                     </svg>
                     Unlimited Templates
                   </li>
-                  <li class="mb-3 flex items-center ">
+                  <li class="mb-3 flex items-center text-white ">
                     <svg
                       class="h-6 w-6 mr-2"
                       xmlns="http://www.w3.org/2000/svg"
@@ -315,7 +329,7 @@ const Pricing = () => {
                     </svg>
                     Free premium dashboard
                   </li>
-                  <li class="mb-3 flex items-center ">
+                  <li class="mb-3 flex items-center text-white">
                     <svg
                       class="h-6 w-6 mr-2"
                       xmlns="http://www.w3.org/2000/svg"
@@ -329,26 +343,26 @@ const Pricing = () => {
                     </svg>
                     Best ranking
                   </li>
-                  <li class="mb-3 flex items-center opacity-50">
+                  <li class="mb-3 flex items-center opacity-50 text-white">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="6"
                       height="6"
                       class="h-6 w-6 mr-2"
-                      fill="red"
+                      fill="currentColor"
                       viewBox="0 0 1792 1792"
                     >
                       <path d="M1277 1122q0-26-19-45l-181-181 181-181q19-19 19-45 0-27-19-46l-90-90q-19-19-46-19-26 0-45 19l-181 181-181-181q-19-19-45-19-27 0-46 19l-90 90q-19 19-19 46 0 26 19 45l181 181-181 181q-19 19-19 45 0 27 19 46l90 90q19 19 46 19 26 0 45-19l181-181 181 181q19 19 45 19 27 0 46-19l90-90q19-19 19-46zm387-226q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>
                     </svg>
                     Prenium svg
                   </li>
-                  <li class="mb-3 flex items-center opacity-50">
+                  <li class="mb-3 flex items-center opacity-50 text-white">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="6"
                       height="6"
                       class="h-6 w-6 mr-2"
-                      fill="red"
+                      fill="currentColor"
                       viewBox="0 0 1792 1792"
                     >
                       <path d="M1277 1122q0-26-19-45l-181-181 181-181q19-19 19-45 0-27-19-46l-90-90q-19-19-46-19-26 0-45 19l-181 181-181-181q-19-19-45-19-27 0-46 19l-90 90q-19 19-19 46 0 26 19 45l181 181-181 181q-19 19-19 45 0 27 19 46l90 90q19 19 46 19 26 0 45-19l181-181 181 181q19 19 45 19 27 0 46-19l90-90q19-19 19-46zm387-226q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>
@@ -360,9 +374,9 @@ const Pricing = () => {
 
               <button
                 type="button"
-                class="w-full px-3 py-3 text-sm shadow rounded-lg text-indigo-500 hover:text-white bg-white hover:bg-indigo-500 transition-colors duration-700 transform"
+                class="w-full px-3 py-3 text-sm shadow rounded-lg text-white hover:text-black bg-[#8167E6] hover:bg-white transition-colors duration-700 transform"
               >
-               Subscribe
+                Subscribe
               </button>
             </div>
           </div>

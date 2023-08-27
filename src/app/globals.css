@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.rotate-on-hover {
+    transition: transform 1.5s; /* Smooth transition */
+  }
+  
+  .rotate-on-hover:hover {
+    transform: rotate(360deg); /* Rotate by 45 degrees on hover */
+  }
