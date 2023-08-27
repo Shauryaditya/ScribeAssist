@@ -16,8 +16,8 @@ const Working = () => {
             Resade.{" "}
           </p>
         </div>
-        <div className="flex flex-col md:flex-row gap-32 py-12">
-          <div className="w-48 h-48 border rounded-full border-dashed rotate-on-hover">
+        <div className="flex flex-col md:flex-row gap-20 py-12">
+          <div className="shrink-0 w-48 h-48 border rounded-full border-dashed rotate-on-hover">
             <svg
               width="30"
               height="35"
@@ -40,7 +40,7 @@ const Working = () => {
               />
             </svg>
           </div>
-          <div className="w-48 h-48 border rounded-full border-dashed rotate-on-hover">
+          <div className="shrink-0 w-48 h-48 border rounded-full border-dashed rotate-on-hover">
             <svg
               width="32"
               height="34"
@@ -61,7 +61,7 @@ const Working = () => {
               />
             </svg>
           </div>
-          <div className="w-48 h-48 border rounded-full border-dashed items-center rotate-on-hover">
+          <div className="shrink-0 w-48 h-48 border rounded-full border-dashed items-center rotate-on-hover">
             <svg
               width="30"
               height="34"
@@ -78,7 +78,7 @@ const Working = () => {
               />
             </svg>
           </div>
-          <div className="w-48 h-48 border rounded-full border-dashed rotate-on-hover">
+          <div className="shrink-0 w-48 h-48 border rounded-full border-dashed rotate-on-hover">
             <svg
               width="34"
               height="36"
