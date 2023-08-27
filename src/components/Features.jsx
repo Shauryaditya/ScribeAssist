@@ -42,13 +42,13 @@ const Features = () => {
   ]
   return (
     <div className="max-w-screen-2xl mx-auto ">
-        <div className="mx-4 md:mx-48">
-          <div className="">
+        <div className="mx-4 md:mx-24 lg:mx-36 xl:mx-48">
+          <div className="pt-24">
           <h1 className='text-4xl text-white'> <span className='text-violet-500'>Top</span> Features</h1>
           </div>
             
           
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-24">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-24">
               {data.map((item) => (
                 <Card key={item.id} props={item}/>
                 ))}
