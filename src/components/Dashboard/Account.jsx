@@ -62,7 +62,7 @@ const Account = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex my-4">
+            <div className="flex my-2">
                 <div className="w-full bg-[#2F303D] rounded-md p-4">
                     <div className="flex flex-col gap-2">
                         <p className='text-white font-[IBM Plex Mono] text-sm font-bold'>Communication Preferences</p>

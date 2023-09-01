@@ -36,7 +36,7 @@ const Sidebar = () => {
   ];
   const [isSelected, setIsSelected] = useState("Home");
   return (
-    <div className="w-1/4  bg-[#191A29] min-h-screen">
+    <div className="w-full bg-[#191A29] min-h-full">
       <div className="w-full flex flex-col justify-center items-start px-[40px] gap-12 pt-[42px]">
         <div className="">
           <p className="text-[#8167E6] text-[26px] font-[700]">

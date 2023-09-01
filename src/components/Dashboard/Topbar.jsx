@@ -4,7 +4,7 @@ import Account from './Account'
 
 const Topbar = () => {
     return (
-        <div className='w-full bg-[#222331]'>
+        <div className='w-full min-h-full bg-[#222331]'>
             <div className="">
                 <div className="flex justify-between py-4 border-b border-gray-600 ">
                     <p className='text-lg font-medium text-white text-center px-4 py-2'>Account</p>
