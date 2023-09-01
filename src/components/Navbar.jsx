@@ -7,7 +7,7 @@ const Navbar = () => {
         setMobileMenuOpen(!isMobileMenuOpen);
     };
     return (
-        <header className='sticky top-0 z-50 backdrop-blur-sm'>
+        <header className='sticky top-0 z-50 backdrop-blur-sm bg-[#191F29] bg-opacity-50'>
             <nav className='max-w-6xl mx-auto flex justify-between items-center font-sans p-5'>
                 <a href='/' className='text-lg text-white font-bold'>ScribeAssistAI</a>
                 <div className='hidden md:flex gap-2'>
