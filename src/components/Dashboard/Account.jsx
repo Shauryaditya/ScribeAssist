@@ -2,7 +2,7 @@ import React from 'react'
 
 const Account = () => {
     return (
-        <div className="max-w-full mx-4">
+        <div className="max-w-full mx-4 pb-4">
             <div className="flex flex-row gap-8 my-8">
                 <div className="w-1/2 bg-[#2F303D] rounded-md">
                     <div className="flex flex-col p-4 gap-4 ">
