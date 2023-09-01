@@ -10,7 +10,7 @@ const dashboardLayout = ({
         <div className='w-80'>
             <Sidebar />
         </div>
-        <div className='grow'>
+        <div className='grow bg-[#222331]'>
             {children}
         </div>
     </div>
