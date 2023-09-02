@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   Table,
@@ -145,7 +146,8 @@ const page = () => {
               ))}
             </TableBody>
           </Table>
-        </div>
+
+
       </div>
     </div>
   );
