@@ -47,7 +47,7 @@ const Recorder = () => {
             </div>
             <div className="flex justify-between">
                 <button className='text-sm bg-gray-500 text-white  rounded px-4 py-2'>Discard</button>
-              <button className='text-xs bg-[#8167E6] text-white  rounded px-4 py-2-2'><Link href="/home/notes">Write Notes and Instructions </Link>  </button>
+              <button className='text-xs bg-[#8167E6] text-white  rounded px-4 py-2-2'><Link href="/notes">Write Notes and Instructions </Link>  </button>
             </div>
         </div>
     )

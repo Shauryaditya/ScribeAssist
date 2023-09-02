@@ -9,15 +9,15 @@ const Account = () => {
                         <p className='text-white'>General</p>
                         <div class="mb-4">
                          
-                            <input class="shadow appearance-none border text-xs bg-[#222331] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Email" />
+                            <input class="shadow appearance-none border border-none text-xs bg-[#222331] rounded-xl w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Email" />
                         </div>
                         <div class="mb-4">
                         
-                            <input class="shadow text-xs appearance-none border bg-[#222331] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Display Name" />
+                            <input class="shadow text-xs appearance-none border border-none bg-[#222331] rounded-xl w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Display Name" />
                         </div>
                         <div class="mb-6">
                           
-                            <input class="shadow appearance-none border bg-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="************" />
+                            <input class="shadow appearance-none border  bg-transparent rounded-xl  w-full py-3 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="************" />
 
                         </div>
                     </div>

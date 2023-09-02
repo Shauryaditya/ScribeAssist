@@ -1,12 +1,13 @@
+'use client'
 import React from 'react'
-import Notes from '../../../../components/Dashboard/Notes'
+import NotesandInstructions from '../../../components/Dashboard/NotesandInstructions'
 import Topbar from '@/components/Dashboard/Topbar'
 
 const page = () => {
     return (
         <div className='min-h-full bg-[#222331]'>
             <Topbar/>
-        <Notes />
+            <NotesandInstructions />
         </div>
     )
 }

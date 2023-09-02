@@ -7,44 +7,49 @@ const Login = () => {
         className="max-w-screen-2xl h-[25rem] sm:h-[30rem] md:h-[40rem] mx-auto -mt-20 bg-no-repeat bg-right bg-cover font-sans"
         style={{ backgroundImage: `url('/Dna.png')` }}
       >
-        <div className="max-w-md mx-48 pt-44">
-          <div className="flex flex-col gap-8">
-            <h1 className="text-4xl text-white">
-              <span className="text-violet-500">Contact</span> Us
+        <div className="max-w-md mx-48 pt-24">
+          <div className="flex flex-col gap-2">
+            <h1 className="text-xl text-white">
+              <span className="text-violet-500 font-semibold">Login</span>
             </h1>
-            <p className="text-white">
-              Enter your registered email and password to login to your account
+            <p className="text-white text-xs">
+              Enter your registered email and password to<br/> login to your account
             </p>
           </div>
 
 
           <div className="w-full max-w-xs">
             <form className=" ">
-              <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                  Username
+              <div className="my-8">
+                <label className="block text-gray-700 text-xs font-bold mb-2" htmlFor="username">
+                  Email
                 </label>
-                <input class="shadow appearance-none border bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" />
+                <input class="shadow appearance-none border bg-transparent rounded-xl text-xs w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="email" placeholder="email@example.com" />
               </div>
               <div class="mb-6">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                <label class="block text-gray-700 text-xs font-bold mb-2" for="password">
                   Password
                 </label>
-                <input class="shadow appearance-none border  border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" />
-                <p class="text-red-500 text-xs italic">Please choose a password.</p>
+                <input class="shadow appearance-none bg-transparent border rounded-xl w-full py-3 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" />
+               
               </div>
-              <div class="flex items-center justify-between">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                  Sign In
-                </button>
-                <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+              <a class="inline-block align-baseline font-light underline text-xs text-[#8167E6] " href="#">
                   Forgot Password?
                 </a>
-              </div>
+             <div className="my-8">
+             <button class="w-full bg-[#8167E6] py-3 text-white font-light rounded-xl text-xs hover:bg-white hover:text-[#8167E6] focus:outline-none focus:shadow-outline" type="button">
+                  Login
+                </button>
+             </div>
+             
+            <div className="">
+              <p className="text-xs text-white font-[Avenir]">Don’t have an account yet?</p>
+            </div>
+            <a class="inline-block align-baseline font-light underline text-xs text-[#8167E6] " href="#">
+                 Register Now
+                </a>
             </form>
-            <p class="text-center text-gray-500 text-xs">
-              &copy;2020 Acme Corp. All rights reserved.
-            </p>
+        
           </div>
         </div>
       </div>
