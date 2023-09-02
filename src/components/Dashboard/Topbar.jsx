@@ -1,6 +1,6 @@
 
 import React from 'react'
-import Account from './Account'
+
 
 const Topbar = () => {
     return (
@@ -21,7 +21,7 @@ const Topbar = () => {
                         </div>
                     </div>
                 </div>
-                <Account />
+                
             </div>
         </div>
     )

@@ -2,9 +2,9 @@ import React from 'react'
 
 const Account = () => {
     return (
-        <div className="max-w-full mx-4 pb-4">
-            <div className="flex flex-row gap-8 my-8">
-                <div className="w-1/2 bg-[#2F303D] rounded-md">
+        <div className="max-w-full bg-[#222331] mx-4 pb-4">
+            <div className="flex flex-row gap-3 my-4">
+                <div className="w-1/2 bg-[#2F303D] rounded-xl">
                     <div className="flex flex-col p-4 gap-4 ">
                         <p className='text-white'>General</p>
                         <div class="mb-4">
@@ -22,7 +22,7 @@ const Account = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-1/2 bg-[#2F303D] rounded-md p-4">
+                <div className="w-1/2 bg-[#2F303D] rounded-xl p-4">
                     <p className='text-white'>Documents</p>
                     <div className="flex flex-col justify-center items-center py-24 gap-4">
                         <p className='text-xs text-[#8E93A6]'>No Documents Added</p>
