@@ -1,6 +1,7 @@
 "use client"
 import React from 'react'
 import Timer from './Timer'
+import Link from 'next/link'
 const Recorder = () => {
     return (
         <div className="max-w-full bg-[#222331] mx-4 pb-4">
@@ -46,7 +47,7 @@ const Recorder = () => {
             </div>
             <div className="flex justify-between">
                 <button className='text-sm bg-gray-500 text-white  rounded px-4 py-2'>Discard</button>
-                <button className='text-xs bg-[#8167E6] text-white  rounded px-4 py-2-2'>Write Notes and Instructions</button>
+              <button className='text-xs bg-[#8167E6] text-white  rounded px-4 py-2-2'><Link href="/Notes">Write Notes and Instructions </Link>  </button>
             </div>
         </div>
     )
