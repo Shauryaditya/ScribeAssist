@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from 'next/navigation'
 import { Microphone } from "@/assets/icons/microphone";
 import { Notes } from "@/assets/icons/Notes";
 import { Calender } from "@/assets/icons/Calender";
@@ -35,6 +36,12 @@ const Sidebar = () => {
     },
   ];
   const [isSelected, setIsSelected] = useState("Home");
+  const router = useRouter();
+  const navigateToPage = (route: string) => {
+    // Use router.push to navigate to the specified page
+    router.push(`/${route.toLowerCase()}`);
+  };
+
   return (
     <div className="w-full bg-[#191A29] min-h-full">
       <div className="w-full flex flex-col justify-center items-start px-[40px] gap-12 pt-[42px]">
@@ -48,7 +55,9 @@ const Sidebar = () => {
             return (
               <button
                 value={ele.title}
-                onClick={() => setIsSelected(ele.title)}
+                onClick={() =>{ setIsSelected(ele.title)
+                  navigateToPage(ele.title);
+                }}
                 key={ele.key}
                 className={
                   isSelected === ele.title

@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link';
 import React, { useState } from 'react'
 const Navbar = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,7 +18,7 @@ const Navbar = () => {
                     <a href='/' className='text-base text-white py-2 px-6 rounded-lg hover:bg-white hover:bg-opacity-10' >About</a>
                 </div>
                 <button className="hidden md:block text-base text-white py-2 px-6 rounded-xl bg-white bg-opacity-10 text-opacity-100 hover:text-gray-900 hover:bg-white  transition-all duration-300">
-                    Login
+               <Link href="/login">Login</Link>     
                 </button>
                 <div
                     onClick={toggleMobileMenu}
