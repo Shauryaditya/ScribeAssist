@@ -3,7 +3,7 @@ import React from "react";
 const Pricing = () => {
   return (
     <>
-      <div class="min-h-screen items-center">
+      <div class="min-h-screen items-center bg-[#191A29]">
         <div class="">
           <div class="text-start font-semibold mx-4 md:mx-48">
             <h1 class="text-5xl">

@@ -41,7 +41,7 @@ const Features = () => {
     },
   ]
   return (
-    <div className="max-w-screen-2xl mx-auto ">
+    <div className="max-w-screen-2xl mx-auto bg-[#191A29]">
         <div className="mx-4 md:mx-24 lg:mx-36 xl:mx-48">
           <div className="pt-24">
           <h1 className='text-4xl text-white'> <span className='text-violet-500'>Top</span> Features</h1>

@@ -2,7 +2,7 @@ import React from "react";
 
 const Working = () => {
   return (
-    <div className="max-w-screen-2xl mx-auto ">
+    <div className="max-w-screen-2xl mx-auto bg-[#222331] py-8">
       <div className="mx-4 md:mx-48">
         <div className="flex flex-col justify-start gap-8">
           <h1 className="text-4xl text-white">
