@@ -3,13 +3,13 @@ import Image from "next/image";
 
 const HeroSection = () => {
   return (
-    <div className="max-w-screen-2xl h-[25rem] sm:h-[30rem] md:h-[900px] mx-auto -mt-20 bg-no-repeat bg-right bg-cover font-sans bg-[#191A29]"
+    <div className="max-w-screen-2xl h-[900px] bg-opacity-80 mx-auto -mt-20 bg-no-repeat bg-right bg-cover font-sans bg-[#191A29]"
       style={{ backgroundImage: `url('/Dna.png')` }}
     >
       <div className="w-full h-full flex flex-row justify-start items-center">
         <div className="max-w-md flex flex-col p-5 mx-auto sm:ml-16 md:ml-24 lg:mx-32 max-sm:mt-10 mt-8">
           <h1 className="text-[34px] text-white leading-10 font-mono font-bold">
-            <span className="text-violet-500">Write</span> Better Notes
+            <span className="text-[#8167E6]">Write</span> Better Notes
           </h1>
           <p className="text-white leading-6 py-5">
             ScribeAssist AI (SAAI) takes care of your notes so you can take
@@ -18,10 +18,10 @@ const HeroSection = () => {
           </p>
           <div className="flex flex-col gap-16">
           <div className="w-full flex gap-8 mt-10 md:mt-20">
-            <button className="w-1/2 px-6 py-3 bg-violet-600 rounded-xl text-white text-sm">
+            <button className="w-1/2 px-6 py-3 bg-[#8167E6] rounded-xl text-white text-sm">
               Launch SAAI
             </button>
-            <button className="w-1/2 px-6 py-3 bg-gray-500 opacity-80  text-white rounded-xl text-sm">
+            <button className="w-1/2 px-6 py-3 bg-[#222331] bg-opacity-80  text-white rounded-xl text-sm">
               Learn More
             </button>
           </div>

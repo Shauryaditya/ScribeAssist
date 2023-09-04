@@ -6,6 +6,7 @@ import Pricing from "../components/Pricing";
 import Working from "../components/Working";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer"
+import Diagnosis from "../components/Diagnosis"
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
        <Features /> 
        <Pricing />
        <Working />
+       <Diagnosis />
        <Contact />
        <Footer />
     </main>
