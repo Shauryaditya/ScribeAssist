@@ -33,7 +33,7 @@ const Account = () => {
             <div className="flex">
                 <div className="w-full bg-[#2F303D] rounded-md p-4">
                     <div className="flex flex-col gap-4">
-                        <p className='text-white text-sm'>Subscription</p>
+                        <p className='text-white text-lg font-[IBM Plex Mono] font-semibold'>Subscription</p>
                         <div className="w-full bg-gradient-to-r from-[#8167E6] to-[#443093] rounded-md ">
                             <div className="flex flex-col p-4 gap-4">
                                 <div className="flex justify-between">
@@ -65,7 +65,7 @@ const Account = () => {
             <div className="flex my-2">
                 <div className="w-full bg-[#2F303D] rounded-md p-4">
                     <div className="flex flex-col gap-2">
-                        <p className='text-white font-[IBM Plex Mono] text-sm font-bold'>Communication Preferences</p>
+                        <p className='text-white font-[IBM Plex Mono] text-lg font-semibold'>Communication Preferences</p>
                         <p className='text-white text-xs'>Columns of checkboxes to opt in/out of the communications.</p>
                     </div>
                 </div>

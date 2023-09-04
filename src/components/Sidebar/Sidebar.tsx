@@ -50,7 +50,7 @@ const Sidebar = () => {
             ScribeAssistAI
           </p>
         </div>
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-6">
           {options.map((ele) => {
             return (
               <button
@@ -61,8 +61,8 @@ const Sidebar = () => {
                 key={ele.key}
                 className={
                   isSelected === ele.title
-                    ? "text-white flex gap-5 w-[240px] bg-btn-selected rounded-[14px] h-[48px] justify-start items-center pl-[20px] py-[30px] cursor-pointer"
-                    : "text-white flex gap-5 w-[240px] h-[48px] justify-start items-center pl-[20px] py-[30px] cursor-pointer"
+                    ? "text-white flex gap-5 w-[240px] text-xs bg-btn-selected rounded-[14px] h-[48px] justify-start items-center pl-[20px] py-[30px] cursor-pointer"
+                    : "text-white flex gap-5 w-[240px] text-xs h-[48px] justify-start items-center pl-[20px] py-[30px] cursor-pointer"
                 }
               >
                 <div>{ele.icon}</div>

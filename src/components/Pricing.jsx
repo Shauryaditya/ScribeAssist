@@ -3,17 +3,17 @@ import React from "react";
 const Pricing = () => {
   return (
     <>
-      <div class="min-h-screen items-center bg-[#191A29]">
-        <div class="">
-          <div class="text-start font-semibold mx-4 md:mx-48">
-            <h1 class="text-5xl">
-              <span class="text-violet-500 tracking-wide">Pricing </span>
+      <div class="min-h-screen items-center bg-[#191A29] mb-24">
+        <div class="mt-32">
+          <div class="text-start font-semibold mx-4 md:mx-44">
+            <h1 class="text-4xl">
+              <span class="text-violet-500 font-semibold">Pricing </span>
               <span className="text-white">Plans</span>
             </h1>
           </div>
 
-          <div class="my-16 sm:flex flex-wrap justify-center items-center gap-8 md:p-12 p-4">
-            <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4  bg-[#222331] mt-6 shadow-lg rounded-lg">
+          <div class=" sm:flex flex-wrap justify-center items-center gap-8 md:mx-16">
+            <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4  bg-[#222331] mt-6 shadow-lg rounded-[20px]">
               <div class="px-6 py-8 sm:p-10 sm:pb-6">
                 <div class="flex flex-col justify-center items-center">
                   <span class=" text-violet-600 rounded-full text-sm leading-5 font-semibold uppercase">
@@ -129,13 +129,13 @@ const Pricing = () => {
 
               <button
                 type="button"
-                class="w-full px-3 py-3 text-sm shadow rounded-lg text-white hover:text-black bg-[#8167E6] hover:bg-white transition-colors duration-700 transform"
+                class="w-full px-3 py-4 text-sm shadow rounded-b-[20px] text-white hover:text-black bg-[#8167E6] hover:bg-white transition-colors duration-700 transform"
               >
                 Subscribe
               </button>
             </div>
 
-            <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 bg-[#222331] text-white mt-6 shadow-lg rounded-lg">
+            <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 bg-[#222331] text-white mt-6 shadow-lg rounded-[20px]">
               <div class="px-6 py-8 sm:p-10 sm:pb-6">
                 <div class="flex flex-col justify-center items-center">
                   <span class=" text-violet-600 rounded-full text-sm leading-5 font-semibold uppercase">
@@ -251,13 +251,13 @@ const Pricing = () => {
 
               <button
                 type="button"
-                class="w-full px-3 py-3 text-sm shadow rounded-lg text-white hover:text-black bg-[#8167E6] hover:bg-white transition-colors duration-700 transform"
+                class="w-full px-3 py-4 text-sm shadow rounded-b-[20px] text-white hover:text-black bg-[#8167E6] hover:bg-white transition-colors duration-700 transform"
               >
                 Subscribe
               </button>
             </div>
 
-            <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 bg-[#222331] mt-6 shadow-lg rounded-lg">
+            <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 bg-[#222331] mt-6 shadow-lg rounded-[20px]">
               <div class="px-6 py-8 sm:p-10 sm:pb-6">
                 <div class="flex flex-col justify-center items-center">
                   <span class=" text-violet-600 rounded-full text-sm leading-5 font-semibold uppercase">
@@ -374,7 +374,7 @@ const Pricing = () => {
 
               <button
                 type="button"
-                class="w-full px-3 py-3 text-sm shadow rounded-lg text-white hover:text-black bg-[#8167E6] hover:bg-white transition-colors duration-700 transform"
+                class="w-full px-3 py-4 text-sm shadow rounded-b-[20px] text-white hover:text-black bg-[#8167E6] hover:bg-white transition-colors duration-700 transform"
               >
                 Subscribe
               </button>

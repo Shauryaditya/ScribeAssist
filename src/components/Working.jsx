@@ -2,10 +2,10 @@ import React from "react";
 
 const Working = () => {
   return (
-    <div className="max-w-screen-2xl mx-auto bg-[#222331] py-8">
-      <div className="mx-4 md:mx-48">
-        <div className="flex flex-col justify-start gap-8">
-          <h1 className="text-4xl text-white">
+    <div className="max-w-screen-2xl mx-auto bg-[#222331] py-20">
+      <div className="mx-4 md:mx-44">
+        <div className="flex flex-col justify-start gap-12">
+          <h1 className="text-4xl text-white font-mono">
             <span className="text-violet-500">How</span> It Works
           </h1>
           <p className="text-white">
@@ -16,7 +16,7 @@ const Working = () => {
             Resade.{" "}
           </p>
         </div>
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 py-12 mx-auto gap-6 ">
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 py-12 pt-28 mx-auto gap-6 ">
           <div className="relative flex justify-center items-center shrink-0 w-40 h-40   rounded-full  rotate-on-hover">
             <div className="" >
               <svg
@@ -25,7 +25,7 @@ const Working = () => {
                 viewBox="0 0 30 35"
                 fill="violet"
                 xmlns="http://www.w3.org/2000/svg"
-                className=""
+                className="opacity-80"
               >
                 <path
                   fill-rule="evenodd"
@@ -41,6 +41,7 @@ const Working = () => {
                 />
               </svg>
             </div>
+            
 
           </div>
           <div className="relative flex justify-center items-center shrink-0 w-40 h-40  rounded-full  rotate-on-hover">

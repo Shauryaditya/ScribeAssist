@@ -6,11 +6,11 @@ const Footer = () => {
             <footer className="px-4 divide-y bg-white dark:bg-gray-800 dark:text-gray-100">
                 <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
                     <div className="lg:w-1/3 ">
-                        <div className="flex flex-col justify-center items-center gap-16">
+                        <div className="flex flex-col justify-start items-start gap-16 ml-16">
                             <div className="flex justify-start items-start">
                         <a rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start lg:items-start">
                            
-                            <span className="self-center text-2xl font-semibold">SAAI</span>
+                            <span className="self-center text-4xl font-semibold">SAAI</span>
                         </a>
                         </div>
                         <div className="flex justify-start space-x-6 bg-[#F3F5F7] rounded-lg px-8 py-2">
@@ -78,6 +78,7 @@ const Footer = () => {
                     </div>
                 </div>
             </footer>
+            <div className="w-full h-12 bg-[#191A29]"></div>
         </div>
     )
 }
