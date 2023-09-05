@@ -16,13 +16,13 @@ const Pricing = () => {
             <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4  bg-[#222331] mt-6 shadow-lg rounded-[20px]">
               <div class="px-6 py-8 sm:p-10 sm:pb-6">
                 <div class="flex flex-col justify-center items-center gap-2">
-                  <span class=" text-violet-600 rounded-full text-xl leading-5 font-semibold font-mono">
+                  <span class=" text-[#8167E6] rounded-full text-xl leading-5 font-semibold font-mono">
                     Apollo
                   </span>
                   <span className="text-lg text-white font-[Avenir]">The Essential</span>
                 </div>
               </div>
-              <div class="mt-4 flex justify-center text-4xl text-white leading-none font-extrabold bg-gray-500 px-6 py-4">
+              <div class="mt-4 flex justify-center text-4xl text-white leading-none font-bold bg-gray-500 px-6 py-4">
                 $79.99
                 <span class="pt-4 text-xs font-medium text-white">/mo</span>
               </div>
@@ -135,7 +135,7 @@ const Pricing = () => {
               </button>
             </div>
 
-            <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 bg-[#222331] text-white mt-6 shadow-lg rounded-[20px]">
+            <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 bg-[#222331] text-white mt-6 shadow-lg rounded-[20px] font-mono">
               <div class="px-6 py-8 sm:p-10 sm:pb-6">
                 <div class="flex flex-col justify-center items-center gap-2">
                   <span class=" text-[#8167E6] rounded-full text-xl leading-5 font-semibold ">
@@ -144,7 +144,7 @@ const Pricing = () => {
                   <span className="text-lg text-white font-[Avenir]">The Essential</span>
                 </div>
               </div>
-              <div class="mt-4 flex justify-center text-4xl text-white leading-none font-extrabold bg-gray-500 px-6 py-4">
+              <div class="mt-4 flex justify-center text-4xl text-white leading-none font-bold bg-gray-500 px-6 py-4">
                 $89.99
                 <span class="pt-4 text-xs font-medium text-white">/mo</span>
               </div>
@@ -260,7 +260,7 @@ const Pricing = () => {
             <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 bg-[#222331] mt-6 shadow-lg rounded-[20px]">
               <div class="px-6 py-8 sm:p-10 sm:pb-6">
                 <div class="flex flex-col justify-center items-center gap-2">
-                  <span class=" text-[#8167E6] rounded-full text-sm leading-5 font-semibold uppercase">
+                  <span class=" text-[#8167E6] rounded-full text-xl leading-5 font-bold font-mono">
                     Apollo
                   </span>
                   <span className="text-lg text-white font-[Avenir]">The Essential</span>

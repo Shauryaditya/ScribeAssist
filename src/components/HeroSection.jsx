@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const HeroSection = () => {
   return (
-    <div className="max-w-screen-2xl h-[900px] bg-opacity-80 mx-auto -mt-20 bg-no-repeat bg-right bg-cover font-sans bg-[#191A29]"
+    <div className="max-w-screen-2xl h-[900px] bg-opacity-80 mx-auto -mt-20 bg-no-repeat bg-right bg-cover font-sans "
       style={{ backgroundImage: `url('/Dna.png')` }}
     >
       <div className="w-full h-full flex flex-row justify-start items-center">
