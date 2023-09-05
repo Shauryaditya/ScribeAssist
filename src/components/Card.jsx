@@ -18,13 +18,8 @@ const Card = ({props}) => {
       
         
           <div className={`flex flex-col justify-start gap-6 `}>
-          <svg
-          className={`w-8 h-18 object-contain ${isHovered ? 'text-[#8167E6]' : 'text-white'}`}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-        >
-          {props.icon}
-        </svg>
+            <img className={`w-8 h-18 object-contain ${isHovered ? 'text-[#8167E6]' : 'text-white'}`}
+             src={props.icon} alt="" />
          <h2 className={`text-[#FFFFFF] text-lg font-bold ${textHoverStyle} `}>{props.name}</h2>
         <p className={`text-[#FFFFFF] text-xs font-normal ${textHoverStyle}`}>{props.desc}</p> 
       </div>
