@@ -61,8 +61,8 @@ const Sidebar = () => {
                 key={ele.key}
                 className={
                   isSelected === ele.title
-                    ? "text-white flex gap-5 w-[240px] text-xs bg-btn-selected rounded-[14px] h-[48px] justify-start items-center pl-[20px] py-[30px] cursor-pointer"
-                    : "text-white flex gap-5 w-[240px] text-xs h-[48px] justify-start items-center pl-[20px] py-[30px] cursor-pointer"
+                    ? "text-white flex gap-5 w-[225px] text-xs bg-btn-selected rounded-[14px] h-[48px] justify-start items-center pl-[20px] py-[25px] cursor-pointer"
+                    : "text-white flex gap-5 w-[225px] text-xs h-[48px] justify-start items-center pl-[20px] py-[25px] cursor-pointer"
                 }
               >
                 <div>{ele.icon}</div>

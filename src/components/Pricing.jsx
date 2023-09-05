@@ -15,11 +15,11 @@ const Pricing = () => {
           <div class=" sm:flex flex-wrap justify-center items-center gap-8 md:mx-16">
             <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4  bg-[#222331] mt-6 shadow-lg rounded-[20px]">
               <div class="px-6 py-8 sm:p-10 sm:pb-6">
-                <div class="flex flex-col justify-center items-center">
-                  <span class=" text-violet-600 rounded-full text-sm leading-5 font-semibold uppercase">
+                <div class="flex flex-col justify-center items-center gap-2">
+                  <span class=" text-violet-600 rounded-full text-xl leading-5 font-semibold font-mono">
                     Apollo
                   </span>
-                  <span className="text-xs text-white">The Essential</span>
+                  <span className="text-lg text-white font-[Avenir]">The Essential</span>
                 </div>
               </div>
               <div class="mt-4 flex justify-center text-4xl text-white leading-none font-extrabold bg-gray-500 px-6 py-4">
@@ -137,11 +137,11 @@ const Pricing = () => {
 
             <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 bg-[#222331] text-white mt-6 shadow-lg rounded-[20px]">
               <div class="px-6 py-8 sm:p-10 sm:pb-6">
-                <div class="flex flex-col justify-center items-center">
-                  <span class=" text-violet-600 rounded-full text-sm leading-5 font-semibold uppercase">
+                <div class="flex flex-col justify-center items-center gap-2">
+                  <span class=" text-[#8167E6] rounded-full text-xl leading-5 font-semibold ">
                     Apollo
                   </span>
-                  <span className="text-xs text-white">The Essential</span>
+                  <span className="text-lg text-white font-[Avenir]">The Essential</span>
                 </div>
               </div>
               <div class="mt-4 flex justify-center text-4xl text-white leading-none font-extrabold bg-gray-500 px-6 py-4">
@@ -259,11 +259,11 @@ const Pricing = () => {
 
             <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 bg-[#222331] mt-6 shadow-lg rounded-[20px]">
               <div class="px-6 py-8 sm:p-10 sm:pb-6">
-                <div class="flex flex-col justify-center items-center">
-                  <span class=" text-violet-600 rounded-full text-sm leading-5 font-semibold uppercase">
+                <div class="flex flex-col justify-center items-center gap-2">
+                  <span class=" text-[#8167E6] rounded-full text-sm leading-5 font-semibold uppercase">
                     Apollo
                   </span>
-                  <span className="text-xs text-white">The Essential</span>
+                  <span className="text-lg text-white font-[Avenir]">The Essential</span>
                 </div>
               </div>
               <div class="mt-4 flex justify-center text-4xl text-white leading-none font-extrabold bg-gray-500 px-6 py-4">
