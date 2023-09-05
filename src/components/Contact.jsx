@@ -6,7 +6,7 @@ const Contact = () => {
       <div className="mx-4 md:mx-48">
         <div className="flex flex-col gap-8">
           <h1 className="text-4xl text-white">
-            <span className="text-violet-500">Contact</span> Us
+            <span className="text-[violet-500]">Contact</span> Us
           </h1>
           <p className="text-white">
             SAAI is always here to help you. Our support system worls tirelessly
