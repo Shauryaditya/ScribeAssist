@@ -1,6 +1,44 @@
-import React from "react";
+'use client'
+import React,{useState} from "react";
 
 const Login = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+  console.log(formData);
+
+  const handleLogin = async () => {
+    
+    try {
+      const response = await fetch("https://scribe-assist.onrender.com/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Login was successful, you can redirect or perform other actions here
+        alert("Login Successful")
+        window.location.href = '/home'
+      } else {
+        // Handle login error, e.g., show an error message
+        console.error("Login failed");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
   return (
     <div className="">
       <div
@@ -21,23 +59,38 @@ const Login = () => {
           <div className="w-full max-w-xs">
             <form className=" ">
               <div className="my-8">
-                <label className="block text-gray-700 text-xs font-bold mb-2 " htmlFor="username">
+                <label className="block text-gray-700 text-xs font-bold mb-2 " htmlFor="email">
                   Email
                 </label>
-                <input class="shadow appearance-none border bg-transparent border-gray-600 rounded-xl text-xs w-full py-3 px-3 text-white leading-tight focus:outline-none focus:shadow-outline" id="username" type="email" placeholder="email@example.com" />
+                <input class="shadow appearance-none border bg-transparent border-gray-600 rounded-xl text-xs w-full py-3 px-3 text-white leading-tight focus:outline-none focus:shadow-outline" 
+                id="email" 
+                type="email" 
+                name="email"
+                placeholder="email@example.com"
+                value={formData.email}
+                onChange={handleInputChange}
+                />
               </div>
               <div class="mb-6">
                 <label class="block text-gray-700 text-xs font-bold mb-2" for="password">
                   Password
                 </label>
-                <input class="shadow appearance-none bg-transparent border border-gray-600 rounded-xl w-full py-3 px-3 text-white mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" />
+                <input class="shadow appearance-none bg-transparent border border-gray-600 rounded-xl w-full py-3 px-3 text-white mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+                id="password" 
+                type="password" 
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                placeholder="******************" />
                
               </div>
               <a class="inline-block align-baseline font-light underline text-xs text-[#8167E6] " href="#">
                   Forgot Password?
                 </a>
              <div className="my-8">
-             <button class="w-full bg-[#8167E6] py-3 text-white font-light rounded-xl text-xs hover:bg-white hover:text-[#8167E6] focus:outline-none focus:shadow-outline" type="button">
+             <button class="w-full bg-[#8167E6] py-3 text-white font-light rounded-xl text-xs hover:bg-white hover:text-[#8167E6] focus:outline-none focus:shadow-outline"
+              type="button"
+              onClick={handleLogin}>
                   Login
                 </button>
              </div>

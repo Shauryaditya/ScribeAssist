@@ -1,44 +1,37 @@
 'use client'
-import React,{useState} from "react";
+import React, { useState } from "react";
 
-const Card = ({props}) => {
+const Card = ({ props }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const cardStyle = isHovered
     ? 'bg-white text-black'
     : 'bg-[#222331] text-white';
 
-    const textHoverStyle = isHovered ? 'text-black' : 'text-white';
+  const textHoverStyle = isHovered ? 'text-black' : 'text-white';
 
-   const normalIcon = (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-8 h-18 object-contain text-white">
-      {props.icon}
-    </svg>
-  );
 
-  const hoverIcon = (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-8 h-18 object-contain text-[#8167E6]">
-      {props.hovericon}
-    </svg>
-  );
 
   return (
-    <div className= {`min-w-xs bg-[#222331]   shadow-xl rounded-[20px] p-8 transition duration-500 ease-in-out transform hover:bg-white hover:text-black ${cardStyle} `} 
-    onMouseEnter={() => setIsHovered(true)}
-    onMouseLeave={() => setIsHovered(false)}
-    style={{
-      transition: 'background-color 0.5s ease-in-out', // Shorthand for transition properties
-    }}
+    <div className={`min-w-xs bg-[#222331]   shadow-xl rounded-[20px] p-8 transition duration-500 ease-in-out transform hover:bg-white hover:text-black ${cardStyle} `}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        transition: 'background-color 0.5s ease-in-out', // Shorthand for transition properties
+      }}
     >
-      
-        
-          <div className={`flex flex-col justify-start gap-6 `}>
-            <img className={`w-8 h-18 object-contain `}
-             src={props.icon} alt="" />
-         <h2 className={`text-[#FFFFFF] text-lg font-bold ${textHoverStyle} `}>{props.name}</h2>
-        <p className={`text-[#FFFFFF] text-xs font-normal ${textHoverStyle}`}>{props.desc}</p> 
+      <div className={`flex flex-col justify-start gap-6 `}>
+        {/* Conditionally render icons based on hover state */}
+        {isHovered ? (
+          <img className={`w-8 h-18 object-contain`} src={props.hovericon} alt="" />
+        ) : (
+          <img className={`w-8 h-18 object-contain`} src={props.icon} alt="" />
+        )}
+
+        <h2 className={`text-[#FFFFFF] text-lg font-bold ${textHoverStyle} `}>{props.name}</h2>
+        <p className={`text-[#FFFFFF] text-xs font-normal ${textHoverStyle}`}>{props.desc}</p>
       </div>
-   
+
     </div>
   );
 };

@@ -34,7 +34,7 @@ const Features = () => {
      {
       id: 5,
       icon: '/Time.svg',
-      hovericon: '.Time2.svg',
+      hovericon: '/Time2.svg',
       name:"36 Hours",
       desc:"Let SAAI adapt to your needs - whether it's via live listening during patient visits (ScribeAssist) or via dictating your encounters to SAAI later (DictAssist).",
     },
