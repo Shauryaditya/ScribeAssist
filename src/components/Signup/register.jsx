@@ -2,6 +2,9 @@
 import React, { useState } from "react";
 
 const Register = () => {
+
+  const access_token = localStorage.getItem("access_token");
+  console.log("Access token >>>",access_token);
   const [formData, setFormData] = useState({
     name: "",
     password: "",
@@ -59,6 +62,7 @@ const Register = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+         
         },
         body: JSON.stringify(formData), // Convert formData to JSON
       });

@@ -4,6 +4,7 @@ import Timer from './Timer'
 import Link from 'next/link'
 const Recorder = () => {
     const [isHovered, setIsHovered] = useState(false);
+    
 
     const cardStyle = isHovered
       ? 'bg-white text-black'

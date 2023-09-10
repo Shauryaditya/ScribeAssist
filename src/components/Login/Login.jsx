@@ -1,4 +1,5 @@
 'use client'
+import Link from "next/link";
 import React,{useState} from "react";
 
 const Login = () => {
@@ -26,9 +27,11 @@ const Login = () => {
         },
         body: JSON.stringify(formData),
       });
-
+      const data = await response.json();
       if (response.ok) {
         // Login was successful, you can redirect or perform other actions here
+        console.log(data);
+        localStorage.setItem("access_token",data.access_token);
         alert("Login Successful")
         window.location.href = '/home'
       } else {
@@ -84,9 +87,9 @@ const Login = () => {
                 placeholder="******************" />
                
               </div>
-              <a class="inline-block align-baseline font-light underline text-xs text-[#8167E6] " href="#">
+              <Link class="inline-block align-baseline font-light underline text-xs text-[#8167E6] " href="/forget">
                   Forgot Password?
-                </a>
+                </Link>
              <div className="my-8">
              <button class="w-full bg-[#8167E6] py-3 text-white font-light rounded-xl text-xs hover:bg-white hover:text-[#8167E6] focus:outline-none focus:shadow-outline"
               type="button"
