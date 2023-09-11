@@ -5,8 +5,10 @@ class Timer extends Component {
         super(props);
 
         this.state = {
+            apiData: null,
             totalSeconds: 0,
             isRunning: false,
+            isRecording: false,
             audioRecording: null,
         };
 
@@ -40,13 +42,24 @@ class Timer extends Component {
                     .then((stream) => {
                         this.audioRecorder = new MediaRecorder(stream);
 
+                        const audioChunks = [];
+
                         this.audioRecorder.ondataavailable = (event) => {
                             if (event.data.size > 0) {
-                                this.setState({ audioRecording: event.data });
+                                audioChunks.push(event.data);
                             }
                         };
 
+                        this.audioRecorder.onstop = () => {
+                            const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                            this.setState({ audioRecording: audioBlob }, () => {
+                                // Send the audio recording to the API
+                                this.sendAudioToAPI();
+                            });
+                        };
+
                         this.audioRecorder.start();
+                        this.setState({ isRecording: true });
                     })
                     .catch((error) => {
                         console.error('Error accessing microphone:', error);
@@ -54,6 +67,7 @@ class Timer extends Component {
             });
 
             this.setState({ isRunning: true });
+           
         }
     };
 
@@ -63,8 +77,8 @@ class Timer extends Component {
         if (this.audioRecorder && this.audioRecorder.state === 'recording') {
             this.audioRecorder.stop();
         }
-
-        this.setState({ isRunning: false });
+        this.sendAudioToAPI()
+        this.setState({ isRunning: false, isRecording: false });
     };
 
     resetTimer = () => {
@@ -74,6 +88,7 @@ class Timer extends Component {
             this.audioRecorder.stop();
         }
 
+        // Clear the audio recording data
         this.setState({ totalSeconds: 0, isRunning: false, audioRecording: null });
     };
 
@@ -83,14 +98,63 @@ class Timer extends Component {
         return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
     };
 
+    sendAudioToAPI = async () => {
+        const { audioRecording } = this.state;
+        if (audioRecording) {
+            // Create a FormData object to send the binary audio file
+            const formData = new FormData();
+            formData.append('audio', audioRecording, 'audio.wav');
+            const access_token = localStorage.getItem('access_token');
+    
+            // Make a POST request to the API endpoint
+            try {
+                const response = await fetch('https://scribe-assist.onrender.com/api/transcribe', {
+                    method: 'POST',
+                    headers: {
+                        Authorization: `Bearer ${access_token}`,
+                    },
+                    body: formData,
+                });
+    
+                if (response.ok) {
+                    const data = await response.json();
+                    this.setState({ apiData: data });
+                    // Handle the API response data as needed
+                    console.log('API response:', data);
+    
+                    // You can also pass the data to a parent component or perform any other actions here
+                    // Example: this.props.onApiData(data);
+                } else {
+                    console.error('API request failed with status:', response.status);
+                }
+            } catch (error) {
+                console.error('Error sending audio to API:', error);
+            }
+        }
+    };
+    sendDataToParent = () => {
+        const { sendDataToParent, sendApiDataToParent } = this.props;
+        const { totalSeconds, apiData } = this.state;
+
+        // Call the function passed from the parent and pass data to it
+        sendDataToParent(totalSeconds);
+
+        // Call the function passed from the parent to send apiData
+        sendApiDataToParent(apiData);
+    };
+
     render() {
-        const { totalSeconds, isRunning, audioRecording } = this.state;
+        const { totalSeconds, isRunning,isRecording } = this.state;
 
         return (
             <div className="w-full">
                 <div className="flex flex-row justify-between items-center">
                     <h1 className="text-sm space-x-4 text-white font-bold ">{this.formatTime(totalSeconds)}</h1>
                     <div className="flex space-x-4">
+                    <div className="mt-2">
+                    {/* Display a message indicating recording status */}
+                    {isRecording ? <p className='text-white'>Recording...</p> : null}
+                </div>
                         <button
                             className={`bg-white text-black py-2 px-2 rounded ${isRunning ? 'opacity-50 cursor-not-allowed' : ''}`}
                             onClick={isRunning ? this.stopTimer : this.startTimer}
@@ -118,11 +182,7 @@ class Timer extends Component {
                         </button>
                     </div>
                 </div>
-                {audioRecording && (
-                    <audio controls>
-                        <source src={URL.createObjectURL(audioRecording)} />
-                    </audio>
-                )}
+           
             </div>
         );
     }

@@ -30,7 +30,7 @@ const ForgetPassword = () => {
           if (response.ok) {
             // Login was successful, you can redirect or perform other actions here
             alert(data.message);
-            window.location.href = '/home'
+            window.location.href = '/change'
           } else {
             // Handle login error, e.g., show an error message
             console.error("Login failed");

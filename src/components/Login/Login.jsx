@@ -101,9 +101,9 @@ const Login = () => {
             <div className="">
               <p className="text-xs text-[#8E93A6] font-[Avenir]">Don’t have an account yet?</p>
             </div>
-            <a class="inline-block align-baseline font-light underline text-xs text-[#8167E6] " href="#">
+            <Link class="inline-block align-baseline font-light underline text-xs text-[#8167E6] " href="/register">
                  Register Now
-                </a>
+                </Link>
             </form>
         
           </div>

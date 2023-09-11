@@ -144,7 +144,7 @@ const Register = () => {
                   Provider Type :
                 </label>
                 <select
-                  className="ml-3 px-4 py-2 border border-gray-600 outline-none bg-transparent rounded-xl"
+                  className="ml-3 px-4 py-2 border border-gray-600 text-gray-400 outline-none bg-transparent rounded-xl"
                   name="provider_type"
                   value={formData.provider_type}
                   onChange={handleChange}

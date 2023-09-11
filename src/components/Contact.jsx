@@ -3,7 +3,7 @@ import React from "react";
 const Contact = () => {
   return (
     <div className="max-w-screen-2xl mx-auto overflow-hidden bg-[#191A29] py-8">
-      <div className="mx-4 md:mx-48">
+      <div className="mx-4 lg:mx-48 sm:mx-12">
         <div className="flex flex-col gap-8">
           <h1 className="text-4xl text-white">
             <span className="text-[violet-500]">Contact</span> Us

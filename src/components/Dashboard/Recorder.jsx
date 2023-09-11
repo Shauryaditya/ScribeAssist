@@ -4,7 +4,22 @@ import Timer from './Timer'
 import Link from 'next/link'
 const Recorder = () => {
     const [isHovered, setIsHovered] = useState(false);
-    
+    const [timerData, setTimerData] = useState(null); // State to store data from Timer component
+    const [apiData, setApiData] = useState(null); // State to store apiData from Timer component
+
+    // Function to receive data from Timer component
+    const receiveDataFromTimer = (data) => {
+        setTimerData(data); // Set the received data in the state
+    };
+    console.log(timerData);
+
+    // Function to receive apiData from Timer component
+    const receiveApiDataFromTimer = (apiData) => {
+        setApiData(apiData); // Set the received apiData in the state
+       
+    };
+    console.log(apiData);
+
 
     const cardStyle = isHovered
       ? 'bg-white text-black'
@@ -19,7 +34,7 @@ const Recorder = () => {
                 <div className="w-full bg-[#191A29] h-56 rounded-[20px]">
                     <div className="flex flex-col p-4 gap-4 ">
                       <div className="mt-40">
-                            <Timer />
+                            <Timer sendDataToParent={receiveDataFromTimer} sendApiDataToParent={receiveApiDataFromTimer} />
                         </div>
                     </div>
                 </div>
