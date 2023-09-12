@@ -2,6 +2,7 @@
 import React,{useState} from 'react'
 import Timer from './Timer'
 import Link from 'next/link'
+import Voice from './Voice'
 const Recorder = () => {
     const [isHovered, setIsHovered] = useState(false);
     const [timerData, setTimerData] = useState(null); // State to store data from Timer component
@@ -33,8 +34,9 @@ const Recorder = () => {
             <div className="flex flex-row gap-3 my-8">
                 <div className="w-full bg-[#191A29] h-56 rounded-[20px]">
                     <div className="flex flex-col p-4 gap-4 ">
-                      <div className="mt-40">
-                            <Timer sendDataToParent={receiveDataFromTimer} sendApiDataToParent={receiveApiDataFromTimer} />
+                      <div className="mt-12">
+                        <Voice />
+                           
                         </div>
                     </div>
                 </div>
