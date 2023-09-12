@@ -60,11 +60,11 @@ const VoiceRecorder = ({onDataReceived}) => {
       <div className="flex flex-col gap-1">
       
     
-      {audioURL && (
+      {/* {audioURL && (
         <div>
           <audio controls src={audioURL}></audio>
         </div>
-      )}
+      )} */}
       <ReactMic
         record={isRecording}
         className="sound-wave"
@@ -72,8 +72,8 @@ const VoiceRecorder = ({onDataReceived}) => {
         onData={onData}
         mimeType="audio/wav"
       />
-      <div className="w-2/3 flex justify-end items-end">
-        <button className='bg-violet-600 text-white rounded-xl px-6 py-2' onClick={isRecording ? handleStopRecording : handleStartRecording}>
+      <div className="w-full flex justify-end items-end">
+        <button className='bg-[#8167E6] text-white rounded-xl px-6 py-2' onClick={isRecording ? handleStopRecording : handleStartRecording}>
         {isRecording ? 'Stop Recording' : 'Start Encounter'}
       </button>
       </div>
