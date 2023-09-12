@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { ReactMic } from 'react-mic';
 
-const VoiceRecorder = () => {
+const VoiceRecorder = ({onDataReceived}) => {
   const [isRecording, setIsRecording] = useState(false);
   const [audioURL, setAudioURL] = useState('');
+  const [audioData, setAudioData] = useState(null);
 
   const handleStartRecording = () => {
     setIsRecording(true);
@@ -40,8 +41,10 @@ const VoiceRecorder = () => {
       if (response.ok) {
         // Handle successful response from the API
         const data = await response.json();
-
+        setAudioData(data);
         console.log('Audio sent successfully to the API',data);
+              // Pass the audio data to the parent component
+        onDataReceived(data);
       } else {
         // Handle API errors
         console.error('Error sending audio to the API');
@@ -54,10 +57,9 @@ const VoiceRecorder = () => {
 
   return (
     <div>
-      <h1>Voice Recorder</h1>
-      <button className='bg-violet-600 text-white rounded-xl px-6 py-2' onClick={isRecording ? handleStopRecording : handleStartRecording}>
-        {isRecording ? 'Stop Recording' : 'Start Encounter'}
-      </button>
+      <div className="flex flex-col gap-1">
+      
+    
       {audioURL && (
         <div>
           <audio controls src={audioURL}></audio>
@@ -70,6 +72,12 @@ const VoiceRecorder = () => {
         onData={onData}
         mimeType="audio/wav"
       />
+      <div className="w-2/3 flex justify-end items-end">
+        <button className='bg-violet-600 text-white rounded-xl px-6 py-2' onClick={isRecording ? handleStopRecording : handleStartRecording}>
+        {isRecording ? 'Stop Recording' : 'Start Encounter'}
+      </button>
+      </div>
+      </div>
     </div>
   );
 };

@@ -7,6 +7,13 @@ const Recorder = () => {
     const [isHovered, setIsHovered] = useState(false);
     const [timerData, setTimerData] = useState(null); // State to store data from Timer component
     const [apiData, setApiData] = useState(null); // State to store apiData from Timer component
+    const [audioData, setAudioData] = useState(null);
+
+    // Callback function to receive audio data from Voice component
+    const onDataReceived = (data) => {
+      setAudioData(data);
+    };console.log("Audio data >>>>",audioData)
+
 
     // Function to receive data from Timer component
     const receiveDataFromTimer = (data) => {
@@ -32,10 +39,10 @@ const Recorder = () => {
     return (
         <div className="max-w-full bg-[#222331] mx-8 pb-4">
             <div className="flex flex-row gap-3 my-8">
-                <div className="w-full bg-[#191A29] h-56 rounded-[20px]">
+                <div className="w-full bg-[#191A29] h-64 rounded-[20px]">
                     <div className="flex flex-col p-4 gap-4 ">
-                      <div className="mt-12">
-                        <Voice />
+                      <div className="mt-0">
+                        <Voice onDataReceived={onDataReceived} />
                            
                         </div>
                     </div>
@@ -47,7 +54,7 @@ const Recorder = () => {
                     <div className="flex flex-col gap-2">
                         <div className="">
                             <p className='text-xs text-[#8E93A6]'>Me</p>
-                            <p className='text-xs text-[#8E93A6] font-[Avenir]'>Lörem ipsum prera bössa vadivis. Transplastisk båvugilig infragen, samt inade. Parasade dedogalogi söd för att vutilig och kontrangen,</p>
+                            <p className='text-xs text-[#8E93A6] font-[Avenir]'>{audioData?.transcript}</p>
                         </div>
                         <div className="">
                             <p className='text-xs text-white'>Patient</p>
