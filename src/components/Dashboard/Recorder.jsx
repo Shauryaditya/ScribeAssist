@@ -5,21 +5,19 @@ import Link from 'next/link'
 import Voice from './Voice'
 const Recorder = () => {
     const [isHovered, setIsHovered] = useState(false);
+    const [isHovered2, setIsHovered2] = useState(false);
     const [timerData, setTimerData] = useState(null); // State to store data from Timer component
     const [apiData, setApiData] = useState(null); // State to store apiData from Timer component
     const [audioData, setAudioData] = useState(null);
 
+    const access_token = localStorage.getItem('access_token');
     // Callback function to receive audio data from Voice component
     const onDataReceived = (data) => {
       setAudioData(data);
     };console.log("Audio data >>>>",audioData)
 
 
-    // Function to receive data from Timer component
-    const receiveDataFromTimer = (data) => {
-        setTimerData(data); // Set the received data in the state
-    };
-    console.log(timerData);
+ 
 
     // Function to receive apiData from Timer component
     const receiveApiDataFromTimer = (apiData) => {
@@ -33,9 +31,38 @@ const Recorder = () => {
       ? 'bg-white text-black'
       : 'bg-[#222331] text-white';
 
-      const buttonStyle = isHovered
+      const buttonStyle = isHovered2
       ? 'bg-white text-[#8167E6]'
       : 'bg-[#8167E6] text-white';
+
+      const sendAudioDataToApi = async () => {
+        // if (audioData) {
+            console.log("Audio Data >>>",audioData)
+          
+          try {
+            const apiUrl = 'https://scribe-assist.onrender.com/api/generate_soap_note';
+            const response = await fetch(apiUrl, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization : `Bearer ${access_token}`
+              },
+              body: JSON.stringify({ audioData }), // Send the audioData in the request body
+            });
+    
+            if (response.ok) {
+              // Handle success, e.g., redirect to a success page or show a message
+              const data = await response.json();
+              console.log('Data sent successfully to the API',data);
+            } else {
+              // Handle errors, e.g., show an error message
+              console.error('Failed to send data to the API');
+            }
+          } catch (error) {
+            console.error('Error sending data to the API:', error);
+          }
+        // }
+      };
     return (
         <div className="max-w-full min-h-screen bg-[#222331] mx-8 pb-4">
             <div className="flex flex-row gap-3 my-8">
@@ -64,9 +91,10 @@ const Recorder = () => {
                    onMouseLeave={() => setIsHovered(false)}>
                     Discard</button>
               <button className={`text-xs bg-[#8167E6]  rounded-xl px-4 py-2 transition duration-300 ease-in-out transform ${buttonStyle}`}
-               onMouseEnter={() => setIsHovered(true)}
-               onMouseLeave={() => setIsHovered(false)}>
-                <Link href="/notes">Write Notes and Instructions </Link>  </button>
+               onMouseEnter={() => setIsHovered2(true)}
+               onMouseLeave={() => setIsHovered2(false)}
+               onClick={sendAudioDataToApi}>
+             Write Notes and Instructions   </button>
             </div>
         </div>
     )

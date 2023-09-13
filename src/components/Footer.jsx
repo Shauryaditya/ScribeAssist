@@ -6,7 +6,7 @@ const Footer = () => {
             <footer className="px-4 divide-y bg-white dark:bg-gray-800 dark:text-gray-100 p-16 mt-20">
                 <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0 pl-28">
                     <div className="lg:w-1/3 ">
-                        <div className="flex flex-col justify-start items-start gap-12 ml-16">
+                        <div className="flex flex-col justify-start items-start gap-12 md:ml-16 -ml-4">
                             <div className="flex justify-start items-start">
                         <a rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start lg:items-start">
                            

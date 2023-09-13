@@ -16,9 +16,12 @@ const Notes = () => {
 
                         </div>
                         <div className="flex flex-row gap-4">
-                            <p className='text-xs text-white'>John Doe</p>
-                            <p className='text-xs text-white'>Male</p>
-                            <p className='text-xs text-white'>50 years old</p>
+                            <input type="text" />
+                            <input type="text" />
+                            <input type="text" />
+                            {/* <p className='text-xs text-white'>John Doe</p> */}
+                            {/* <p className='text-xs text-white'>Male</p>
+                            <p className='text-xs text-white'>50 years old</p> */}
                         </div>
 
                     </div>

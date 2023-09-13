@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ReactMic } from 'react-mic';
+import Wave from './Wave'
+
 
 const VoiceRecorder = ({onDataReceived}) => {
   const [isRecording, setIsRecording] = useState(false);
@@ -65,9 +67,10 @@ const VoiceRecorder = ({onDataReceived}) => {
           <audio controls src={audioURL}></audio>
         </div>
       )} */}
+      <Wave audioURL={audioURL} />
       <ReactMic
         record={isRecording}
-        className="sound-wave"
+        className="none"
         onStop={onStop}
         onData={onData}
         mimeType="audio/wav"
