@@ -14,7 +14,7 @@ const Recorder = () => {
     // Callback function to receive audio data from Voice component
     const onDataReceived = (data) => {
       setAudioData(data);
-    };console.log("Audio data >>>>",audioData)
+    };
 
 
  
@@ -47,7 +47,7 @@ const Recorder = () => {
                 'Content-Type': 'application/json',
                 Authorization : `Bearer ${access_token}`
               },
-              body: JSON.stringify({ audioData }), // Send the audioData in the request body
+              body: JSON.stringify(audioData), // Send the audioData in the request body
             });
     
             if (response.ok) {
