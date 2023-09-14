@@ -3,6 +3,10 @@ import React,{useState} from 'react'
 import Timer from './Timer'
 import Link from 'next/link'
 import Voice from './Voice'
+
+
+
+
 const Recorder = () => {
     const [isHovered, setIsHovered] = useState(false);
     const [isHovered2, setIsHovered2] = useState(false);
@@ -53,7 +57,12 @@ const Recorder = () => {
             if (response.ok) {
               // Handle success, e.g., redirect to a success page or show a message
               const data = await response.json();
+              const idFromResponse = data.patient_details?._id;
+             
+              const notesPageUrl = `/notes?id=${idFromResponse}`;
+              window.location.href = notesPageUrl;
               console.log('Data sent successfully to the API',data);
+              transcriptData(data);
             } else {
               // Handle errors, e.g., show an error message
               console.error('Failed to send data to the API');
@@ -70,14 +79,14 @@ const Recorder = () => {
                     <div className="flex flex-col p-4 gap-4 ">
                       <div className="mt-0">
                         <Voice onDataReceived={onDataReceived} />
-                           
+                      
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="flex my-2">
-                <div className="w-full bg-transparent rounded-[20px] p-4 border border-gray-500">
+            <div className="flex mt-8">
+                <div className="w-full h-64 bg-transparent rounded-[20px] p-4 border border-gray-500">
                     <div className="flex flex-col gap-2">
                         <div className="">
                             <p className='text-xs text-white font-[Avenir]'>{audioData?.transcript}</p>

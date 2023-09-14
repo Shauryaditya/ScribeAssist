@@ -1,8 +1,9 @@
 'use client'
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import Notes from './Notes'
 import Instructions from './Instructions'
 import Alaysis from './Alaysis'
+
 
 const NotesandInstructions = () => {
     const heading = [
@@ -21,6 +22,39 @@ const NotesandInstructions = () => {
      
     ]
     const [selectedTab, setSelectedTab] = useState(1)
+    const queryParams = new URLSearchParams(window.location.search);
+    const id = queryParams.get("id");
+    const access_token = localStorage.getItem('access_token');
+    console.log("ID",id);
+
+    const [instructions, setInstructions] = useState([]);
+
+
+    useEffect(() => {
+        const fetchNotes = async () => {
+            try {
+                const response = await fetch(`https://scribe-assist.onrender.com/api/get-patient-details?id=${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${access_token}`
+                    }
+                });
+    
+                if (response.ok) {
+                    const data = await response.json();
+                    setInstructions(data);
+                } else {
+                    console.error('Failed to fetch data');
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+    
+        fetchNotes(); // Call the function to initiate the API request
+    }, [id]);
+    
+    console.log("Instructions >>", instructions);
+    
 
     return (
         <div className='flex gap-14 p-10'>
@@ -45,11 +79,11 @@ const NotesandInstructions = () => {
                 <div className='p-0 mt-4'>
                     {
                         selectedTab === 2 ?
-                            <Instructions /> : null
+                            <Instructions instruction={instructions.patient_details?.patient_instraction} /> : null
                     }
                     {
                         selectedTab === 1 ?
-                            <Notes /> : null
+                            <Notes notes={instructions.patient_details?.soap_note} /> : null
                     }
                     {
                         selectedTab === 3 ?
