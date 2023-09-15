@@ -29,12 +29,12 @@ const Notes = ({ notes }) => {
                 </div>
                 <div className="w-full bg-[#2F303D] rounded-xl p-4">
 
-                    <div className="flex flex-col gap-2">
-                        {/* <textarea name="" id="" cols="30" rows="10" value={{notes}}></textarea> */}
-                            <p className='text-xs text-white'>{notes}</p>
-                       </div>
+                    <div className="max-w-3xl flex flex-col gap-2">
+                        <pre className="text-xs text-white" style={{ maxWidth: '48rem', overflowX: 'auto' }}>
+                            {notes}
+                        </pre>
                     </div>
-
+                </div>
             </div>
         </div>
     )

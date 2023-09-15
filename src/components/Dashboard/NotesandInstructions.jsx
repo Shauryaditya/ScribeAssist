@@ -59,16 +59,15 @@ const NotesandInstructions = () => {
     <div className="flex gap-14 p-10">
       <div className="grow flex flex-col">
         <div className="w-full flex justify-between">
-          <div className="max-w-md flex justify-between bg-[#2F303D] rounded-lg overflow-hidden">
+          <div className="w-1/2 flex justify-between bg-[#2F303D] rounded-lg overflow-hidden">
             {heading.map((item, index) => (
               <div
                 onClick={() => setSelectedTab(index + 1)}
                 key={item.id}
-                className={`w-1/3 h-10 flex justify-center rounded-lg items-center cursor-pointer text-sm ${
-                  selectedTab === index + 1
+                className={`w-1/3 h-10 flex justify-center rounded-lg items-center cursor-pointer text-sm ${selectedTab === index + 1
                     ? "text-[#8167E6] bg-white"
                     : "text-gray-500 "
-                }`}
+                  }`}
               >
                 {item.name}
               </div>
@@ -85,16 +84,17 @@ const NotesandInstructions = () => {
           </div>
         </div>
 
+
         <div className="p-0 mt-4">
           {selectedTab === 2 ? (
             <Instructions
-              instruction={instructions.patient_details?.patient_instraction}
+              instruction={instructions.patient_details?.patient_instruction}
             />
           ) : null}
           {selectedTab === 1 ? (
             <Notes notes={instructions.patient_details?.soap_note} />
           ) : null}
-          {selectedTab === 3 ? <Alaysis /> : null}
+          {selectedTab === 3 ? <Alaysis analysis={instructions.patient_details?.analyze_note}/> : null}
         </div>
       </div>
     </div>
