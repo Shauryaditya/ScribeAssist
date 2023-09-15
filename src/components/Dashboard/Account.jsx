@@ -1,6 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Account = () => {
+
+    const [contact, setContact] = useState();
+
+    useEffect(() => {
+        const fetchInfo = async() => {
+            try {
+                const response = await fetch(
+                  `https://scribe-assist.onrender.com/api/get-patient-details?id=${id}`,
+                  {
+                    headers: {
+                      Authorization: `Bearer ${access_token}`,
+                    },
+                  }
+                );
+        
+                if (response.ok) {
+                  const data = await response.json();
+                  setContact(data);
+                } else {
+                  console.error("Failed to fetch data");
+                }
+              } catch (error) {
+                console.error("Error fetching data:", error);
+              }
+        }
+    },[])
     return (
         <div className="max-w-full bg-[#222331] mx-4 pb-4">
             <div className="flex flex-row gap-3 my-4">
