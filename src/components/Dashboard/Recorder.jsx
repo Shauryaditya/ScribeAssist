@@ -39,39 +39,41 @@ const Recorder = () => {
       ? 'bg-white text-[#8167E6]'
       : 'bg-[#8167E6] text-white';
 
-      const sendAudioDataToApi = async () => {
-        // if (audioData) {
-            console.log("Audio Data >>>",audioData)
-          
-          try {
-            const apiUrl = 'http://192.168.29.239:5000/api/generate_soap_note';
-            const response = await fetch(apiUrl, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                Authorization : `Bearer ${access_token}`
-              },
-              body: JSON.stringify(audioData), // Send the audioData in the request body
-            });
-    
-            if (response.ok) {
-              // Handle success, e.g., redirect to a success page or show a message
-              const data = await response.json();
-              const idFromResponse = data.patient_id;
-             
-              const notesPageUrl = `/notes?id=${idFromResponse}`;
-              window.location.href = notesPageUrl;
-              console.log('Data sent successfully to the API',data);
-              transcriptData(data);
-            } else {
-              // Handle errors, e.g., show an error message
-              console.error('Failed to send data to the API');
-            }
-          } catch (error) {
-            console.error('Error sending data to the API:', error);
-          }
-        // }
-      };
+const [isLoading, setIsLoading] = useState(false); // Initialize the loader state
+
+  const sendAudioDataToApi = async () => {
+    setIsLoading(true); // Show the loader when the request starts
+
+    try {
+      const apiUrl = 'http://192.168.29.239:5000/api/generate_soap_note';
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${access_token}`,
+        },
+        body: JSON.stringify(audioData), // Send the audioData in the request body
+      });
+
+      if (response.ok) {
+        // Handle success, e.g., redirect to a success page or show a message
+        const data = await response.json();
+        const idFromResponse = data.patient_id;
+
+        const notesPageUrl = `/notes?id=${idFromResponse}`;
+        window.location.href = notesPageUrl;
+        console.log('Data sent successfully to the API', data);
+        transcriptData(data);
+      } else {
+        // Handle errors, e.g., show an error message
+        console.error('Failed to send data to the API');
+      }
+    } catch (error) {
+      console.error('Error sending data to the API:', error);
+    } finally {
+      setIsLoading(false); // Hide the loader when the request is complete (whether success or error)
+    }
+  };
     return (
         <div className="max-w-full min-h-screen bg-[#222331] mx-8 pb-4">
             <div className="flex flex-row gap-3 my-8">
@@ -99,11 +101,16 @@ const Recorder = () => {
                    onMouseEnter={() => setIsHovered(true)}
                    onMouseLeave={() => setIsHovered(false)}>
                     Discard</button>
-              <button className={`text-xs bg-[#8167E6]  rounded-xl px-4 py-2 transition duration-300 ease-in-out transform ${buttonStyle}`}
-               onMouseEnter={() => setIsHovered2(true)}
-               onMouseLeave={() => setIsHovered2(false)}
-               onClick={sendAudioDataToApi}>
-             Write Notes and Instructions   </button>
+                    {isLoading ?(
+                     <div className="loader">Loading...</div>
+                    ): (
+                      <button className={`text-xs bg-[#8167E6]  rounded-xl px-4 py-2 transition duration-300 ease-in-out transform ${buttonStyle}`}
+                      onMouseEnter={() => setIsHovered2(true)}
+                      onMouseLeave={() => setIsHovered2(false)}
+                      onClick={sendAudioDataToApi}>
+                    Write Notes and Instructions   </button>
+                    )}
+            
             </div>
         </div>
     )
