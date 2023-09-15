@@ -44,7 +44,7 @@ const Recorder = () => {
             console.log("Audio Data >>>",audioData)
           
           try {
-            const apiUrl = 'https://scribe-assist.onrender.com/api/generate_soap_note';
+            const apiUrl = 'http://192.168.29.239:5000/api/generate_soap_note';
             const response = await fetch(apiUrl, {
               method: 'POST',
               headers: {
@@ -57,7 +57,7 @@ const Recorder = () => {
             if (response.ok) {
               // Handle success, e.g., redirect to a success page or show a message
               const data = await response.json();
-              const idFromResponse = data.patient_details?._id;
+              const idFromResponse = data.patient_id;
              
               const notesPageUrl = `/notes?id=${idFromResponse}`;
               window.location.href = notesPageUrl;

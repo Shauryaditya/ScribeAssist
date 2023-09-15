@@ -31,7 +31,7 @@ const NotesandInstructions = () => {
     const fetchNotes = async () => {
       try {
         const response = await fetch(
-          `https://scribe-assist.onrender.com/api/get-patient-details?id=${id}`,
+          `http://192.168.29.239:5000/api/get-patient-details?id=${id}`,
           {
             headers: {
               Authorization: `Bearer ${access_token}`,

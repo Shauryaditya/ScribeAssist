@@ -19,7 +19,7 @@ const ForgetPassword = () => {
         console.log(formData);
         
         try {
-          const response = await fetch("https://scribe-assist.onrender.com/api/forgot-password", {
+          const response = await fetch("http://192.168.29.239:5000/api/forgot-password", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
