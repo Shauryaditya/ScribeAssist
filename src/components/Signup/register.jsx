@@ -4,8 +4,7 @@ import BASE_URL from "../constants";
 
 const Register = () => {
 
-  const access_token = localStorage.getItem("access_token");
-  console.log("Access token >>>",access_token);
+
   const [formData, setFormData] = useState({
     name: "",
     password: "",
