@@ -30,9 +30,9 @@ const Notes = ({ notes }) => {
                 <div className="w-full bg-[#2F303D] rounded-xl p-4">
 
                     <div className="max-w-3xl flex flex-col gap-2">
-                        <pre className="text-xs text-white" style={{ maxWidth: '48rem', overflowX: 'auto' }}>
+                        <p className="text-xs text-white whitespace-pre" >
                             {notes}
-                        </pre>
+                        </p>
                     </div>
                 </div>
             </div>
