@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 import Timer from './Timer'
 import Link from 'next/link'
 import Voice from './Voice'
-import Loader from './Loader';
+import BASE_URL from '../constants'
+
 
 
 
@@ -45,7 +46,7 @@ const Recorder = () => {
     setIsLoading(true); // Show the loader when the request starts
 
     try {
-      const apiUrl = 'http://192.168.29.239:5000/api/generate_soap_note';
+      const apiUrl = `${BASE_URL}/api/generate_soap_note`;
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {

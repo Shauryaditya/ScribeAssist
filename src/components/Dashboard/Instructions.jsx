@@ -2,7 +2,6 @@ import React from 'react'
 
 const Instructions = ({ instruction }) => {
     console.log(instruction);
-    const instructionsArray = Object.values(instruction);
     return (
         <div className='max-w-full '>
             <div className="flex flex-col gap-3">

@@ -1,10 +1,10 @@
 "use client"
 import React, { useState } from "react";
+import BASE_URL from "../constants";
 
 const Register = () => {
 
-  const access_token = localStorage.getItem("access_token");
-  console.log("Access token >>>",access_token);
+
   const [formData, setFormData] = useState({
     name: "",
     password: "",
@@ -55,7 +55,7 @@ const Register = () => {
     // You can now access formData and use it as needed.
     console.log(formData);
 
-    const apiUrl = "https://scribe-assist.onrender.com/api/register";
+    const apiUrl = `${BASE_URL}/api/register`;
 
     try {
       const response = await fetch(apiUrl, {
@@ -88,7 +88,7 @@ const Register = () => {
   return (
     <div className="">
       <div
-        className="max-w-screen-2xl min-h-full  mx-auto -mt-20 bg-no-repeat bg-right bg-cover font-sans bg-[#191A29] first-line:"
+        className="max-w-screen-2xl min-h-screen  mx-auto -mt-20 bg-no-repeat bg-right bg-cover font-sans bg-[#191A29] first-line:"
         style={{ backgroundImage: `url('/Dna.png')` }}
       >
         <div className="max-w-md mx-48 pt-36 py-9">

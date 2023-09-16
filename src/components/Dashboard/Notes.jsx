@@ -30,7 +30,7 @@ const Notes = ({ notes }) => {
                 <div className="w-full bg-[#2F303D] rounded-xl p-4">
 
                     <div className="max-w-3xl flex flex-col gap-2">
-                        <p className="text-xs text-white whitespace-pre" >
+                        <p className="text-xs text-white whitespace-pre">
                             {notes}
                         </p>
                     </div>
