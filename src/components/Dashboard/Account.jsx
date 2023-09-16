@@ -1,5 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
+import BASE_URL from '../constants';
+
 
 const Account = () => {
 
@@ -9,7 +11,7 @@ const Account = () => {
         const fetchInfo = async() => {
             try {
                 const response = await fetch(
-                  `http://192.168.29.239:5000/api/get-patient-details?id=${id}`,
+                  `${BASE_URL}/api/get-patient-details?id=${id}`,
                   {
                     headers: {
                       Authorization: `Bearer ${access_token}`,

@@ -20,7 +20,7 @@ const Login = () => {
   const handleLogin = async () => {
     
     try {
-      const response = await fetch("http://192.168.29.239:5000/api/login", {
+      const response = await fetch(`https://scribe-assist-ai.onrender.com/api/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Notes from "./Notes";
 import Instructions from "./Instructions";
 import Alaysis from "./Alaysis";
+import BASE_URL from "../constants";
 
 const NotesandInstructions = () => {
   const heading = [
@@ -31,7 +32,7 @@ const NotesandInstructions = () => {
     const fetchNotes = async () => {
       try {
         const response = await fetch(
-          `http://192.168.29.239:5000/api/get-patient-details?id=${id}`,
+          `${BASE_URL}/api/get-patient-details?id=${id}`,
           {
             headers: {
               Authorization: `Bearer ${access_token}`,
