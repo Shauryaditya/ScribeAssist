@@ -59,7 +59,7 @@ const NotesandInstructions = () => {
   return (
     <div className="flex gap-14 p-10">
       <div className="grow flex flex-col">
-        <div className="w-full flex justify-between">
+        <div className="w-full flex justify-between py-4">
           <div className="w-1/2 flex justify-between bg-[#2F303D] rounded-lg overflow-hidden">
             {heading.map((item, index) => (
               <div
@@ -75,7 +75,7 @@ const NotesandInstructions = () => {
             ))}
           </div>
 
-          <div className="flex justify-between mt-4">
+          <div className="flex justify-between ">
             <button className="text-xs text-white bg-[#2F303D] rounded-md px-4 py-2">
               Save
             </button>
@@ -89,13 +89,18 @@ const NotesandInstructions = () => {
         <div className="p-0 mt-4">
           {selectedTab === 2 ? (
             <Instructions
+            id={id}
               instruction={instructions.patient_details?.patient_instruction}
             />
           ) : null}
           {selectedTab === 1 ? (
-            <Notes notes={instructions.patient_details?.soap_note} />
+            <Notes
+            id={id}
+            notes={instructions.patient_details?.soap_note} />
           ) : null}
-          {selectedTab === 3 ? <Alaysis analysis={instructions.patient_details?.analyze_note}/> : null}
+          {selectedTab === 3 ? <Alaysis 
+           id={id}
+          analysis={instructions.patient_details?.analyze_note}/> : null}
         </div>
       </div>
     </div>

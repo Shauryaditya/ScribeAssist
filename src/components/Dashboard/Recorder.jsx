@@ -4,6 +4,7 @@ import Timer from './Timer'
 import Link from 'next/link'
 import Voice from './Voice'
 import BASE_URL from '../constants'
+import Loader from './Loader'
 
 
 
@@ -107,7 +108,11 @@ const Recorder = () => {
           onMouseLeave={() => setIsHovered(false)}>
           Discard</button>
         {isLoading ? (
-         <Loader />
+          <div className="flex">
+             <button className={`text-xs bg-[#8167E6] flex rounded-xl px-4 py-2 transition duration-300 ease-in-out transform ${buttonStyle}`}>
+             Write Notes and Instructions  <Loader /> </button>
+             </div>
+         
         ) : (
           <button className={`text-xs bg-[#8167E6]  rounded-xl px-4 py-2 transition duration-300 ease-in-out transform ${buttonStyle}`}
             onMouseEnter={() => setIsHovered2(true)}

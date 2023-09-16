@@ -1,11 +1,46 @@
 import React from 'react'
+import BASE_URL from '../constants';
 
-const Instructions = ({ instruction }) => {
+const Instructions = ({ instruction,id }) => {
     console.log(instruction);
+    // Function to construct the request body
+    const access_token = localStorage.getItem('access_token');
+    
+    const updateInstruction = async () => {
+        try {
+            const requestBody = {
+                patient_instraction : instruction,
+                id: id
+            };
+            console.log(requestBody);
+
+            const response = await fetch(`${BASE_URL}/api/edit-patient-instraction`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${access_token}`,
+                },
+                body: JSON.stringify(requestBody),
+            })
+            if (response.ok) {
+
+                const data = await response.json();
+                alert(data.message)
+            }
+            else {
+                // Handle API errors
+                console.error('Error sending data to the API');
+            }
+        } catch (error) {
+            // Handle network or other errors
+            console.error('Error:', error);
+        }
+
+    };
     return (
         <div className='max-w-full '>
             <div className="flex flex-col gap-3">
-              
+
                 <div className="w-full bg-[#2F303D] rounded-[20px] p-4">
 
                     <div className="flex flex-col gap-2">
@@ -18,11 +53,25 @@ const Instructions = ({ instruction }) => {
 
                         </div>
                         <div className="max-w-full flex flex-col">
-                           <pre className='text-xs text-white' style={{ maxWidth: '48rem', overflowX: 'auto' }}>{instruction}</pre>
+                            <textarea
+                                class="appearance-none block w-full h-80  bg-transparent text-white border border-gray-400 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500 text-xs"
+                                id="grid-password"
+                                value={instruction}
+                                type="text"
+                                placeholder="Type question here"
+                            />
                         </div>
 
 
                     </div>
+                </div>
+                <div className="flex justify-end">
+                    <button
+                        className='px-4 py-2 rounded-xl bg-violet-500 text-white text-xs'
+                        onClick={updateInstruction}
+                    >
+                        Save
+                    </button>
                 </div>
 
             </div>
