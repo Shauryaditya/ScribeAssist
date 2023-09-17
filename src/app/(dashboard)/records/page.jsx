@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Table,
   Thead,
@@ -19,82 +19,132 @@ import PaginationOne from "../../../assets/PaginationOne.png";
 import PaginationTwelve from "../../../assets/PaginationTwelve.png";
 import PaginationMulti from "../../../assets/PaginationMulti.png";
 import Image from "next/image";
+import BASE_URL from "@/components/constants";
 
-const page = () => {
-  const data = [
-    {
-      key: 1,
-      name: "John Doe",
-      gender: "Male",
-      age: 52,
-      date: "18/07/2023",
-      time: "05:33 PM",
-    },
-    {
-      key: 2,
-      name: "Rebecca Green",
-      gender: "Female",
-      age: 27,
-      date: "18/07/2023",
-      time: "05:11 PM",
-    },
-    {
-      key: 3,
-      name: "John Doe",
-      gender: "Male",
-      age: 52,
-      date: "18/07/2023",
-      time: "05:33 PM",
-    },
-    {
-      key: 4,
-      name: "Rebecca Green",
-      gender: "Female",
-      age: 27,
-      date: "18/07/2023",
-      time: "05:11 PM",
-    },
-    {
-      key: 5,
-      name: "John Doe",
-      gender: "Male",
-      age: 52,
-      date: "18/07/2023",
-      time: "05:33 PM",
-    },
-    {
-      key: 6,
-      name: "Rebecca Green",
-      gender: "Female",
-      age: 27,
-      date: "18/07/2023",
-      time: "05:11 PM",
-    },
-    {
-      key: 7,
-      name: "John Doe",
-      gender: "Male",
-      age: 52,
-      date: "18/07/2023",
-      time: "05:33 PM",
-    },
-    {
-      key: 8,
-      name: "Rebecca Green",
-      gender: "Female",
-      age: 27,
-      date: "18/07/2023",
-      time: "05:11 PM",
-    },
-    {
-      key: 7,
-      name: "John Doe",
-      gender: "Male",
-      age: 52,
-      date: "18/07/2023",
-      time: "05:33 PM",
-    },
-  ];
+const Records = () => {
+  const [response, setResponse] = useState([]);
+  const access_token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGZjOTkyMjExYTFmZWQ5N2IxNDE2NGQiLCJuYW1lIjoiU2hhdXJ5YWRpdHlhIEJhcmRoYW4iLCJleHAiOjE2OTU1Mzk5NTF9.cGCe1pjcf2PdrHYrhIeF1aQrPx-N86QR0LOD9Za6aoU";
+  useEffect(() => {
+    const fetchRecords = async () => {
+      try {
+        const response = await fetch(
+          `${BASE_URL}/api/get-patient-list?page=1&limit=10`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${access_token}`,
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        setResponse(data.response);
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+    fetchRecords();
+  }, [access_token]);
+  const deletePatient = async (id) => {
+    const data = { id: id };
+    try {
+      const response = await fetch(`${BASE_URL}/api/delete-patient-details`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${access_token}`,
+        },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) {
+        throw new Error("Error deleting the patient");
+      }
+      if (response.ok) {
+        window.location.reload();
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  // const data = [
+  //   {
+  //     key: 1,
+  //     name: "John Doe",
+  //     gender: "Male",
+  //     age: 52,
+  //     date: "18/07/2023",
+  //     time: "05:33 PM",
+  //   },
+  //   {
+  //     key: 2,
+  //     name: "Rebecca Green",
+  //     gender: "Female",
+  //     age: 27,
+  //     date: "18/07/2023",
+  //     time: "05:11 PM",
+  //   },
+  //   {
+  //     key: 3,
+  //     name: "John Doe",
+  //     gender: "Male",
+  //     age: 52,
+  //     date: "18/07/2023",
+  //     time: "05:33 PM",
+  //   },
+  //   {
+  //     key: 4,
+  //     name: "Rebecca Green",
+  //     gender: "Female",
+  //     age: 27,
+  //     date: "18/07/2023",
+  //     time: "05:11 PM",
+  //   },
+  //   {
+  //     key: 5,
+  //     name: "John Doe",
+  //     gender: "Male",
+  //     age: 52,
+  //     date: "18/07/2023",
+  //     time: "05:33 PM",
+  //   },
+  //   {
+  //     key: 6,
+  //     name: "Rebecca Green",
+  //     gender: "Female",
+  //     age: 27,
+  //     date: "18/07/2023",
+  //     time: "05:11 PM",
+  //   },
+  //   {
+  //     key: 7,
+  //     name: "John Doe",
+  //     gender: "Male",
+  //     age: 52,
+  //     date: "18/07/2023",
+  //     time: "05:33 PM",
+  //   },
+  //   {
+  //     key: 8,
+  //     name: "Rebecca Green",
+  //     gender: "Female",
+  //     age: 27,
+  //     date: "18/07/2023",
+  //     time: "05:11 PM",
+  //   },
+  //   {
+  //     key: 7,
+  //     name: "John Doe",
+  //     gender: "Male",
+  //     age: 52,
+  //     date: "18/07/2023",
+  //     time: "05:33 PM",
+  //   },
+  // ];
   return (
     <div className="relative min-h-full bg-[#222331] w-full h-screen flex flex-col justify-between p-[40px]">
       <div>
@@ -111,21 +161,23 @@ const page = () => {
               </Tr>
             </Thead>
             <Tbody>
-              {data.map((ele) => {
+              {response.map((ele) => {
                 return (
-                  <Tr key={ele.key}>
-                    <Td>{ele.name}</Td>
-                    <Td>{ele.gender}</Td>
-                    <Td>{ele.age}</Td>
-                    <Td>{ele.date}</Td>
-                    <Td>{ele.time}</Td>
+                  <Tr key={ele._id}>
+                    <Td>{ele.patient_name}</Td>
+                    <Td>{ele.patient_gender}</Td>
+                    <Td>{ele.patient_age}</Td>
+                    <Td>{ele.created_at.slice(0, 16)}</Td>
+                    <Td>{ele.created_at.slice(16)}</Td>
                     <Td>
                       <Box
                         display={"flex"}
                         gap={"1rem"}
                         justifyContent={"flex-end"}
                       >
-                        <Delete />
+                        <button onClick={() => deletePatient(ele._id)}>
+                          <Delete />
+                        </button>
                         <Add />
                         <Next />
                       </Box>
@@ -158,4 +210,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Records;
