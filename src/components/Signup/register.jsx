@@ -9,7 +9,7 @@ const Register = () => {
   const [formData, setFormData] = useState({
     name: "",
     password: "",
-    email:"",
+    email: "",
     confirm_password: "",
     provider_type: "",
     emr: "",
@@ -63,14 +63,14 @@ const Register = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-         
+
         },
         body: JSON.stringify(formData), // Convert formData to JSON
       });
-
+      const data = await response.json();
       if (response.ok) {
 
-        const data = await response.json();
+
         if (data) {
           alert(data.message);
           window.location.href = '/login'
@@ -78,6 +78,7 @@ const Register = () => {
         }
       }
       // Check if data is valid JSON
+
       else {
         console.error(data.message);
       }
@@ -128,6 +129,7 @@ const Register = () => {
                 placeholder="email@example.com" 
                 onChange={handleChange}
                 required/>
+                  
               </div>
               <div className="mb-6">
                 <label className="block text-gray-700 text-xs font-bold mb-2" htmlFor="">
