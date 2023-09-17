@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from "react";
 import { BASE_URL } from '@/constant';
+import { data } from "autoprefixer";
 
 
 const Register = () => {
@@ -78,7 +79,10 @@ const Register = () => {
         }
       }
       // Check if data is valid JSON
-      console.log('respnse ', data);
+
+      else {
+        console.error(data.message);
+      }
     } catch (error) {
       console.error("An error occurred:", error);
     }
@@ -98,7 +102,7 @@ const Register = () => {
           </div>
 
           <div className="w-full max-w-xs">
-            <form className=" ">
+            <form className=" "   onSubmit={handleSubmit}>
               <div className="my-8">
                 <label className="block text-gray-700 text-xs font-bold mb-2 " htmlFor="Fullname">
                   Fullname
@@ -111,19 +115,22 @@ const Register = () => {
                   type="text"
                   placeholder="Fullname"
                   id="username"
+                  required
                 />
               </div>
               <div className="my-8">
                 <label className="block text-gray-700 text-xs font-bold mb-2 " htmlFor="username">
                   Email
                 </label>
-                <input className="shadow appearance-none border bg-transparent border-gray-600 rounded-xl text-xs w-full py-3 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
-                  id="email"
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  placeholder="email@example.com"
-                  onChange={handleChange} />
+                <input className="shadow appearance-none border bg-transparent border-gray-600 rounded-xl text-xs w-full py-3 px-3 text-white leading-tight focus:outline-none focus:shadow-outline" 
+                id="email" 
+                type="email" 
+                name="email" 
+                value={formData.email}
+                placeholder="email@example.com" 
+                onChange={handleChange}
+                required/>
+                  
               </div>
               <div className="mb-6">
                 <label className="block text-gray-700 text-xs font-bold mb-2" htmlFor="">
@@ -136,6 +143,7 @@ const Register = () => {
                   name="emr"
                   value={formData.emr}
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="mb-6">
@@ -147,6 +155,7 @@ const Register = () => {
                   name="provider_type"
                   value={formData.provider_type}
                   onChange={handleChange}
+                  required
                 >
                   <option value="">--Select</option>
                   <option value="MD/DO">MD/DO</option>
@@ -166,6 +175,7 @@ const Register = () => {
                     name="terms_and_service"
                     checked={formData.terms_and_service}
                     onChange={handleCheckboxChange}
+                    required
                   />
                 </div>
 
@@ -179,6 +189,7 @@ const Register = () => {
                     name="baa_agreement"
                     checked={formData.baa_agreement}
                     onChange={handleCheckboxChange}
+                    required
                   />
                 </div>
                 <div className="mb-6">
@@ -191,6 +202,7 @@ const Register = () => {
                     name="privacy_policy"
                     checked={formData.privacy_policy}
                     onChange={handleCheckboxChange}
+                    required
                   />
                 </div>
               </div>
@@ -206,6 +218,7 @@ const Register = () => {
                   value={password}
                   onChange={handleChange}
                   placeholder="******************"
+                  required
                 />
               </div>
               <div className="mb-6">
@@ -220,14 +233,15 @@ const Register = () => {
                   value={confirmPassword}
                   placeholder="******************"
                   onChange={handleChange}
+                  required
                 />
               </div>
 
               <div className="my-8">
                 <button
                   className="w-full bg-[#8167E6] py-3 text-white font-light rounded-xl text-xs hover:bg-white hover:text-[#8167E6] focus:outline-none focus:shadow-outline"
-                  type="button"
-                  onClick={handleSubmit}
+                  type="submit"
+                
                 >
                   Submit
                 </button>
