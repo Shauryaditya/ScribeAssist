@@ -14,7 +14,7 @@ const PricingCard = ({ planData }) => {
                 </div>
             </div>
             <div class="mt-4 flex justify-center text-4xl text-white leading-none font-bold bg-gray-500 px-6 py-4">
-                $79.99
+                ${price}
                 <span class="pt-4 text-xs font-medium text-white">/mo</span>
             </div>
             <div className="p-4">

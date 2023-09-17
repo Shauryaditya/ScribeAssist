@@ -25,15 +25,15 @@ const SubscriptionButton = ({ plan_key, plan_id, price }) => {
             },
             body: JSON.stringify(requestBody) // Convert the data to JSON format
         };
-
+        console.log("response option ", requestOptions);
         // Send the POST request
-        const response = await fetch(`${BASE_URL}/payment`, requestOptions);
+        const response = await fetch(`${BASE_URL}/api/payment`, requestOptions);
 
         const session = await response.json();
-
+        console.log("session", session);
         // When the customer clicks on the button, redirect them to Checkout.
         const result = await stripe.redirectToCheckout({
-            sessionId: session.id,
+            sessionId: session.session_id,
         });
 
         if (result.error) {
@@ -49,7 +49,7 @@ const SubscriptionButton = ({ plan_key, plan_id, price }) => {
         >
             Subscribe
             <div className="absolute inset-0 flex items-center justify-center transform translate-y-2 opacity-0 hover:translate-y-0 hover:opacity-100 transition-transform hover:duration-300 ">
-                <p className="text-[#8167E6] text-sm">{price}</p>
+                <p className="text-[#8167E6] text-sm">${price}</p>
 
             </div>
         </button>

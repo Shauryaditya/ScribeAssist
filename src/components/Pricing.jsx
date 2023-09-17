@@ -5,7 +5,7 @@ import { BASE_URL } from '../constant'
 const Pricing = () => {
   const [data, setData] = useState([])
   useEffect(() => {
-    const apiUrl = `${BASE_URL}/get-plan-details`
+    const apiUrl = `${BASE_URL}/api/get-plan-details`
     console.log(apiUrl);
     fetch(apiUrl).then(res => res.json()).then(data => {
       console.log(data.plan_details)

@@ -66,10 +66,10 @@ const Register = () => {
         },
         body: JSON.stringify(formData), // Convert formData to JSON
       });
-
+      const data = await response.json();
       if (response.ok) {
 
-        const data = await response.json();
+
         if (data) {
           alert(data.message);
           window.location.href = '/login'
@@ -77,9 +77,7 @@ const Register = () => {
         }
       }
       // Check if data is valid JSON
-      else {
-        console.error("Invalid JSON response from the server");
-      }
+      console.log('respnse ', data);
     } catch (error) {
       console.error("An error occurred:", error);
     }
