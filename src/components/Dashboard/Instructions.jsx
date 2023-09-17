@@ -1,10 +1,21 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import BASE_URL from '../constants';
 
 const Instructions = ({ instruction,id }) => {
     console.log(instruction);
     // Function to construct the request body
     const access_token = localStorage.getItem('access_token');
+
+    const [updatedInstructions, setUpdatedInstructions] = useState(notes); 
+
+    useEffect(() => {
+        // Initialize state variables with data from props
+        setUpdatedInstructions(instruction);
+    }, [instruction]);
+
+    const handleInstructionsChange = (e) => {
+        setUpdatedInstructions(e.target.value); // Update the updatedNotes state
+    };
     
     const updateInstruction = async () => {
         try {
@@ -56,7 +67,8 @@ const Instructions = ({ instruction,id }) => {
                             <textarea
                                 class="appearance-none block w-full h-80  bg-transparent text-white border border-gray-400 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500 text-xs"
                                 id="grid-password"
-                                value={instruction}
+                                value={updatedInstructions}
+                                onChange={handleInstructionsChange}
                                 type="text"
                                 placeholder="Type question here"
                             />
