@@ -11,24 +11,34 @@ const UpgradeModal = ({ isVisible, onClose }) => {
     const [subscriptionId, setSubscriptionId] = useState()
     const [plans, setPlans] = useState()
     const getData = async (url, token) => {
-        setIsLoading(true)
-        const requestOptions = {
-            method: 'GET', // or 'POST', 'PUT', etc., depending on your API
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-        };
-        const res = await fetch(url, requestOptions)
-        if (res.ok) {
-            setIsLoading(false)
+        try {
+            setIsLoading(true);
+
+            const requestOptions = {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            };
+
+            const response = await fetch(url, requestOptions);
+
+            if (!response.ok) {
+                throw new Error(`Request failed with status ${response.status}`);
+            }
+
+            setIsLoading(false);
+
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            setIsLoading(false);
+            console.error('Error in getData:', error.message);
+            throw error; // Rethrow the error for the caller to handle or log.
         }
-        else {
-            setIsLoading(false)
-        }
-        const data = res.json()
-        return data;
     }
+
     useEffect(() => {
         const apiUrl = `${BASE_URL}/api/get-upgrade-plan-details`
         const token = getToken()
