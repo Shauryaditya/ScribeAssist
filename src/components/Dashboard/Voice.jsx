@@ -1,8 +1,9 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ReactMic } from 'react-mic';
 import Wave from './Wave'
-import BASE_URL from '../constants';
+import { BASE_URL } from '@/constant';
+
 import getToken from '@/hook/getToken';
 
 const VoiceRecorder = ({ onDataReceived }) => {
@@ -59,34 +60,44 @@ const VoiceRecorder = ({ onDataReceived }) => {
     }
   };
 
-  return (
-    <div>
-      <div className="flex flex-col gap-1">
+  const [isPageRendered, setIsPageRendered] = useState(false)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Code that uses the window object
+      setIsPageRendered(true)
+    }
+  }, []);
+  if (isPageRendered) {
+    return (
+      <div>
+        <div className="flex flex-col gap-1">
 
 
-        {/* {audioURL && (
-        <div>
-          <audio controls src={audioURL}></audio>
+          {/* {audioURL && (
+          <div>
+            <audio controls src={audioURL}></audio>
+          </div>
+        )} */}
+          <Wave audioURL={audioURL} />
+          <div className="w-full flex justify-end items-end mt-12">
+            <button className='bg-[#8167E6] text-white rounded-xl px-6 py-2' onClick={isRecording ? handleStopRecording : handleStartRecording}>
+              {isRecording ? 'Stop Recording' : 'Start Encounter'}
+            </button>
+          </div>
+          <ReactMic
+            record={isRecording}
+            className="none"
+            visualSetting='none'
+            onStop={onStop}
+            onData={onData}
+            mimeType="audio/wav"
+          />
+
         </div>
-      )} */}
-        <Wave audioURL={audioURL} />
-        <div className="w-full flex justify-end items-end mt-12">
-          <button className='bg-[#8167E6] text-white rounded-xl px-6 py-2' onClick={isRecording ? handleStopRecording : handleStartRecording}>
-            {isRecording ? 'Stop Recording' : 'Start Encounter'}
-          </button>
-        </div>
-        <ReactMic
-          record={isRecording}
-          className="none"
-          visualSetting='none'
-          onStop={onStop}
-          onData={onData}
-          mimeType="audio/wav"
-        />
-
       </div>
-    </div>
-  );
+    );
+  }
+
 };
 
 export default VoiceRecorder;

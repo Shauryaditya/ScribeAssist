@@ -1,9 +1,10 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Timer from './Timer'
 import Link from 'next/link'
 import Voice from './Voice'
-import BASE_URL from '../constants'
+import { BASE_URL } from '@/constant';
+
 import Loader from './Loader'
 import getToken from '@/hook/getToken'
 
@@ -23,7 +24,13 @@ const Recorder = () => {
   };
 
 
-
+  const [isPageRendered, setIsPageRendered] = useState(false)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Code that uses the window object
+      setIsPageRendered(true)
+    }
+  }, []);
 
   // Function to receive apiData from Timer component
   const receiveApiDataFromTimer = (apiData) => {
@@ -76,54 +83,57 @@ const Recorder = () => {
       setIsLoading(false); // Hide the loader when the request is complete (whether success or error)
     }
   };
-  return (
-    <div className="max-w-full min-h-screen bg-[#222331] mx-8 pb-4">
-      <div className="flex flex-row gap-3 my-8">
-        <div className="w-full bg-[#191A29] h-64 rounded-[20px]">
-          <div className="flex flex-col p-4 gap-4 ">
-            <div className="mt-0">
-              <Voice onDataReceived={onDataReceived} />
+  if (isPageRendered) {
+    return (
+      <div className="max-w-full min-h-screen bg-[#222331] mx-8 pb-4">
+        <div className="flex flex-row gap-3 my-8">
+          <div className="w-full bg-[#191A29] h-64 rounded-[20px]">
+            <div className="flex flex-col p-4 gap-4 ">
+              <div className="mt-0">
+                <Voice onDataReceived={onDataReceived} />
 
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="flex mt-8">
-        <div className="w-full h-64 bg-transparent rounded-[20px] p-4 border border-gray-500">
-          <div className="flex flex-col gap-2">
-            <div className="">
-              {audioData ? (
-                <p className='text-xs text-white font-[Avenir]'>{audioData.transcript}</p>
-              ) : (
-                <p className='text-xs text-white font-[Avenir]'>Generating...</p>
-              )}
+        <div className="flex mt-8">
+          <div className="w-full h-64 bg-transparent rounded-[20px] p-4 border border-gray-500">
+            <div className="flex flex-col gap-2">
+              <div className="">
+                {audioData ? (
+                  <p className='text-xs text-white font-[Avenir]'>{audioData.transcript}</p>
+                ) : (
+                  <p className='text-xs text-white font-[Avenir]'>Generating...</p>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="flex justify-between mt-4">
-        <button className={`text-sm bg-gray-500 transition duration-300 ease-in-out transform  rounded-xl px-4 py-2 ${cardStyle}`}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}>
-          Discard</button>
-        {isLoading ? (
-          <div className="flex">
-            <button className={`text-xs bg-[#8167E6] flex rounded-xl px-4 py-2 transition duration-300 ease-in-out transform ${buttonStyle}`}>
-              Write Notes and Instructions  <Loader /> </button>
-          </div>
+        <div className="flex justify-between mt-4">
+          <button className={`text-sm bg-gray-500 transition duration-300 ease-in-out transform  rounded-xl px-4 py-2 ${cardStyle}`}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}>
+            Discard</button>
+          {isLoading ? (
+            <div className="flex">
+              <button className={`text-xs bg-[#8167E6] flex rounded-xl px-4 py-2 transition duration-300 ease-in-out transform ${buttonStyle}`}>
+                Write Notes and Instructions  <Loader /> </button>
+            </div>
 
-        ) : (
-          <button className={`text-xs bg-[#8167E6]  rounded-xl px-4 py-2 transition duration-300 ease-in-out transform ${buttonStyle}`}
-            onMouseEnter={() => setIsHovered2(true)}
-            onMouseLeave={() => setIsHovered2(false)}
-            onClick={sendAudioDataToApi}>
-            Write Notes and Instructions   </button>
-        )}
+          ) : (
+            <button className={`text-xs bg-[#8167E6]  rounded-xl px-4 py-2 transition duration-300 ease-in-out transform ${buttonStyle}`}
+              onMouseEnter={() => setIsHovered2(true)}
+              onMouseLeave={() => setIsHovered2(false)}
+              onClick={sendAudioDataToApi}>
+              Write Notes and Instructions   </button>
+          )}
 
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
+
 }
 
 export default Recorder

@@ -5,7 +5,8 @@ import { useSearchParams } from "next/navigation";
 import getToken from "@/hook/getToken";
 import Instructions from "./Instructions";
 import Alaysis from "./Alaysis";
-import BASE_URL from "../constants";
+import { BASE_URL } from '@/constant';
+
 
 const NotesandInstructions = () => {
   const heading = [
