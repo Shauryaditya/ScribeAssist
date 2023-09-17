@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from "react";
-
+import Image from "next/image";
 const Card = ({ props }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -23,9 +23,9 @@ const Card = ({ props }) => {
       <div className={`flex flex-col justify-start gap-6 `}>
         {/* Conditionally render icons based on hover state */}
         {isHovered ? (
-          <img className={`w-8 h-18 object-contain`} src={props.hovericon} alt="" />
+          <Image className={`w-8 h-18 object-contain`} src={props.hovericon} alt="" width={100} height={100} />
         ) : (
-          <img className={`w-8 h-18 object-contain`} src={props.icon} alt="" />
+          <Image className={`w-8 h-18 object-contain`} src={props.icon} alt="" width={100} height={100} />
         )}
 
         <h2 className={`text-[#FFFFFF] text-lg font-bold ${textHoverStyle} `}>{props.name}</h2>

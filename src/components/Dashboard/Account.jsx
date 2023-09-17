@@ -1,42 +1,39 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import BASE_URL from '../constants';
+
+import getToken from '@/hook/getToken'
+import { BASE_URL } from '@/constant';
 import ChangePasswordModal from './ChangePasswordModal'
-
-
 const Account = () => {
-
     const [contact, setContact] = useState();
-
     const [showModal, setShowModal] = useState(false);
     const handleOnClose = () => setShowModal(false);
-
     useEffect(() => {
-        const fetchInfo = async() => {
+        const fetchInfo = async () => {
             try {
-                const access_token = localStorage.getItem('access_token');
+                const token = getToken()
                 const response = await fetch(
-                  `${BASE_URL}/api/get-user-info`,
-                  {
-                    headers: {
-                      Authorization: `Bearer ${access_token}`,
-                    },
-                  }
+                    `${BASE_URL}/api/get-user-info`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
                 );
-        
+
                 if (response.ok) {
-                  const data = await response.json();
-                  setContact(data);
+                    const data = await response.json();
+                    setContact(data);
                 } else {
-                  console.error("Failed to fetch data");
+                    console.error("Failed to fetch data");
                 }
-              } catch (error) {
+            } catch (error) {
                 console.error("Error fetching data:", error);
-              }
+            }
         }
         fetchInfo();
-    },[])
-    console.log("Account Info",contact);
+    }, [token])
+    console.log("Account Info", contact);
     return (
         <div className="max-w-full bg-[#222331] mx-4 pb-4">
             <div className="flex flex-row gap-3 my-4">
@@ -44,24 +41,25 @@ const Account = () => {
                     <div className="flex flex-col p-4 gap-4 ">
                         <p className='text-white'>General</p>
                         <div class="mb-4">
-                         
-                            <input 
-                            class="shadow appearance-none border border-none text-xs bg-[#222331] rounded-xl w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                             id="username" 
-                             type="text" 
-                             placeholder="Email"
-                             value={contact?.user_details?.email} />
+
+                            <input
+                                class="shadow appearance-none border border-none text-xs bg-[#222331] rounded-xl w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="username"
+                                type="text"
+                                placeholder="Email"
+                                value={contact?.user_details?.email} />
                         </div>
                         <div class="mb-4">
-                        
-                            <input 
-                            class="shadow text-xs appearance-none border border-none bg-[#222331] rounded-xl w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                            id="username" 
-                            type="text"
-                             placeholder="Display Name"
-                             value={contact?.user_details?.name} />
+
+                            <input
+                                class="shadow text-xs appearance-none border border-none bg-[#222331] rounded-xl w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="username"
+                                type="text"
+                                placeholder="Display Name"
+                                value={contact?.user_details?.name} />
                         </div>
                         <div class="mb-6">
+
                             <div className="w-full flex justify-between shadow appearance-none border  bg-transparent rounded-xl  py-3 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline
                              border-[#888C8C] ">
                             <input
@@ -78,6 +76,7 @@ const Account = () => {
                             onClose={handleOnClose}
                             visible={showModal} />
                         </div>
+
                         </div>
                     </div>
                 </div>
