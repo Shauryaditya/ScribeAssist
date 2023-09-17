@@ -52,7 +52,7 @@ function VoiceRecorder() {
       const access_token = localStorage.getItem('access_token');
       formData.append('audio', audioBlob, 'recording.wav');
         console.log(access_token);
-      const response = await fetch('http://192.168.29.239:5000/api/transcribe', {
+      const response = await fetch(`https://scribe-assist-ai.onrender.com/api/transcribe`, {
         method: 'POST',
         headers :{
             Authorization : `Bearer ${access_token}`,
