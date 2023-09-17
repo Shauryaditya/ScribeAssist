@@ -10,6 +10,7 @@ const Notes = ({ notes, id }) => {
 
     const access_token = localStorage.getItem('access_token')
 
+    const [updatedNotes, setUpdatedNotes] = useState(notes); 
     // Function to construct the request body
     const updateSoapNote = async() => {
         try{
@@ -17,7 +18,7 @@ const Notes = ({ notes, id }) => {
             patient_name: patientName,
             patient_age: patientAge,
             patient_gender: patientGender,
-            soap_note: notes,
+            soap_note: updatedNotes,
             id: id
         };
         console.log(requestBody);
@@ -44,6 +45,10 @@ const Notes = ({ notes, id }) => {
             console.error('Error:', error);
           }
 
+    };
+
+    const handleNotesChange = (e) => {
+        setUpdatedNotes(e.target.value); // Update the updatedNotes state
     };
     return (
         <div className='max-w-full '>
@@ -109,7 +114,7 @@ const Notes = ({ notes, id }) => {
                         <textarea
                             class="appearance-none block w-full h-80  bg-transparent text-white border border-gray-400 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500 text-xs"
                             id="grid-password"
-                            value={notes}
+                            value={updatedNotes}
                             type="text"
                             placeholder="Type question here"
                         />

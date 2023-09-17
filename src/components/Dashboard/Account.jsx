@@ -1,17 +1,20 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import BASE_URL from '../constants';
+import ChangePasswordModal from './ChangePasswordModal'
 
 
 const Account = () => {
 
     const [contact, setContact] = useState();
 
-    const access_token = localStorage.getItem('access_token');
+    const [showModal, setShowModal] = useState(false);
+    const handleOnClose = () => setShowModal(false);
 
     useEffect(() => {
         const fetchInfo = async() => {
             try {
+                const access_token = localStorage.getItem('access_token');
                 const response = await fetch(
                   `${BASE_URL}/api/get-user-info`,
                   {
@@ -59,9 +62,22 @@ const Account = () => {
                              value={contact?.user_details?.name} />
                         </div>
                         <div class="mb-6">
-                          
-                            <input class="shadow appearance-none border  bg-transparent rounded-xl  w-full py-3 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="************" />
-
+                            <div className="w-full flex justify-between shadow appearance-none border  bg-transparent rounded-xl  py-3 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline
+                             border-[#888C8C] ">
+                            <input
+                                className="outline-0 bg-transparent"
+                                type="password"
+                                placeholder="*******"
+                               
+                            />
+                            <p 
+                            className="font-light text-violet-500 text-xs" 
+                            onClick={()=>setShowModal(true)}
+                            >Change Password</p>
+                            <ChangePasswordModal
+                            onClose={handleOnClose}
+                            visible={showModal} />
+                        </div>
                         </div>
                     </div>
                 </div>
