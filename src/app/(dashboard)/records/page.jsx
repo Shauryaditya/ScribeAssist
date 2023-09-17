@@ -19,12 +19,11 @@ import PaginationOne from "../../../assets/PaginationOne.png";
 import PaginationTwelve from "../../../assets/PaginationTwelve.png";
 import PaginationMulti from "../../../assets/PaginationMulti.png";
 import Image from "next/image";
-import BASE_URL from "@/components/constants";
-
+import { BASE_URL } from "@/constant";
+import getToken from "@/hook/getToken";
 const Records = () => {
   const [response, setResponse] = useState([]);
-  const access_token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGZjOTkyMjExYTFmZWQ5N2IxNDE2NGQiLCJuYW1lIjoiU2hhdXJ5YWRpdHlhIEJhcmRoYW4iLCJleHAiOjE2OTU1Mzk5NTF9.cGCe1pjcf2PdrHYrhIeF1aQrPx-N86QR0LOD9Za6aoU";
+  const access_token = getToken()
   useEffect(() => {
     const fetchRecords = async () => {
       try {

@@ -1,7 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react'
-import Timer from './Timer'
-import Link from 'next/link'
+
 import Voice from './Voice'
 import { BASE_URL } from '@/constant';
 

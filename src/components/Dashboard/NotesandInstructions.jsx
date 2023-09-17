@@ -56,7 +56,7 @@ const NotesandInstructions = () => {
     };
 
     fetchNotes(); // Call the function to initiate the API request
-  }, [id]);
+  }, [id, token]);
 
   console.log("Instructions >>", instructions);
 

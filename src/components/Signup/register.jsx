@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from "react";
-import BASE_URL from "../constants";
+import { BASE_URL } from '@/constant';
+
 
 const Register = () => {
 

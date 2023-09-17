@@ -30,7 +30,7 @@ const Account = () => {
             }
         }
         fetchInfo();
-    }, [])
+    }, [token])
     console.log("Account Info", contact);
     return (
         <div className="max-w-full bg-[#222331] mx-4 pb-4">
