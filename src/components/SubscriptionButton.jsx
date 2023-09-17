@@ -1,42 +1,49 @@
 import React from 'react'
+import { useRouter } from 'next/navigation';
 import { loadStripe } from "@stripe/stripe-js";
 import { API_KEY, BASE_URL } from '@/constant';
 import getToken from '@/hook/getToken'
 const stripePromise = loadStripe(API_KEY);
 const SubscriptionButton = ({ plan_key, plan_id, price }) => {
+    const router = useRouter()
     const handlePayment = async () => {
         const token = getToken()
-        const planKey = plan_key
-        const planId = plan_id
-        const stripe = await stripePromise;
-        // Call your backend to create the Checkout Session
-        // Define the data you want to send in the body of the request
-        const requestBody = {
-            plan_key: planKey,
-            plan_id: planId
-        };
+        if (token) {
+            const planKey = plan_key
+            const planId = plan_id
+            const stripe = await stripePromise;
+            // Call your backend to create the Checkout Session
+            // Define the data you want to send in the body of the request
+            const requestBody = {
+                plan_key: planKey,
+                plan_id: planId
+            };
 
-        // Create the options object for the fetch request
-        const requestOptions = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json", // Specify the content type of the request body
-                "Authorization": `Bearer ${token}` // Include any required headers
-            },
-            body: JSON.stringify(requestBody) // Convert the data to JSON format
-        };
-        console.log("response option ", requestOptions);
-        // Send the POST request
-        const response = await fetch(`${BASE_URL}/api/payment`, requestOptions);
+            // Create the options object for the fetch request
+            const requestOptions = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json", // Specify the content type of the request body
+                    "Authorization": `Bearer ${token}` // Include any required headers
+                },
+                body: JSON.stringify(requestBody) // Convert the data to JSON format
+            };
+            console.log("response option ", requestOptions);
+            // Send the POST request
+            const response = await fetch(`${BASE_URL}/api/payment`, requestOptions);
 
-        const session = await response.json();
-        console.log("session", session);
-        // When the customer clicks on the button, redirect them to Checkout.
-        const result = await stripe.redirectToCheckout({
-            sessionId: session.session_id,
-        });
+            const session = await response.json();
+            console.log("session", session);
+            // When the customer clicks on the button, redirect them to Checkout.
+            const result = await stripe.redirectToCheckout({
+                sessionId: session.session_id,
+            });
 
-        if (result.error) {
+            if (result.error) {
+            }
+
+        } else {
+            router.push('/login')
         }
 
     }
