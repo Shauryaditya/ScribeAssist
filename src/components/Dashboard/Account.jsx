@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 
 import getToken from '@/hook/getToken'
 import { BASE_URL } from '@/constant';
+import CancelButton from '../../components/CancelButton'
+import UpgradeButton from '../../components/UpgradeButton'
 import ChangePasswordModal from './ChangePasswordModal'
 const Account = () => {
     const [contact, setContact] = useState();
@@ -34,7 +36,38 @@ const Account = () => {
         }
         fetchInfo();
     }, [token])
-    console.log("Account Info", contact);
+
+    const [subData, setSubData] = useState()
+    useEffect(() => {
+        const url = `${BASE_URL}/api/get-payment-details`;
+        const token = getToken(); // Assuming you have a function to get the token
+        console.log("payment-details", url, token);
+
+        const requestOptions = {
+            method: 'GET', // or 'POST', 'PUT', etc., depending on your API
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        };
+
+        fetch(url, requestOptions)
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`HTTP Error: ${res.status} - ${res.statusText}`);
+                }
+                return res.json();
+            })
+            .then(data => {
+                console.log('subdata', data);
+                setSubData(data.payment_details);
+            })
+            .catch(error => {
+                console.error('An error occurred:', error);
+            });
+
+    }, [])
+    console.log("Account Info", contact, subData);
     return (
         <div className="max-w-full bg-[#222331] mx-4 pb-4">
             <div className="flex flex-row gap-3 my-4">
@@ -89,6 +122,8 @@ const Account = () => {
                     </div>
                 </div>
             </div>
+
+            {/* // Subscription section */}
             <div className="flex">
                 <div className="w-full bg-[#2F303D] rounded-md p-4">
                     <div className="flex flex-col gap-4">
@@ -97,22 +132,34 @@ const Account = () => {
                             <div className="flex flex-col p-4 gap-4">
                                 <div className="flex justify-between">
                                     <p className='text-white text-sm'>Apollo</p>
-                                    <p className='text-white text-sm'>$79.99/mo</p>
+                                    <p className='text-white text-sm'>${subData?.subscription_amount}/mo</p>
                                 </div>
                                 <div className="">
                                     <p className='text-white font-[Avenir] text-xs'>Tissa teravödade, cykelbox hygon. Pens denyjäns autopevis inte treling. Tissa teravödade, cykelbox hygon. Pens denyjäns autopevis inte treling.</p>
                                 </div>
                                 <div className="flex flex-row gap-6">
                                     <p className='text-white text-xs'>Auto Renew</p>
-                                    <p className='text-white text-xs'>Started : 17 / 02 / 2023</p>
+                                    <p className='text-white text-xs'>Started : {subData?.current_period_start.slice(0, 10)}</p>
+
+                                    {subData?.cancel_at_period_end &&
+                                        <p className='text-white text-xs'>End Date : {subData?.current_period_end.slice(0, 10)}</p>}
                                 </div>
                                 <div className="flex justify-between">
                                     <div className="flex flex-row ">
                                         <p className='text-white text-xs underline'>Update Payment Method</p>
                                     </div>
                                     <div className="flex gap-3">
-                                        <button className='text-white bg-violet-500 rounded-lg px-4 py-2 text-xs'>Cancel</button>
-                                        <button className='text-[#8167E6] bg-white rounded-lg px-4 py-2 text-xs'>Upgrade</button>
+                                        {
+                                            subData?.cancel_at_period_end !== true && <CancelButton
+                                                subscriptionId={subData?.subscription_id
+                                                }
+                                            />
+
+                                        }
+
+                                        <UpgradeButton
+                                            data={subData}
+                                        />
                                     </div>
                                 </div>
 
@@ -129,7 +176,7 @@ const Account = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
