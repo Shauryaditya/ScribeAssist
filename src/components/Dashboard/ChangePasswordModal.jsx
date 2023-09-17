@@ -49,16 +49,16 @@ const ChangePasswordModal = ({visible, onClose}) => {
     if (!visible) return null;
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30 backdrop-blur-sm">
-    <div className="w-1/3 rounded bg-white p-8">
+    <div className="w-1/3 rounded bg-[#222331] p-8">
         <div className="flex flex-col gap-6  border-solid border-[#D0D0D0] py-4  ">
             <div className="flex flex-col">
-                <p className=" text-lg font-semibold text-black">Change Password</p>
+                <p className=" text-lg font-semibold text-[#8167E6]">Change Password</p>
                 
             </div>
             <div className="flex">
                 <input
                     type="text"
-                    className="w-full rounded border border-solid 
+                    className="w-full bg-transparent rounded-xl border border-solid 
                              border-[#888C8C] px-2 py-1"
                     placeholder="Old Password"
                     value={oldPassword}
@@ -68,10 +68,10 @@ const ChangePasswordModal = ({visible, onClose}) => {
 
             <div className="flex flex-col">
                 
-                <div className="w-full flex justify-between rounded border border-solid 
+                <div className="w-full flex justify-between rounded-xl border border-solid 
     border-[#888C8C] px-2 py-1">
                     <input
-                        className="outline-0"
+                        className="outline-0 bg-transparent"
                         type="text"
                         placeholder="New Password"
                         value={newPassword}
@@ -84,7 +84,7 @@ const ChangePasswordModal = ({visible, onClose}) => {
             <div className="flex">
                 <input
                     type="text"
-                    className="w-full rounded border border-solid 
+                    className="w-full bg-transparent rounded-xl border border-solid 
                              border-[#888C8C] px-2 py-1"
                     placeholder="Confirm Password"
                     value={confirmPassword}
@@ -95,13 +95,13 @@ const ChangePasswordModal = ({visible, onClose}) => {
             <div className="mt-4 flex justify-end gap-2">
                 <button
                     
-                    className="rounded border px-4 py-1"
+                    className="w-1/2 px-6 py-3 bg-[#222331] bg-opacity-80  text-white rounded-xl text-sm hover:bg-white hover:text-black transition-all duration-300"
                     onClick={() => onClose()}
                 >
                     Cancel
                 </button>
                 <button
-                    className="rounded border bg-[#007185] px-4 py-1 text-white"
+                    className=" w-1/2 px-6 py-3 bg-[#8167E6] rounded-xl text-white text-sm hover:bg-white"
                     type="submit"
                     onClick={handleSubmit}
                 >

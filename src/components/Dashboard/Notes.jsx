@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import BASE_URL from '../constants';
 
 const Notes = ({ notes, id }) => {
@@ -11,6 +11,15 @@ const Notes = ({ notes, id }) => {
     const access_token = localStorage.getItem('access_token')
 
     const [updatedNotes, setUpdatedNotes] = useState(notes); 
+
+    useEffect(() => {
+        // Initialize state variables with data from props
+        setUpdatedNotes(notes);
+    }, [notes]);
+
+    const handleNotesChange = (e) => {
+        setUpdatedNotes(e.target.value); // Update the updatedNotes state
+    };
     // Function to construct the request body
     const updateSoapNote = async() => {
         try{
@@ -47,9 +56,7 @@ const Notes = ({ notes, id }) => {
 
     };
 
-    const handleNotesChange = (e) => {
-        setUpdatedNotes(e.target.value); // Update the updatedNotes state
-    };
+ 
     return (
         <div className='max-w-full '>
             <div className="flex flex-col gap-3">
@@ -115,6 +122,7 @@ const Notes = ({ notes, id }) => {
                             class="appearance-none block w-full h-80  bg-transparent text-white border border-gray-400 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500 text-xs"
                             id="grid-password"
                             value={updatedNotes}
+                            onChange={handleNotesChange}
                             type="text"
                             placeholder="Type question here"
                         />
