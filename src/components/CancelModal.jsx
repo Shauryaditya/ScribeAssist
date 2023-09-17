@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react'
 import { BASE_URL } from '@/constant'
 import getToken from '@/hook/getToken'

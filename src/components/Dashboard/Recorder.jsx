@@ -7,7 +7,7 @@ import { BASE_URL } from '@/constant';
 import Loader from './Loader'
 import getToken from '@/hook/getToken'
 
-
+import AudioComponent from './AudioComponent'
 
 const Recorder = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -89,7 +89,8 @@ const Recorder = () => {
           <div className="w-full bg-[#191A29] h-64 rounded-[20px]">
             <div className="flex flex-col p-4 gap-4 ">
               <div className="mt-0">
-                <Voice onDataReceived={onDataReceived} />
+                <AudioComponent />
+                {/* <Voice onDataReceived={onDataReceived} /> */}
 
               </div>
             </div>

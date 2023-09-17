@@ -10,7 +10,7 @@ const Instructions = ({ instruction, id }) => {
     const token = getToken()
 
 
-    const [updatedInstructions, setUpdatedInstructions] = useState(notes);
+    const [updatedInstructions, setUpdatedInstructions] = useState(instruction);
 
     useEffect(() => {
         // Initialize state variables with data from props

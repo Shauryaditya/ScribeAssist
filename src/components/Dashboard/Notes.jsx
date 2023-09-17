@@ -25,6 +25,7 @@ const Notes = ({ notes, id }) => {
     };
     // Function to construct the request body
     const updateSoapNote = async () => {
+        
         try {
             const requestBody = {
                 patient_name: patientName,

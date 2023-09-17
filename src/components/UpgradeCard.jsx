@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react'
 import UpgradeConfirmationModal from './UpgradeConfirmationModal'
 const UpgradeCard = ({ data, subscriptionId }) => {
