@@ -146,7 +146,7 @@ const Records = () => {
   //   },
   // ];
   return (
-    <div className="relative min-h-full bg-[#222331] w-full h-screen flex flex-col justify-between p-[40px]">
+    <div className="relative min-h-screen bg-[#222331] w-full  flex flex-col justify-between p-[40px]">
       <div>
         <TableContainer color={"white"} w={"full"}>
           <Table variant="simple">
