@@ -8,10 +8,11 @@ const Account = () => {
     const [contact, setContact] = useState();
     const [showModal, setShowModal] = useState(false);
     const handleOnClose = () => setShowModal(false);
+    const token = getToken()
     useEffect(() => {
         const fetchInfo = async () => {
             try {
-                const token = getToken()
+
                 const response = await fetch(
                     `${BASE_URL}/api/get-user-info`,
                     {
@@ -62,20 +63,20 @@ const Account = () => {
 
                             <div className="w-full flex justify-between shadow appearance-none border  bg-transparent rounded-xl  py-3 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline
                              border-[#888C8C] ">
-                            <input
-                                className="outline-0 bg-transparent"
-                                type="password"
-                                placeholder="*******"
-                               
-                            />
-                            <p 
-                            className="font-light text-violet-500 text-xs" 
-                            onClick={()=>setShowModal(true)}
-                            >Change Password</p>
-                            <ChangePasswordModal
-                            onClose={handleOnClose}
-                            visible={showModal} />
-                        </div>
+                                <input
+                                    className="outline-0 bg-transparent"
+                                    type="password"
+                                    placeholder="*******"
+
+                                />
+                                <p
+                                    className="font-light text-violet-500 text-xs"
+                                    onClick={() => setShowModal(true)}
+                                >Change Password</p>
+                                <ChangePasswordModal
+                                    onClose={handleOnClose}
+                                    visible={showModal} />
+                            </div>
 
                         </div>
                     </div>

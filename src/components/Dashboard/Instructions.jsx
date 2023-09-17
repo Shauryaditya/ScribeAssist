@@ -1,16 +1,16 @@
-
+'use client'
 import React from 'react'
 import { BASE_URL } from '@/constant';
-import React,{useState,useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import getToken from '@/hook/getToken'
 const Instructions = ({ instruction, id }) => {
     console.log(instruction);
     // Function to construct the request body
 
     const token = getToken()
-    
 
-    const [updatedInstructions, setUpdatedInstructions] = useState(notes); 
+
+    const [updatedInstructions, setUpdatedInstructions] = useState(notes);
 
     useEffect(() => {
         // Initialize state variables with data from props
@@ -20,7 +20,7 @@ const Instructions = ({ instruction, id }) => {
     const handleInstructionsChange = (e) => {
         setUpdatedInstructions(e.target.value); // Update the updatedNotes state
     };
-    
+
 
     const updateInstruction = async () => {
         try {

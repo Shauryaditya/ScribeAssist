@@ -53,7 +53,8 @@ const Register = () => {
   };
 
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     // You can now access formData and use it as needed.
     console.log(formData);
 
@@ -102,7 +103,7 @@ const Register = () => {
           </div>
 
           <div className="w-full max-w-xs">
-            <form className=" "   onSubmit={handleSubmit}>
+            <form className=" " onSubmit={handleSubmit}>
               <div className="my-8">
                 <label className="block text-gray-700 text-xs font-bold mb-2 " htmlFor="Fullname">
                   Fullname
@@ -122,15 +123,15 @@ const Register = () => {
                 <label className="block text-gray-700 text-xs font-bold mb-2 " htmlFor="username">
                   Email
                 </label>
-                <input className="shadow appearance-none border bg-transparent border-gray-600 rounded-xl text-xs w-full py-3 px-3 text-white leading-tight focus:outline-none focus:shadow-outline" 
-                id="email" 
-                type="email" 
-                name="email" 
-                value={formData.email}
-                placeholder="email@example.com" 
-                onChange={handleChange}
-                required/>
-                  
+                <input className="shadow appearance-none border bg-transparent border-gray-600 rounded-xl text-xs w-full py-3 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
+                  id="email"
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  placeholder="email@example.com"
+                  onChange={handleChange}
+                  required />
+
               </div>
               <div className="mb-6">
                 <label className="block text-gray-700 text-xs font-bold mb-2" htmlFor="">
@@ -241,7 +242,7 @@ const Register = () => {
                 <button
                   className="w-full bg-[#8167E6] py-3 text-white font-light rounded-xl text-xs hover:bg-white hover:text-[#8167E6] focus:outline-none focus:shadow-outline"
                   type="submit"
-                
+
                 >
                   Submit
                 </button>
