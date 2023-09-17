@@ -1,7 +1,5 @@
 "use client"
 import React, { useState, useEffect } from 'react'
-
-import Voice from './Voice'
 import { BASE_URL } from '@/constant';
 
 import Loader from './Loader'
