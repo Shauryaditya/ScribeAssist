@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Voice from './Voice'
 import BASE_URL from '../constants'
 import Loader from './Loader'
-
+import getToken from '@/hook/getToken'
 
 
 
@@ -16,7 +16,7 @@ const Recorder = () => {
   const [apiData, setApiData] = useState(null); // State to store apiData from Timer component
   const [audioData, setAudioData] = useState(null);
 
-  const access_token = localStorage.getItem('access_token');
+  const token = getToken();
   // Callback function to receive audio data from Voice component
   const onDataReceived = (data) => {
     setAudioData(data);
@@ -52,7 +52,7 @@ const Recorder = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${access_token}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(audioData), // Send the audioData in the request body
       });
@@ -109,10 +109,10 @@ const Recorder = () => {
           Discard</button>
         {isLoading ? (
           <div className="flex">
-             <button className={`text-xs bg-[#8167E6] flex rounded-xl px-4 py-2 transition duration-300 ease-in-out transform ${buttonStyle}`}>
-             Write Notes and Instructions  <Loader /> </button>
-             </div>
-         
+            <button className={`text-xs bg-[#8167E6] flex rounded-xl px-4 py-2 transition duration-300 ease-in-out transform ${buttonStyle}`}>
+              Write Notes and Instructions  <Loader /> </button>
+          </div>
+
         ) : (
           <button className={`text-xs bg-[#8167E6]  rounded-xl px-4 py-2 transition duration-300 ease-in-out transform ${buttonStyle}`}
             onMouseEnter={() => setIsHovered2(true)}

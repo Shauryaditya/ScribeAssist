@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Notes from "./Notes";
+import { useSearchParams } from "next/navigation";
+import getToken from "@/hook/getToken";
 import Instructions from "./Instructions";
 import Alaysis from "./Alaysis";
 import BASE_URL from "../constants";
@@ -20,10 +22,11 @@ const NotesandInstructions = () => {
       name: "Alaysis",
     },
   ];
+
   const [selectedTab, setSelectedTab] = useState(1);
-  const queryParams = new URLSearchParams(window.location.search);
-  const id = queryParams.get("id");
-  const access_token = localStorage.getItem("access_token");
+  const searchParams = useSearchParams()
+  const id = searchParams.get('id')
+  const token = getToken()
   console.log("ID", id);
 
   const [instructions, setInstructions] = useState([]);
@@ -35,7 +38,7 @@ const NotesandInstructions = () => {
           `${BASE_URL}/api/get-patient-details?id=${id}`,
           {
             headers: {
-              Authorization: `Bearer ${access_token}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
@@ -66,8 +69,8 @@ const NotesandInstructions = () => {
                 onClick={() => setSelectedTab(index + 1)}
                 key={item.id}
                 className={`w-1/3 h-10 flex justify-center rounded-lg items-center cursor-pointer text-sm ${selectedTab === index + 1
-                    ? "text-[#8167E6] bg-white"
-                    : "text-gray-500 "
+                  ? "text-[#8167E6] bg-white"
+                  : "text-gray-500 "
                   }`}
               >
                 {item.name}
@@ -89,18 +92,18 @@ const NotesandInstructions = () => {
         <div className="p-0 mt-4">
           {selectedTab === 2 ? (
             <Instructions
-            id={id}
+              id={id}
               instruction={instructions.patient_details?.patient_instruction}
             />
           ) : null}
           {selectedTab === 1 ? (
             <Notes
-            id={id}
-            notes={instructions.patient_details?.soap_note} />
+              id={id}
+              notes={instructions.patient_details?.soap_note} />
           ) : null}
-          {selectedTab === 3 ? <Alaysis 
-           id={id}
-          analysis={instructions.patient_details?.analyze_note}/> : null}
+          {selectedTab === 3 ? <Alaysis
+            id={id}
+            analysis={instructions.patient_details?.analyze_note} /> : null}
         </div>
       </div>
     </div>
