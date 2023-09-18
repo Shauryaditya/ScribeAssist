@@ -14,7 +14,7 @@ const Pricing = () => {
   }, [])
   return (
     <>
-      <div class="min-h-screen items-center bg-[#191A29] mb-24">
+      <div id="pricing" class="min-h-screen items-center bg-[#191A29] mb-24">
         <div class="mt-32">
           <div class="text-start font-semibold mx-4 md:mx-44">
             <h1 class="text-4xl">
