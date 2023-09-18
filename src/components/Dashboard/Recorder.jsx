@@ -56,7 +56,7 @@ const Recorder = () => {
 
   const sendAudioDataToApi = async () => {
     setIsLoading(true); // Show the loader when the request starts
-    
+
     try {
       const apiUrl = `${BASE_URL}/api/generate_soap_note`;
       const response = await fetch(apiUrl, {
@@ -94,7 +94,7 @@ const Recorder = () => {
           <div className="w-full bg-[#191A29] h-64 rounded-[20px]">
             <div className="flex flex-col p-4 gap-4 ">
               <div className="mt-0">
-                <AudioComponent onDataReceived={onDataReceived}/>
+                <AudioComponent onDataReceived={onDataReceived} />
                 {/* <Voice onDataReceived={onDataReceived} /> */}
 
               </div>
@@ -116,10 +116,14 @@ const Recorder = () => {
           </div>
         </div>
         <div className="flex justify-between mt-4">
-          <button className={`text-sm bg-gray-500 transition duration-300 ease-in-out transform  rounded-xl px-4 py-2 ${cardStyle}`}
+          <a
+            href='/home'
+            className={`text-sm bg-gray-500 transition duration-300 ease-in-out transform  rounded-xl px-4 py-2 ${cardStyle}`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}>
-            Discard</button>
+            Discard
+
+          </a>
           {isLoading ? (
             <div className="flex">
               <button className={`text-xs bg-[#8167E6] flex rounded-xl px-4 py-2 transition duration-300 ease-in-out transform ${buttonStyle}`}>

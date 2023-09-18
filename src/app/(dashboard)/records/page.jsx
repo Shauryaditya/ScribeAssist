@@ -178,7 +178,7 @@ const Records = () => {
                           <Delete />
                         </button>
                         <Add />
-                        <Next />
+                        <a href={`/notes?id=${ele._id}`}><Next /></a>
                       </Box>
                     </Td>
                   </Tr>
@@ -205,7 +205,7 @@ const Records = () => {
           <Image src={RightArrow} alt="" />
         </button>
       </div>
-    </div>
+    </div >
   );
 };
 

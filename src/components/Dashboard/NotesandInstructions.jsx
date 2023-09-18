@@ -95,7 +95,7 @@ const NotesandInstructions = () => {
           </div>
 
           <div className="flex justify-between ">
-       
+
             <button className="text-xs text-white bg-[#2F303D] rounded-md px-4 py-2">
               Cancel
             </button>
@@ -110,10 +110,14 @@ const NotesandInstructions = () => {
               instruction={instructions.patient_details?.patient_instruction}
             />
           ) : null}
-          {selectedTab === 1 ? (
+          {(selectedTab === 1 && instructions?.patient_details) ? (
             <Notes
               id={id}
-              notes={instructions.patient_details?.soap_note} />
+              notes={instructions?.patient_details?.soap_note}
+              name={instructions?.patient_details?.patient_name}
+              age={instructions?.patient_details?.patient_age}
+              gender={instructions?.patient_details?.patient_gender}
+            />
           ) : null}
           {selectedTab === 3 ? <Alaysis
             id={id}

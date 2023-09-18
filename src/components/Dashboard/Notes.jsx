@@ -5,12 +5,12 @@ import getToken from '@/hook/getToken'
 import toast from 'react-hot-toast';
 
 
-const Notes = ({ notes, id }) => {
+const Notes = ({ notes, id, name, gender, age }) => {
     console.log(notes);
 
-    const [patientName, setPatientName] = useState('');
-    const [patientGender, setPatientGender] = useState('');
-    const [patientAge, setPatientAge] = useState('');
+    const [patientName, setPatientName] = useState(name);
+    const [patientGender, setPatientGender] = useState(gender);
+    const [patientAge, setPatientAge] = useState(age);
 
     const token = getToken()
 
@@ -66,9 +66,9 @@ const Notes = ({ notes, id }) => {
     return (
         <div className='max-w-full '>
             <div className="flex flex-col gap-3">
-                <form action="" onSubmit={(e)=>{
+                <form action="" onSubmit={(e) => {
                     updateSoapNote(e)
-                    }}>
+                }}>
                     <div className="w-full bg-[#2F303D] rounded-xl p-4">
 
                         <div className="flex flex-col gap-2">
@@ -88,7 +88,7 @@ const Notes = ({ notes, id }) => {
                                         Patient Name
                                     </label>
                                     <input
-                                        className='bg-transparent rounded-xl border border-gray-400 text-white text-xs py-2'
+                                        className='bg-transparent rounded-xl border border-gray-400 text-white text-xs py-2 px-4 mt-2'
                                         type='text'
                                         id='patientName'
                                         value={patientName}
@@ -101,7 +101,7 @@ const Notes = ({ notes, id }) => {
                                         Gender
                                     </label>
                                     <select
-                                        className='bg-transparent rounded-xl border border-gray-400 text-white text-xs py-2'
+                                        className='bg-transparent rounded-xl border border-gray-400 text-white text-xs py-2 px-4 mt-2'
                                         id='patientGender'
                                         value={patientGender}
                                         onChange={(e) => setPatientGender(e.target.value)}
@@ -118,7 +118,7 @@ const Notes = ({ notes, id }) => {
                                         Age
                                     </label>
                                     <input
-                                        className='bg-transparent rounded-xl border border-gray-400 text-white text-xs py-2'
+                                        className='bg-transparent rounded-xl border border-gray-400 text-white text-xs py-2 px-4 mt-2'
                                         type='text'
                                         id='patientAge'
                                         value={patientAge}
@@ -148,7 +148,7 @@ const Notes = ({ notes, id }) => {
                     </div>
                     <div className="flex justify-end mt-4">
                         <button
-                            className='px-4 py-2 rounded-xl bg-violet-500 text-white text-xs'
+                            className='px-4 py-2 px-4 mt-2 rounded-xl bg-violet-500 text-white text-xs'
                             type='submit'
                         >
                             Save
