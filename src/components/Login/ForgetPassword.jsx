@@ -1,5 +1,6 @@
 'use client'
 import React,{useState} from 'react'
+import { BASE_URL } from '@/constant';
 
 const ForgetPassword = () => {
     const [formData, setFormData] = useState({
@@ -19,7 +20,7 @@ const ForgetPassword = () => {
         console.log(formData);
         
         try {
-          const response = await fetch("http://192.168.29.239:5000/api/forgot-password", {
+          const response = await fetch(`${BASE_URL}/api/forgot-password`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

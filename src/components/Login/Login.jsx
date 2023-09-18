@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { BASE_URL } from "@/constant";
+import toast from "react-hot-toast";
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -32,11 +33,11 @@ const Login = () => {
         // Login was successful, you can redirect or perform other actions here
         console.log(data);
         localStorage.setItem("access_token", data.access_token);
-        alert("Login Successful")
+        toast.success("Login Successful")
         window.location.href = '/home'
       } else {
         // Handle login error, e.g., show an error message
-        console.error("Login failed");
+        toast.error("Login failed");
       }
     } catch (error) {
       console.error("An error occurred:", error);

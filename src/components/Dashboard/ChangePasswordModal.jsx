@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { BASE_URL } from '@/constant';
 import getToken from '@/hook/getToken';
+import toast from 'react-hot-toast';
 const ChangePasswordModal = ({ visible, onClose }) => {
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -12,7 +13,7 @@ const ChangePasswordModal = ({ visible, onClose }) => {
     try {
       // Check if newPassword and confirmPassword match
       if (newPassword !== confirmPassword) {
-        alert('New Password and Confirm Password must match.');
+        toast.error('New Password and Confirm Password must match.');
         return;
       }
       const access_token = getToken()
@@ -36,12 +37,12 @@ const ChangePasswordModal = ({ visible, onClose }) => {
       // Handle the response as needed
       if (response.ok) {
         // Password changed successfully, you can close the modal or perform other actions
-        alert('Password changed successfully.');
+        toast.success('Password changed successfully.');
         onClose();
       } else {
         // Handle errors from the API
         const data = await response.json();
-        alert(`Error: ${data.message}`);
+       toast.error(`Error: ${data.message}`);
       }
     } catch (error) {
       console.error('An error occurred:', error);

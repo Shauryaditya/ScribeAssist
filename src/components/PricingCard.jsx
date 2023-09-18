@@ -19,7 +19,7 @@ const PricingCard = ({ planData }) => {
             </div>
             <div className="p-4">
                 <ul class="text-sm w-full mt-6 mb-6">
-                    <li class="mb-3 flex items-center text-white ">
+                    <li class="mb-3 flex items-center text-white text-xs">
                         <svg
                             class="h-6 w-6 mr-2"
                             xmlns="http://www.w3.org/2000/svg"
@@ -31,9 +31,9 @@ const PricingCard = ({ planData }) => {
                         >
                             <path d="M1412 734q0-28-18-46l-91-90q-19-19-45-19t-45 19l-408 407-226-226q-19-19-45-19t-45 19l-91 90q-18 18-18 46 0 27 18 45l362 362q19 19 45 19 27 0 46-19l543-543q18-18 18-45zm252 162q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>
                         </svg>
-                        Own custom Tailwind styles
+                        AI Assisted H&P / SOAP Notes
                     </li>
-                    <li class="mb-3 flex items-center text-white">
+                    <li class="mb-3 flex items-center text-white text-xs">
                         <svg
                             class="h-6 w-6 mr-2"
                             xmlns="http://www.w3.org/2000/svg"
@@ -45,9 +45,9 @@ const PricingCard = ({ planData }) => {
                         >
                             <path d="M1412 734q0-28-18-46l-91-90q-19-19-45-19t-45 19l-408 407-226-226q-19-19-45-19t-45 19l-91 90q-18 18-18 46 0 27 18 45l362 362q19 19 45 19 27 0 46-19l543-543q18-18 18-45zm252 162q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>
                         </svg>
-                        Unlimited Templates
+                        ScribeAssist
                     </li>
-                    <li class="mb-3 flex items-center text-white">
+                    <li class="mb-3 flex items-center text-white text-xs">
                         <svg
                             class="h-6 w-6 mr-2"
                             xmlns="http://www.w3.org/2000/svg"
@@ -59,9 +59,9 @@ const PricingCard = ({ planData }) => {
                         >
                             <path d="M1412 734q0-28-18-46l-91-90q-19-19-45-19t-45 19l-408 407-226-226q-19-19-45-19t-45 19l-91 90q-18 18-18 46 0 27 18 45l362 362q19 19 45 19 27 0 46-19l543-543q18-18 18-45zm252 162q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>
                         </svg>
-                        Unlimited Templates
+                        DictAssist
                     </li>
-                    <li class="mb-3 flex items-center text-white">
+                    <li class="mb-3 flex items-center text-white text-xs">
                         <svg
                             class="h-6 w-6 mr-2"
                             xmlns="http://www.w3.org/2000/svg"
@@ -73,9 +73,9 @@ const PricingCard = ({ planData }) => {
                         >
                             <path d="M1412 734q0-28-18-46l-91-90q-19-19-45-19t-45 19l-408 407-226-226q-19-19-45-19t-45 19l-91 90q-18 18-18 46 0 27 18 45l362 362q19 19 45 19 27 0 46-19l543-543q18-18 18-45zm252 162q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>
                         </svg>
-                        Free premium dashboard
+                        AI Assisted Care Plans
                     </li>
-                    <li class="mb-3 flex items-center  text-white">
+                    <li class="mb-3 flex items-center  text-white text-xs">
                         <svg
                             class="h-6 w-6 mr-2"
                             xmlns="http://www.w3.org/2000/svg"
@@ -87,9 +87,9 @@ const PricingCard = ({ planData }) => {
                         >
                             <path d="M1412 734q0-28-18-46l-91-90q-19-19-45-19t-45 19l-408 407-226-226q-19-19-45-19t-45 19l-91 90q-18 18-18 46 0 27 18 45l362 362q19 19 45 19 27 0 46-19l543-543q18-18 18-45zm252 162q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>
                         </svg>
-                        Best ranking
+                        AI Attending Analysis *BETA
                     </li>
-                    <li class="mb-3 flex items-center opacity-50 text-white">
+                    <li class="mb-3 flex items-center opacity-50 text-white text-xs">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="6"
@@ -100,9 +100,9 @@ const PricingCard = ({ planData }) => {
                         >
                             <path d="M1277 1122q0-26-19-45l-181-181 181-181q19-19 19-45 0-27-19-46l-90-90q-19-19-46-19-26 0-45 19l-181 181-181-181q-19-19-45-19-27 0-46 19l-90 90q-19 19-19 46 0 26 19 45l181 181-181 181q-19 19-19 45 0 27 19 46l90 90q19 19 46 19 26 0 45-19l181-181 181 181q19 19 45 19 27 0 46-19l90-90q19-19 19-46zm387-226q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>
                         </svg>
-                        Prenium svg
+                        AI Billing Analysis *BETA
                     </li>
-                    <li class="mb-3 flex items-center opacity-50 text-white">
+                    <li class="mb-3 flex items-center opacity-50 text-white text-xs">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="6"
@@ -113,7 +113,7 @@ const PricingCard = ({ planData }) => {
                         >
                             <path d="M1277 1122q0-26-19-45l-181-181 181-181q19-19 19-45 0-27-19-46l-90-90q-19-19-46-19-26 0-45 19l-181 181-181-181q-19-19-45-19-27 0-46 19l-90 90q-19 19-19 46 0 26 19 45l181 181-181 181q-19 19-19 45 0 27 19 46l90 90q19 19 46 19 26 0 45-19l181-181 181 181q19 19 45 19 27 0 46-19l90-90q19-19 19-46zm387-226q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>
                         </svg>
-                        My wife
+                        Alpha Test New Tools & Features
                     </li>
                 </ul>
             </div>

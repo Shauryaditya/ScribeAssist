@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { BASE_URL } from '@/constant';
 import { data } from "autoprefixer";
+import toast from "react-hot-toast";
 
 
 const Register = () => {
@@ -74,7 +75,7 @@ const Register = () => {
 
 
         if (data) {
-          alert(data.message);
+          toast.success(data.message);
           window.location.href = '/login'
           // Optionally, you can perform actions with the data received from the server.
         }
@@ -82,10 +83,10 @@ const Register = () => {
       // Check if data is valid JSON
 
       else {
-        console.error(data.message);
+        toast.error(data.message);
       }
     } catch (error) {
-      console.error("An error occurred:", error);
+      toast.error("An error occurred:", error);
     }
   };
 

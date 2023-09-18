@@ -3,6 +3,7 @@ import React from 'react'
 import { BASE_URL } from '@/constant';
 import { useState, useEffect } from 'react'
 import getToken from '@/hook/getToken'
+import toast from 'react-hot-toast';
 const Instructions = ({ instruction, id }) => {
     console.log(instruction);
     // Function to construct the request body
@@ -41,7 +42,7 @@ const Instructions = ({ instruction, id }) => {
             if (response.ok) {
 
                 const data = await response.json();
-                alert(data.message)
+                toast.success(data.message)
             }
             else {
                 // Handle API errors

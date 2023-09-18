@@ -20,7 +20,7 @@ const NotesandInstructions = () => {
     },
     {
       id: "8uhtyrt436987yhrtyhytg",
-      name: "Alaysis",
+      name: "Analysis",
     },
   ];
 
@@ -31,6 +31,7 @@ const NotesandInstructions = () => {
   console.log("ID", id);
 
   const [instructions, setInstructions] = useState([]);
+  const [accessControl, setAccessControl] = useState({})
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -47,6 +48,10 @@ const NotesandInstructions = () => {
         if (response.ok) {
           const data = await response.json();
           setInstructions(data);
+          // Set access control based on data received
+          if (data.access_control) {
+            setAccessControl(data.access_control);
+          }
         } else {
           console.error("Failed to fetch data");
         }
@@ -67,22 +72,30 @@ const NotesandInstructions = () => {
           <div className="w-1/2 flex justify-between bg-[#2F303D] rounded-lg overflow-hidden">
             {heading.map((item, index) => (
               <div
-                onClick={() => setSelectedTab(index + 1)}
                 key={item.id}
                 className={`w-1/3 h-10 flex justify-center rounded-lg items-center cursor-pointer text-sm ${selectedTab === index + 1
                   ? "text-[#8167E6] bg-white"
-                  : "text-gray-500 "
+                  : "text-gray-500"
                   }`}
               >
-                {item.name}
+                {accessControl[item.name.toLowerCase()] ? (
+                  <div
+                    onClick={() => setSelectedTab(index + 1)}
+                    className="flex items-center"
+                  >
+                    {item.name}
+                  </div>
+                ) : (
+                  <div className="flex items-center">
+                    <span className="mr-2">🔒</span> {item.name}
+                  </div>
+                )}
               </div>
             ))}
           </div>
 
           <div className="flex justify-between ">
-            <button className="text-xs text-white bg-[#2F303D] rounded-md px-4 py-2">
-              Save
-            </button>
+       
             <button className="text-xs text-white bg-[#2F303D] rounded-md px-4 py-2">
               Cancel
             </button>

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { BASE_URL } from '@/constant';
 import getToken from '@/hook/getToken'
+import toast from 'react-hot-toast';
 
 
 const Notes = ({ notes, id }) => {
@@ -48,15 +49,15 @@ const Notes = ({ notes, id }) => {
             if (response.ok) {
 
                 const data = await response.json();
-                alert(data.message)
+                toast.success(data.message)
             }
             else {
                 // Handle API errors
-                console.error('Error sending data to the API');
+                toast.error('Error sending data to the API');
             }
         } catch (error) {
             // Handle network or other errors
-            console.error('Error:', error);
+            toast.error('Error:', error);
         }
 
     };

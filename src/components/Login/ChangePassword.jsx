@@ -1,5 +1,7 @@
 'use client'
 import React,{useState} from 'react'
+import toast from 'react-hot-toast';
+import { BASE_URL } from '@/constant';
 
 const ChangePassword = () => {
     const [formData, setFormData] = useState({
@@ -21,7 +23,7 @@ const ChangePassword = () => {
         console.log(formData);
    
         try {
-          const response = await fetch("http://192.168.29.239:5000/api/change-password", {
+          const response = await fetch(`${BASE_URL}/api/change-password`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -31,11 +33,11 @@ const ChangePassword = () => {
           const data = await response.json();
           if (response.ok) {
             // Login was successful, you can redirect or perform other actions here
-            alert(data.message);
+            toast.success(data.message);
             window.location.href = '/login'
           } else {
             // Handle login error, e.g., show an error message
-            console.error("Login failed");
+            toast.error(data.message);
           }
         } catch (error) {
           console.error("An error occurred:", error);
