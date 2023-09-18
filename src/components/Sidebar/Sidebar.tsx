@@ -38,7 +38,12 @@ const Sidebar = () => {
   const [isSelected, setIsSelected] = useState("Home");
   const router = useRouter();
   const navigateToPage = (route: string) => {
-    // Use router.push to navigate to the specified page
+    // Check if the selected route is "Appointments" or "Help"
+    if (route === "Appointments" || route === "Help") {
+      return; // Prevent navigation
+    }
+  
+    // Use router.push to navigate to the specified page for other routes
     router.push(`/${route.toLowerCase()}`);
   };
 
