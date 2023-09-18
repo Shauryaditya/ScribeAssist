@@ -71,7 +71,7 @@ const Recorder = () => {
       if (response.ok) {
         // Handle success, e.g., redirect to a success page or show a message
         const data = await response.json();
-        const idFromResponse = data.patient_id;
+        const idFromResponse = data[0].patient_id;
 
         const notesPageUrl = `/notes?id=${idFromResponse}`;
         window.location.href = notesPageUrl;
