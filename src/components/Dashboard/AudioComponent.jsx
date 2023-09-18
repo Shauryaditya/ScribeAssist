@@ -2,8 +2,10 @@
 import { useReactMediaRecorder } from "react-media-recorder";
 import React, { useEffect, useState } from "react";
 import Wave from './Wave'
+import { BASE_URL } from '@/constant';
+import getToken from '@/hook/getToken'
 
-const RecordView = (props) => {
+const RecordView = ({onDataReceived}) => {
   const [second, setSecond] = useState("00");
   const [minute, setMinute] = useState("00");
   const [isActive, setIsActive] = useState(false);
@@ -46,17 +48,24 @@ const RecordView = (props) => {
     startRecording,
     stopRecording,
     pauseRecording,
-    
+
     mediaBlobUrl
   } = useReactMediaRecorder({
     video: false,
     audio: true,
     echoCancellation: true
-  })
-  ;
+  });
   console.log("url", mediaBlobUrl);
 
+  const urlToBlob = async (url) => {
+    const response = await fetch(url);
+    return await response.blob();
+  };
+
+
+
   const sendAudioToAPI = async (audioBlob) => {
+    if(audioBlob){
     try {
       const formData = new FormData();
       const token = getToken()
@@ -74,7 +83,7 @@ const RecordView = (props) => {
       if (response.ok) {
         // Handle successful response from the API
         const data = await response.json();
-        setAudioData(data);
+      
         console.log('Audio sent successfully to the API', data);
         // Pass the audio data to the parent component
         onDataReceived(data);
@@ -86,6 +95,7 @@ const RecordView = (props) => {
       // Handle network or other errors
       console.error('Error:', error);
     }
+  }
   };
 
   return (
@@ -101,20 +111,20 @@ const RecordView = (props) => {
           display: "flex"
         }}
       >
-      
+
       </div>
-      
-        <Wave audioURL={mediaBlobUrl} />
+
+      <Wave audioURL={mediaBlobUrl} />
       <div
         className="flex justify-between"
         style={{
-         
+
           color: "white",
-          
+
         }}
       >
-    
-        <div style={{ marginLeft: "30px", fontSize: "18px" }}>
+
+        <div style={{ marginTop: "35px", fontSize: "14px" }}>
           <span className="minute">{minute}</span>
           <span>:</span>
           <span className="second">{second}</span>
@@ -129,7 +139,7 @@ const RecordView = (props) => {
             }}
             htmlFor="icon-button-file"
           >
-        
+
 
             <div>
               <button
@@ -152,7 +162,7 @@ const RecordView = (props) => {
                   } else {
                     pauseRecording();
                   }
-
+                
                   setIsActive(!isActive);
                 }}
               >
@@ -171,20 +181,23 @@ const RecordView = (props) => {
                   transition: "all 300ms ease-in-out",
                   transform: "translateY(0)"
                 }}
-                onClick={() => {
+                onClick={async() => {
                   stopRecording();
                   pauseRecording();
+                  const audioBlob = await urlToBlob(mediaBlobUrl);
+                  sendAudioToAPI(audioBlob);
+
                 }}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 bg-white rounded">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 7.5A2.25 2.25 0 017.5 5.25h9a2.25 2.25 0 012.25 2.25v9a2.25 2.25 0 01-2.25 2.25h-9a2.25 2.25 0 01-2.25-2.25v-9z" />
-</svg>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 7.5A2.25 2.25 0 017.5 5.25h9a2.25 2.25 0 012.25 2.25v9a2.25 2.25 0 01-2.25 2.25h-9a2.25 2.25 0 01-2.25-2.25v-9z" />
+                </svg>
 
               </button>
             </div>
           </label>
         </div>
-        <b></b>
+
       </div>
     </div>
   );

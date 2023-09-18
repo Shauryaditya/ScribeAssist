@@ -56,7 +56,7 @@ const Recorder = () => {
 
   const sendAudioDataToApi = async () => {
     setIsLoading(true); // Show the loader when the request starts
-
+    
     try {
       const apiUrl = `${BASE_URL}/api/generate_soap_note`;
       const response = await fetch(apiUrl, {
@@ -94,7 +94,7 @@ const Recorder = () => {
           <div className="w-full bg-[#191A29] h-64 rounded-[20px]">
             <div className="flex flex-col p-4 gap-4 ">
               <div className="mt-0">
-                <AudioComponent />
+                <AudioComponent onDataReceived={onDataReceived}/>
                 {/* <Voice onDataReceived={onDataReceived} /> */}
 
               </div>
