@@ -1,6 +1,7 @@
 'use client'
 import { useReactMediaRecorder } from "react-media-recorder";
 import React, { useEffect, useState } from "react";
+import Wave from './Wave'
 
 const RecordView = (props) => {
   const [second, setSecond] = useState("00");
@@ -45,67 +46,75 @@ const RecordView = (props) => {
     startRecording,
     stopRecording,
     pauseRecording,
+    
     mediaBlobUrl
   } = useReactMediaRecorder({
     video: false,
     audio: true,
     echoCancellation: true
-  });
+  })
+  ;
   console.log("url", mediaBlobUrl);
 
+  const sendAudioToAPI = async (audioBlob) => {
+    try {
+      const formData = new FormData();
+      const token = getToken()
+      formData.append('audio', audioBlob, 'recording.wav');
+      console.log(token);
+      const response = await fetch(`${BASE_URL}/api/transcribe`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+
+        body: formData,
+      });
+
+      if (response.ok) {
+        // Handle successful response from the API
+        const data = await response.json();
+        setAudioData(data);
+        console.log('Audio sent successfully to the API', data);
+        // Pass the audio data to the parent component
+        onDataReceived(data);
+      } else {
+        // Handle API errors
+        console.error('Error sending audio to the API');
+      }
+    } catch (error) {
+      // Handle network or other errors
+      console.error('Error:', error);
+    }
+  };
+
   return (
-    <div
+    <div className="w-full"
       style={{
-        border: "1px solid black",
-        backgroundColor: "black",
-        width: "700px",
-        height: "350px"
+
+        height: "230px"
       }}
     >
       <div
         style={{
-          border: "1px solid #bd9f61",
-          height: "70px",
-          backgroundColor: "#bd9f61",
+          height: "30px",
           display: "flex"
         }}
       >
-        <h4
-          style={{
-            marginLeft: "10px",
-            textTransform: "capitalize",
-            fontFamily: "sans-serif",
-            fontSize: "18px",
-            color: "white"
-          }}
-        >
-          {status}
-        </h4>
+      
       </div>
-      <div style={{ height: "38px" }}>
-        {" "}
-        <video src={mediaBlobUrl} controls loop />
-      </div>
-
+      
+        <Wave audioURL={mediaBlobUrl} />
       <div
-        className="col-md-6 col-md-offset-3"
+        className="flex justify-between"
         style={{
-          backgroundColor: "black",
+         
           color: "white",
-          marginLeft: "357px"
+          
         }}
       >
-        <button
-          style={{
-            backgroundColor: "black",
-            borderRadius: "8px",
-            color: "white"
-          }}
-          onClick={stopTimer}
-        >
-          Clear
-        </button>
-        <div style={{ marginLeft: "70px", fontSize: "54px" }}>
+    
+        <div style={{ marginLeft: "30px", fontSize: "18px" }}>
           <span className="minute">{minute}</span>
           <span>:</span>
           <span className="second">{second}</span>
@@ -120,21 +129,19 @@ const RecordView = (props) => {
             }}
             htmlFor="icon-button-file"
           >
-            <h3 style={{ marginLeft: "15px", fontWeight: "normal" }}>
-              Press the Start to record
-            </h3>
+        
 
             <div>
               <button
                 style={{
-                  padding: "0.8rem 2rem",
+                  padding: "0.8rem 1rem",
                   border: "none",
                   marginLeft: "15px",
                   fontSize: "1rem",
                   cursor: "pointer",
-                  borderRadius: "5px",
-                  fontWeight: "bold",
-                  backgroundColor: "#42b72a",
+                  borderRadius: "20px",
+                  fontWeight: "normal",
+                  backgroundColor: "#8167E6",
                   color: "white",
                   transition: "all 300ms ease-in-out",
                   transform: "translateY(0)"
@@ -149,13 +156,12 @@ const RecordView = (props) => {
                   setIsActive(!isActive);
                 }}
               >
-                {isActive ? "Pause" : "Start"}
+                {isActive ? "Pause" : "Start Encounter"}
               </button>
               <button
                 style={{
                   padding: "0.8rem 2rem",
                   border: "none",
-                  backgroundColor: "#df3636",
                   marginLeft: "15px",
                   fontSize: "1rem",
                   cursor: "pointer",
@@ -170,7 +176,10 @@ const RecordView = (props) => {
                   pauseRecording();
                 }}
               >
-                Stop
+                <svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 bg-white rounded">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 7.5A2.25 2.25 0 017.5 5.25h9a2.25 2.25 0 012.25 2.25v9a2.25 2.25 0 01-2.25 2.25h-9a2.25 2.25 0 01-2.25-2.25v-9z" />
+</svg>
+
               </button>
             </div>
           </label>
