@@ -4,8 +4,15 @@ import { BASE_URL } from '@/constant';
 
 import Loader from './Loader'
 import getToken from '@/hook/getToken'
+import dynamic from 'next/dynamic';
 
-import AudioComponent from './AudioComponent'
+
+const AudioComponent = dynamic(
+  () => import('./AudioComponent'),
+  { ssr: false }
+);
+
+
 
 const Recorder = () => {
   const [isHovered, setIsHovered] = useState(false);
