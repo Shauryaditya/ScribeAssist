@@ -8,14 +8,14 @@ const Alaysis = ({ analysis }) => {
 
           <div className="max-w-full flex flex-col gap-2">
             <textarea
-              class="appearance-none block w-full h-64  bg-transparent text-white border border-gray-400 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500 text-xs"
+              class="appearance-none block w-full h-64  bg-transparent text-white border border-gray-400 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500 text-xs overflow-y-scroll no-scrollbar"
               id="grid-password"
               value={analysis.billing_recommendations}
               type="text"
               placeholder="Type question here"
             />
             <textarea
-              class="appearance-none block w-full h-64 bg-transparent text-white border border-gray-400 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500 text-xs"
+              class="appearance-none block w-full h-64 bg-transparent text-white border border-gray-400 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500 text-xs overflow-y-scroll no-scrollbar"
               id="grid-password"
               value={analysis.clinical_recommendations}
               type="text"

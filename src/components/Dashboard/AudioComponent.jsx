@@ -183,10 +183,10 @@ const RecordView = ({onDataReceived}) => {
                 }}
                 onClick={async() => {
                   stopRecording();
-                  pauseRecording();
-                  const audioBlob = await urlToBlob(mediaBlobUrl);
-                  sendAudioToAPI(audioBlob);
-
+                  setTimeout(async () => {
+                    const audioBlob = await urlToBlob(mediaBlobUrl);
+                    sendAudioToAPI(audioBlob);
+                  }, 2000);  // Add a delay to ensure the mediaBlobUrl is ready
                 }}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 bg-white rounded">

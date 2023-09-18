@@ -5,7 +5,7 @@ import Topbar from '@/components/Dashboard/Topbar'
 
 const page = () => {
     return (
-        <div className='min-h-full bg-[#222331]'>
+        <div className='min-h-full bg-[#222331] overflow-y-scroll no-scrollbar'>
             <Topbar/>
             <NotesandInstructions />
         </div>

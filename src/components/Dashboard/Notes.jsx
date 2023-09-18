@@ -24,8 +24,8 @@ const Notes = ({ notes, id }) => {
         setUpdatedNotes(e.target.value); // Update the updatedNotes state
     };
     // Function to construct the request body
-    const updateSoapNote = async () => {
-        
+    const updateSoapNote = async (e) => {
+        e.preventDefault();
         try {
             const requestBody = {
                 patient_name: patientName,
@@ -65,7 +65,9 @@ const Notes = ({ notes, id }) => {
     return (
         <div className='max-w-full '>
             <div className="flex flex-col gap-3">
-                <form action="" onSubmit={updateSoapNote}>
+                <form action="" onSubmit={(e)=>{
+                    updateSoapNote(e)
+                    }}>
                     <div className="w-full bg-[#2F303D] rounded-xl p-4">
 
                         <div className="flex flex-col gap-2">
@@ -104,9 +106,9 @@ const Notes = ({ notes, id }) => {
                                         onChange={(e) => setPatientGender(e.target.value)}
                                         required
                                     >
-                                        <option value='Male'>Male</option>
-                                        <option value='Female'>Female</option>
-                                        <option value='Others'>Others</option>
+                                        <option className='text-gray-600' value='Male'>Male</option>
+                                        <option className='text-gray-600' value='Female'>Female</option>
+                                        <option className='text-gray-600' value='Others'>Others</option>
                                     </select>
                                 </div>
 
@@ -134,7 +136,7 @@ const Notes = ({ notes, id }) => {
                             {notes}
                         </p> */}
                             <textarea
-                                class="appearance-none block w-full h-80  bg-transparent text-white border border-gray-400 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500 text-xs"
+                                class="appearance-none block w-full h-80  bg-transparent text-white border border-gray-400 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500 text-xs overflow-y-scroll no-scrollbar"
                                 id="grid-password"
                                 value={updatedNotes}
                                 onChange={handleNotesChange}

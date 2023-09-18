@@ -70,7 +70,7 @@ const Instructions = ({ instruction, id }) => {
                         </div>
                         <div className="max-w-full flex flex-col">
                             <textarea
-                                class="appearance-none block w-full h-80  bg-transparent text-white border border-gray-400 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500 text-xs"
+                                class="appearance-none block w-full h-80  bg-transparent text-white border border-gray-400 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500 text-xs overflow-y-scroll no-scrollbar"
                                 id="grid-password"
                                 value={updatedInstructions}
                                 onChange={handleInstructionsChange}
