@@ -6,6 +6,7 @@ import { BASE_URL } from '@/constant';
 import CancelButton from '../../components/CancelButton'
 import UpgradeButton from '../../components/UpgradeButton'
 import ChangePasswordModal from './ChangePasswordModal'
+import { Link } from '@chakra-ui/react';
 const Account = () => {
     const [contact, setContact] = useState();
     const [showModal, setShowModal] = useState(false);
@@ -146,7 +147,7 @@ const Account = () => {
                                 </div>
                                 <div className="flex justify-between">
                                     <div className="flex flex-row ">
-                                        <p className='text-white text-xs underline'>Update Payment Method</p>
+                                        <Link href='/update-payment' className='text-white text-xs underline'>Update Payment Method</Link>
                                     </div>
                                     <div className="flex gap-3">
                                         {
