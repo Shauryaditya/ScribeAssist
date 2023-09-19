@@ -21,6 +21,7 @@ import PaginationMulti from "../../../assets/PaginationMulti.png";
 import Image from "next/image";
 import { BASE_URL } from "@/constant";
 import getToken from "@/hook/getToken";
+import { redirect } from 'next/navigation'
 const Records = () => {
   const [response, setResponse] = useState([]);
   const access_token = getToken()
@@ -70,143 +71,81 @@ const Records = () => {
       console.log(error.message);
     }
   };
-  // const data = [
-  //   {
-  //     key: 1,
-  //     name: "John Doe",
-  //     gender: "Male",
-  //     age: 52,
-  //     date: "18/07/2023",
-  //     time: "05:33 PM",
-  //   },
-  //   {
-  //     key: 2,
-  //     name: "Rebecca Green",
-  //     gender: "Female",
-  //     age: 27,
-  //     date: "18/07/2023",
-  //     time: "05:11 PM",
-  //   },
-  //   {
-  //     key: 3,
-  //     name: "John Doe",
-  //     gender: "Male",
-  //     age: 52,
-  //     date: "18/07/2023",
-  //     time: "05:33 PM",
-  //   },
-  //   {
-  //     key: 4,
-  //     name: "Rebecca Green",
-  //     gender: "Female",
-  //     age: 27,
-  //     date: "18/07/2023",
-  //     time: "05:11 PM",
-  //   },
-  //   {
-  //     key: 5,
-  //     name: "John Doe",
-  //     gender: "Male",
-  //     age: 52,
-  //     date: "18/07/2023",
-  //     time: "05:33 PM",
-  //   },
-  //   {
-  //     key: 6,
-  //     name: "Rebecca Green",
-  //     gender: "Female",
-  //     age: 27,
-  //     date: "18/07/2023",
-  //     time: "05:11 PM",
-  //   },
-  //   {
-  //     key: 7,
-  //     name: "John Doe",
-  //     gender: "Male",
-  //     age: 52,
-  //     date: "18/07/2023",
-  //     time: "05:33 PM",
-  //   },
-  //   {
-  //     key: 8,
-  //     name: "Rebecca Green",
-  //     gender: "Female",
-  //     age: 27,
-  //     date: "18/07/2023",
-  //     time: "05:11 PM",
-  //   },
-  //   {
-  //     key: 7,
-  //     name: "John Doe",
-  //     gender: "Male",
-  //     age: 52,
-  //     date: "18/07/2023",
-  //     time: "05:33 PM",
-  //   },
-  // ];
-  return (
-    <div className="relative min-h-screen bg-[#222331] w-full  flex flex-col justify-between p-[40px]">
-      <div>
-        <TableContainer color={"white"} w={"full"}>
-          <Table variant="simple">
-            <Thead>
-              <Tr>
-                <Th>Patient</Th>
-                <Th>Gender</Th>
-                <Th>Age</Th>
-                <Th>Date Added</Th>
-                <Th>Time</Th>
-                <Th textAlign={"right"}>Action</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {response.map((ele) => {
-                return (
-                  <Tr key={ele._id}>
-                    <Td>{ele.patient_name}</Td>
-                    <Td>{ele.patient_gender}</Td>
-                    <Td>{ele.patient_age}</Td>
-                    <Td>{ele.created_at.slice(0, 16)}</Td>
-                    <Td>{ele.created_at.slice(16)}</Td>
-                    <Td>
-                      <Box
-                        display={"flex"}
-                        gap={"1rem"}
-                        justifyContent={"flex-end"}
-                      >
-                        <button onClick={() => deletePatient(ele._id)}>
-                          <Delete />
-                        </button>
-                        <Add />
-                        <a href={`/notes?id=${ele._id}`}><Next /></a>
-                      </Box>
-                    </Td>
-                  </Tr>
-                );
-              })}
-            </Tbody>
-          </Table>
-        </TableContainer>
-      </div>
-      <div className="flex gap-2 self-end cursor-pointer">
-        <button>
-          <LeftArrow />
-        </button>
-        <button>
-          <Image src={PaginationOne} alt="" />
-        </button>
-        <button>
-          <Image src={PaginationMulti} alt="" />
-        </button>
-        <button>
-          <Image src={PaginationTwelve} alt="" />
-        </button>
-        <button>
-          <Image src={RightArrow} alt="" />
-        </button>
-      </div>
-    </div >
-  );
+  const [token, setToken] = useState(null)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const accessToken = getToken()
+      setToken(accessToken)
+      if (!accessToken) {
+        redirect('/login');
+      }
+    }
+  }, []);
+  if (token !== null) {
+    return (
+      <div className="relative min-h-screen bg-[#222331] w-full  flex flex-col justify-between p-[40px]">
+        <div>
+          <TableContainer color={"white"} w={"full"}>
+            <Table variant="simple">
+              <Thead>
+                <Tr>
+                  <Th>Patient</Th>
+                  <Th>Gender</Th>
+                  <Th>Age</Th>
+                  <Th>Date Added</Th>
+                  <Th>Time</Th>
+                  <Th textAlign={"right"}>Action</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                {response.map((ele) => {
+                  return (
+                    <Tr key={ele._id}>
+                      <Td>{ele.patient_name}</Td>
+                      <Td>{ele.patient_gender}</Td>
+                      <Td>{ele.patient_age}</Td>
+                      <Td>{ele.created_at.slice(0, 16)}</Td>
+                      <Td>{ele.created_at.slice(16)}</Td>
+                      <Td>
+                        <Box
+                          display={"flex"}
+                          gap={"1rem"}
+                          justifyContent={"flex-end"}
+                        >
+                          <button onClick={() => deletePatient(ele._id)}>
+                            <Delete />
+                          </button>
+                          <Add />
+                          <a href={`/notes?id=${ele._id}`}><Next /></a>
+                        </Box>
+                      </Td>
+                    </Tr>
+                  );
+                })}
+              </Tbody>
+            </Table>
+          </TableContainer>
+        </div>
+        <div className="flex gap-2 self-end cursor-pointer">
+          <button>
+            <LeftArrow />
+          </button>
+          <button>
+            <Image src={PaginationOne} alt="" />
+          </button>
+          <button>
+            <Image src={PaginationMulti} alt="" />
+          </button>
+          <button>
+            <Image src={PaginationTwelve} alt="" />
+          </button>
+          <button>
+            <Image src={RightArrow} alt="" />
+          </button>
+        </div>
+      </div >
+    );
+  }
 };
 
 export default Records;
