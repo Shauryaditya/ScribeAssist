@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { BASE_URL } from "@/constant";
+import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -34,7 +35,7 @@ const Login = () => {
         console.log(data);
         sessionStorage.setItem("access_token", data.access_token);
         toast.success("Login Successful")
-        window.location.href = '/home'
+        redirect('/#pricing')
       } else {
         // Handle login error, e.g., show an error message
         toast.error("Login failed");
