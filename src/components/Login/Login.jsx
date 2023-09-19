@@ -2,9 +2,10 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { BASE_URL } from "@/constant";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 const Login = () => {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -35,7 +36,7 @@ const Login = () => {
         console.log(data);
         sessionStorage.setItem("access_token", data.access_token);
         toast.success("Login Successful")
-        redirect('/home')
+        router.push('/home')
       } else {
         // Handle login error, e.g., show an error message
         toast.error("Login failed");
