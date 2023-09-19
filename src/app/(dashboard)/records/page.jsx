@@ -71,6 +71,7 @@ const Records = () => {
       console.log(error.message);
     }
   };
+
   const [token, setToken] = useState(null)
   useEffect(() => {
     if (typeof window !== 'undefined') {

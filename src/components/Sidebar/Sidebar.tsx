@@ -38,10 +38,14 @@ const Sidebar = () => {
   const [isSelected, setIsSelected] = useState("Home");
   const router = useRouter();
   const navigateToPage = (route: string) => {
-    // Use router.push to navigate to the specified page
+    // Check if the selected route is "Appointments" or "Help"
+    if (route === "Appointments" || route === "Help") {
+      return; // Prevent navigation
+    }
+  
+    // Use router.push to navigate to the specified page for other routes
     router.push(`/${route.toLowerCase()}`);
   };
-
   return (
     <div className="w-full bg-[#191A29] min-h-full">
       <div className="w-full flex flex-col justify-center items-start px-[36px] gap-12 pt-[42px]">

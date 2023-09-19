@@ -1,13 +1,47 @@
-
+'use client'
+ 
+import Link from 'next/link';
+import { usePathname } from 'next/navigation'
 import React from 'react'
 
 
 const Topbar = () => {
+    const pathname = usePathname();
+    let formattedPathname = pathname;
+  
+    if (pathname === '/home') {
+      formattedPathname = 'Start New Assist';
+    } else if (pathname === '/notes') {
+      formattedPathname = (
+        <>
+        
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            className="w-6 h-6 inline-block mr-2 text-[#8167E6]"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+            />
+          </svg>
+          Notes and Instructions
+        </>
+      );
+    } else {
+      formattedPathname = formattedPathname.replace(/^\//, '');
+      formattedPathname =
+        formattedPathname.charAt(0).toUpperCase() + formattedPathname.slice(1);
+    }
     return (
         <div className='w-full min-h-full bg-[#222331]'>
             <div className="">
                 <div className="flex justify-between py-4 border-b border-gray-600 ">
-                    <p className='text-lg font-medium text-white text-center px-4 py-2'>Account</p>
+                    <p className='text-lg font-medium text-white text-center px-4 py-2 font-mono'><Link href='/home'>{formattedPathname}</Link></p>
                     <div className="flex px-4 py-2 gap-2">
                         <div className="items-center relative top-2">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
