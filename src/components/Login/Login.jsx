@@ -35,7 +35,7 @@ const Login = () => {
         console.log(data);
         sessionStorage.setItem("access_token", data.access_token);
         toast.success("Login Successful")
-        redirect('/#pricing')
+        redirect('/home')
       } else {
         // Handle login error, e.g., show an error message
         toast.error("Login failed");
