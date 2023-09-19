@@ -20,7 +20,7 @@ const ThankYou = () => {
             const resData = await response.json()
             console.log('payment - resData', resData);
         } catch (error) {
-            setResponseMessage('An error occurred while making the POST request.');
+
             console.error('Error:', error);
         }
     };
