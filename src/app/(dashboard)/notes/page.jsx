@@ -4,7 +4,7 @@ import NotesandInstructions from '../../../components/Dashboard/NotesandInstruct
 import Topbar from '@/components/Dashboard/Topbar'
 import getToken from '../../../hook/getToken'
 import { redirect } from 'next/navigation'
-const page = () => {
+const Notes = () => {
     const [token, setToken] = useState(null)
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -25,4 +25,4 @@ const page = () => {
     }
 }
 
-export default page
+export default Notes

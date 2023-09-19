@@ -4,7 +4,7 @@ import Topbar from '../../../components/Dashboard/Topbar'
 import Account from '../../../components/Dashboard/Account'
 import getToken from '../../../hook/getToken'
 import { redirect } from 'next/navigation'
-const page = () => {
+const AccountInfo = () => {
     const [token, setToken] = useState(null)
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -26,4 +26,4 @@ const page = () => {
 
 }
 
-export default page
+export default AccountInfo

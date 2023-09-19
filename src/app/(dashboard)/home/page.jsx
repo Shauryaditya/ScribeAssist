@@ -4,7 +4,7 @@ import Recorder from '../../../components/Dashboard/Recorder'
 import Topbar from '@/components/Dashboard/Topbar'
 import getToken from '../../../hook/getToken'
 import { redirect } from 'next/navigation'
-const page = () => {
+const Home = () => {
     const [token, setToken] = useState(null)
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -25,4 +25,4 @@ const page = () => {
     }
 }
 
-export default page
+export default Home
