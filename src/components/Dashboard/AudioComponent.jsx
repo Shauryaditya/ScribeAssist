@@ -172,7 +172,7 @@ const RecordView = ({ onDataReceived }) => {
                     setIsActive(!isActive);
                   }}
                 >
-                  Start Encounte
+                  Start Encounter
                 </button>
               }
               {

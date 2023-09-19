@@ -21,6 +21,7 @@ import PaginationMulti from "../../../assets/PaginationMulti.png";
 import Image from "next/image";
 import { BASE_URL } from "@/constant";
 import getToken from "@/hook/getToken";
+import Topbar from '@/components/Dashboard/Topbar'
 const Records = () => {
   const [response, setResponse] = useState([]);
   const access_token = getToken()
@@ -70,82 +71,11 @@ const Records = () => {
       console.log(error.message);
     }
   };
-  // const data = [
-  //   {
-  //     key: 1,
-  //     name: "John Doe",
-  //     gender: "Male",
-  //     age: 52,
-  //     date: "18/07/2023",
-  //     time: "05:33 PM",
-  //   },
-  //   {
-  //     key: 2,
-  //     name: "Rebecca Green",
-  //     gender: "Female",
-  //     age: 27,
-  //     date: "18/07/2023",
-  //     time: "05:11 PM",
-  //   },
-  //   {
-  //     key: 3,
-  //     name: "John Doe",
-  //     gender: "Male",
-  //     age: 52,
-  //     date: "18/07/2023",
-  //     time: "05:33 PM",
-  //   },
-  //   {
-  //     key: 4,
-  //     name: "Rebecca Green",
-  //     gender: "Female",
-  //     age: 27,
-  //     date: "18/07/2023",
-  //     time: "05:11 PM",
-  //   },
-  //   {
-  //     key: 5,
-  //     name: "John Doe",
-  //     gender: "Male",
-  //     age: 52,
-  //     date: "18/07/2023",
-  //     time: "05:33 PM",
-  //   },
-  //   {
-  //     key: 6,
-  //     name: "Rebecca Green",
-  //     gender: "Female",
-  //     age: 27,
-  //     date: "18/07/2023",
-  //     time: "05:11 PM",
-  //   },
-  //   {
-  //     key: 7,
-  //     name: "John Doe",
-  //     gender: "Male",
-  //     age: 52,
-  //     date: "18/07/2023",
-  //     time: "05:33 PM",
-  //   },
-  //   {
-  //     key: 8,
-  //     name: "Rebecca Green",
-  //     gender: "Female",
-  //     age: 27,
-  //     date: "18/07/2023",
-  //     time: "05:11 PM",
-  //   },
-  //   {
-  //     key: 7,
-  //     name: "John Doe",
-  //     gender: "Male",
-  //     age: 52,
-  //     date: "18/07/2023",
-  //     time: "05:33 PM",
-  //   },
-  // ];
+
   return (
-    <div className="relative min-h-screen bg-[#222331] w-full  flex flex-col justify-between p-[40px]">
+  <div className="relative min-h-screen bg-[#222331] w-full  flex flex-col  p-3">
+      <Topbar />
+      <div className="flex flex-col justify-between">
       <div>
         <TableContainer color={"white"} w={"full"}>
           <Table variant="simple">
@@ -204,6 +134,7 @@ const Records = () => {
         <button>
           <Image src={RightArrow} alt="" />
         </button>
+      </div>
       </div>
     </div >
   );
