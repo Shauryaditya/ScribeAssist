@@ -4,10 +4,13 @@ const ThankYou = dynamic(() => import('../../components/ThankYou'), {
     ssr: false,
 })
 
-const page = () => {
+const page = ({ params, searchParams }) => {
+    console.log('Search params', searchParams);
     return (
         <>
-            <ThankYou />
+            <ThankYou
+                sessionId={searchParams.session_id}
+            />
         </>
     )
 }

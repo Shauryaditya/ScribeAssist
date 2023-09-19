@@ -2,11 +2,13 @@
 import React, { useEffect } from 'react'
 import { BASE_URL } from '@/constant'
 import getToken from '@/hook/getToken'
-const ThankYou = () => {
+const ThankYou = ({ sessionId }) => {
     const makePostRequest = async () => {
         try {
-            const apiUrl = `${BASE_URL}/api/update-payment-status`
+            const apiUrl = `${BASE_URL}/api/update-payment-status?session_id=${sessionId}`
+
             const token = getToken()
+
 
             const headers = {
                 Authorization: `Bearer ${token}`,
@@ -15,6 +17,7 @@ const ThankYou = () => {
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: headers,
+
             });
 
             const resData = await response.json()
