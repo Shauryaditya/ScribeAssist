@@ -13,7 +13,8 @@ const ThankYou = ({ sessionId }) => {
             }
 
             const headers = {
-                Authorization: `Bearer ${token}`,
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
             };
 
             const response = await fetch(apiUrl, {
