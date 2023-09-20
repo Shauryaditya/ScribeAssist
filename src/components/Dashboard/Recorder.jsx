@@ -1,11 +1,11 @@
 "use client"
 import React, { useState, useEffect } from 'react'
 import { BASE_URL } from '@/constant';
-
+import toast from 'react-hot-toast';
 import Loader from './Loader'
 import getToken from '@/hook/getToken'
 import dynamic from 'next/dynamic';
-
+import { redirect } from 'next/navigation';
 
 const AudioComponent = dynamic(
   () => import('./AudioComponent'),
@@ -17,8 +17,6 @@ const AudioComponent = dynamic(
 const Recorder = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isHovered2, setIsHovered2] = useState(false);
-  const [timerData, setTimerData] = useState(null); // State to store data from Timer component
-  const [apiData, setApiData] = useState(null); // State to store apiData from Timer component
   const [audioData, setAudioData] = useState(null);
 
   const token = getToken();
@@ -35,14 +33,6 @@ const Recorder = () => {
       setIsPageRendered(true)
     }
   }, []);
-
-  // Function to receive apiData from Timer component
-  const receiveApiDataFromTimer = (apiData) => {
-    setApiData(apiData); // Set the received apiData in the state
-
-  };
-  console.log(apiData);
-
 
   const cardStyle = isHovered
     ? 'bg-white text-black'
@@ -71,12 +61,17 @@ const Recorder = () => {
       if (response.ok) {
         // Handle success, e.g., redirect to a success page or show a message
         const data = await response.json();
-        const idFromResponse = data[0].patient_id;
-
+        console.log('notes-data', data);
+        const idFromResponse = data[0]?.patient_id;
         const notesPageUrl = `/notes?id=${idFromResponse}`;
-        window.location.href = notesPageUrl;
-        console.log('Data sent successfully to the API', data);
-        transcriptData(data);
+        if (idFromResponse === undefined) {
+          toast.error(data.message)
+        } else {
+
+          console.log('Data sent successfully to the API', data);
+          redirect(notesPageUrl);
+
+        }
       } else {
         // Handle errors, e.g., show an error message
         console.error('Failed to send data to the API');
@@ -127,7 +122,7 @@ const Recorder = () => {
           {isLoading ? (
             <div className="flex">
               <button className={`text-xs bg-[#8167E6] flex rounded-xl px-4 py-2 transition duration-300 ease-in-out transform ${buttonStyle}`}>
-                Write Notes and Instructions  <Loader /> </button>
+                <Loader /> </button>
             </div>
 
           ) : (

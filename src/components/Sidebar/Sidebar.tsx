@@ -7,6 +7,7 @@ import { Notes } from "@/assets/icons/Notes";
 import { Calender } from "@/assets/icons/Calender";
 import { Account } from "@/assets/icons/Account";
 import { Help } from "@/assets/icons/Help";
+import Link from "next/link";
 const Sidebar = () => {
   const options = [
     {
@@ -50,9 +51,9 @@ const Sidebar = () => {
     <div className="w-full bg-[#191A29] min-h-full">
       <div className="w-full flex flex-col justify-center items-start px-[36px] gap-12 pt-[42px]">
         <div className="">
-          <p className="text-[#8167E6] text-[26px] font-[700]">
+          <Link href={`/`} className="text-[#8167E6] text-[26px] font-[700]">
             ScribeAssistAI
-          </p>
+          </Link>
         </div>
         <div className="flex flex-col gap-6">
           {options.map((ele) => {
