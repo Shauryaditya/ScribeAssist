@@ -22,7 +22,7 @@ const CancelModel = ({ visible, onClose, subscription_id }) => {
             body: JSON.stringify(requestBody)
         })
         const resData = await response.json()
-        if (res.ok) {
+        if (response.ok) {
             onClose(false)
         }
         console.log(resData);

@@ -5,8 +5,7 @@ import toast from 'react-hot-toast';
 import Loader from './Loader'
 import getToken from '@/hook/getToken'
 import dynamic from 'next/dynamic';
-import { redirect } from 'next/navigation';
-
+import { useRouter } from 'next/navigation'
 const AudioComponent = dynamic(
   () => import('./AudioComponent'),
   { ssr: false }
@@ -15,6 +14,7 @@ const AudioComponent = dynamic(
 
 
 const Recorder = () => {
+  const router = useRouter()
   const [isHovered, setIsHovered] = useState(false);
   const [isHovered2, setIsHovered2] = useState(false);
   const [audioData, setAudioData] = useState(null);
@@ -69,7 +69,7 @@ const Recorder = () => {
         } else {
 
           console.log('Data sent successfully to the API', data);
-          redirect(notesPageUrl);
+          router.push(notesPageUrl)
 
         }
       } else {
