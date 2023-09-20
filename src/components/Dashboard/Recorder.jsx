@@ -126,7 +126,7 @@ const Recorder = () => {
             </div>
 
           ) : (
-            <button className={`text-xs bg-[#8167E6]  rounded-xl px-4 py-2 transition duration-300 ease-in-out transform ${buttonStyle}`}
+            <button className={`text-xs bg-[#8167E6]  rounded-xl px-4 py-2 transition duration-300 ease-in-out transform ${buttonStyle} ${!audioData && ' pointer-events-none'}`}
               onMouseEnter={() => setIsHovered2(true)}
               onMouseLeave={() => setIsHovered2(false)}
               onClick={sendAudioDataToApi}>
