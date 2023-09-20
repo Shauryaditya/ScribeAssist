@@ -107,6 +107,7 @@ const Notes = ({ notes, id, name, gender, age }) => {
                                         onChange={(e) => setPatientGender(e.target.value)}
                                         required
                                     >
+                                        <option className='text-gray-600' value="">--Select</option>
                                         <option className='text-gray-600' value='Male'>Male</option>
                                         <option className='text-gray-600' value='Female'>Female</option>
                                         <option className='text-gray-600' value='Others'>Others</option>
