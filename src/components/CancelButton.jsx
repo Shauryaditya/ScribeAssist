@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import CancelModal from './CancelModal'
-const CancelButton = () => {
+const CancelButton = ({ subscriptionId }) => {
     const [isClicked, setIsClicked] = useState(false)
     return (
         <>
@@ -14,6 +14,7 @@ const CancelButton = () => {
                 <CancelModal
                     visible={isClicked}
                     onClose={setIsClicked}
+                    subscription_id={subscriptionId}
                 />
             }
         </>
