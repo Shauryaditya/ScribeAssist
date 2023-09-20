@@ -12,7 +12,7 @@ const CancelModel = ({ visible, onClose, subscription_id }) => {
         const requestBody = {
             subscription_id: subscription_id
         }
-
+        console.log('request-body', requestBody, url)
         const response = await fetch(url, {
             method: 'POST',
             headers: {

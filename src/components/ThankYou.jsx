@@ -2,14 +2,14 @@
 import React, { useEffect } from 'react'
 import { BASE_URL } from '@/constant'
 import getToken from '@/hook/getToken'
+
 const ThankYou = ({ sessionId }) => {
-    const makePostRequest = async () => {
+    const makePostRequest = async (id, token) => {
+
         try {
             const apiUrl = `${BASE_URL}/api/update-payment-status`
-
-            const token = getToken()
             const requestBody = {
-                session_id: sessionId
+                session_id: id
             }
 
             const headers = {
@@ -31,7 +31,8 @@ const ThankYou = ({ sessionId }) => {
         }
     };
     useEffect(() => {
-        makePostRequest()
+        const token = getToken()
+        makePostRequest(sessionId, token)
     }, [])
     return (
         <div className="flex items-center justify-center h-screen">
