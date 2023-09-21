@@ -5,11 +5,12 @@ import Wave from './Wave'
 import { BASE_URL } from '@/constant';
 import getToken from '@/hook/getToken'
 
-const RecordView = ({ onDataReceived }) => {
+const RecordView = ({ sendAudioToAPI }) => {
   const [second, setSecond] = useState("00");
   const [minute, setMinute] = useState("00");
-  const [isActive, setIsActive] = useState(false);
   const [counter, setCounter] = useState(0);
+  const [isActive, setIsActive] = useState(false)
+  const [isStartClicked, setIsStartClicked] = useState(false)
   useEffect(() => {
     let intervalId;
 
@@ -33,16 +34,9 @@ const RecordView = ({ onDataReceived }) => {
         setCounter((counter) => counter + 1);
       }, 1000);
     }
-
     return () => clearInterval(intervalId);
   }, [isActive, counter]);
 
-  function stopTimer() {
-    setIsActive(false);
-    setCounter(0);
-    setSecond("00");
-    setMinute("00");
-  }
   const {
     status,
     startRecording,
@@ -72,39 +66,20 @@ const RecordView = ({ onDataReceived }) => {
   }, [mediaBlobUrl])
 
 
-  const sendAudioToAPI = async (audioBlob) => {
-    if (audioBlob) {
-      try {
-        const formData = new FormData();
-        const token = getToken()
-        formData.append('audio', audioBlob, 'recording.wav');
-        console.log(token);
-        const response = await fetch(`${BASE_URL}/api/transcribe`, {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
 
-          body: formData,
-        });
-
-        if (response.ok) {
-          // Handle successful response from the API
-          const data = await response.json();
-
-          console.log('Audio sent successfully to the API', data);
-          // Pass the audio data to the parent component
-          onDataReceived(data);
-        } else {
-          // Handle API errors
-          console.error('Error sending audio to the API');
-        }
-      } catch (error) {
-        // Handle network or other errors
-        console.error('Error:', error);
-      }
-    }
-  };
+  const handleRecordingStart = () => {
+    setIsStartClicked(true)
+    startRecording();
+    setIsActive(true);
+  }
+  const handleRecordingStop = () => {
+    setCounter(0);
+    setSecond("00");
+    setMinute("00");
+    stopRecording();
+    setIsActive(false)
+    setIsStartClicked(false)
+  }
 
   return (
     <div className="w-full"
@@ -151,7 +126,7 @@ const RecordView = ({ onDataReceived }) => {
 
             <div className="flex justify-center items-center">
               {
-                !isActive &&
+                !isStartClicked &&
                 <button
                   style={{
                     padding: "0.8rem 1rem",
@@ -166,31 +141,35 @@ const RecordView = ({ onDataReceived }) => {
                     transition: "all 300ms ease-in-out",
                     transform: "translateY(0)"
                   }}
-                  onClick={() => {
-
-                    startRecording();
-                    setIsActive(!isActive);
-                  }}
+                  onClick={() => handleRecordingStart()}
                 >
                   Start Encounter
                 </button>
               }
+
               {
-                isActive &&
+                isStartClicked &&
                 <button
                   onClick={() => {
                     pauseRecording()
-                    setIsActive(!isActive)
+                    setIsActive((preValue) => !preValue)
                   }}
                   className="p-2 bg-white rounded-[5px]">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-black font-bold">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
-                  </svg>
+                  {
+                    isActive ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-black font-bold">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
+                    </svg> :
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="#8167e6" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-violet-500">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+                      </svg>
+
+                  }
+
 
                 </button>
               }
               {
-
+                isStartClicked &&
                 <button
                   className="p-2 bg-white"
                   style={{
@@ -206,10 +185,7 @@ const RecordView = ({ onDataReceived }) => {
                     transform: "translateY(0)"
                   }}
                   onClick={async () => {
-                    setIsActive(!isActive);
-                    stopRecording();
-
-                    // Add a delay to ensure the mediaBlobUrl is ready
+                    handleRecordingStop()
                   }}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 bg-white rounded">

@@ -18,13 +18,47 @@ const Recorder = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isHovered2, setIsHovered2] = useState(false);
   const [audioData, setAudioData] = useState(null);
-
+  const [isGenerating, setIsGenerating] = useState(false)
   const token = getToken();
   // Callback function to receive audio data from Voice component
-  const onDataReceived = (data) => {
-    setAudioData(data);
-  };
 
+  const sendAudioToAPI = async (audioBlob) => {
+    if (audioBlob) {
+      setIsGenerating(true)
+      try {
+        const formData = new FormData();
+        const token = getToken()
+        formData.append('audio', audioBlob, 'recording.wav');
+        console.log(token);
+        const response = await fetch(`${BASE_URL}/api/transcribe`, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+
+          body: formData,
+        });
+
+        if (response.ok) {
+
+          // Handle successful response from the API
+          const data = await response.json();
+          setIsGenerating(false)
+          console.log('Audio sent successfully to the API', data);
+          // Pass the audio data to the parent component
+          setAudioData(data);
+        } else {
+          setIsGenerating(false)
+          // Handle API errors
+          console.error('Error sending audio to the API');
+        }
+      } catch (error) {
+        // Handle network or other errors
+        console.error('Error:', error);
+        setIsGenerating(false)
+      }
+    }
+  };
 
   const [isPageRendered, setIsPageRendered] = useState(false)
   useEffect(() => {
@@ -60,6 +94,7 @@ const Recorder = () => {
 
       if (response.ok) {
         // Handle success, e.g., redirect to a success page or show a message
+
         const data = await response.json();
         console.log('notes-data', data);
         const idFromResponse = data[0]?.patient_id;
@@ -89,7 +124,7 @@ const Recorder = () => {
           <div className="w-full bg-[#191A29] h-64 rounded-[20px]">
             <div className="flex flex-col p-4 gap-4 ">
               <div className="mt-0">
-                <AudioComponent onDataReceived={onDataReceived} />
+                <AudioComponent sendAudioToAPI={sendAudioToAPI} />
                 {/* <Voice onDataReceived={onDataReceived} /> */}
 
               </div>
@@ -101,11 +136,15 @@ const Recorder = () => {
           <div className="w-full h-64 bg-transparent rounded-[20px] p-4 border border-gray-500">
             <div className="flex flex-col gap-2">
               <div className="">
-                {audioData ? (
+                {audioData ?
                   <p className='text-xs text-white font-[Avenir]'>{audioData.transcript}</p>
-                ) : (
-                  <p className='text-xs text-white font-[Avenir]'>Generating...</p>
-                )}
+                  : null
+                }
+                {isGenerating ?
+                  <p className='text-xs text-white font-[Avenir]'>Generating Text...</p>
+
+                  : null}
+
               </div>
             </div>
           </div>
