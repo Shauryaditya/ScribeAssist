@@ -18,12 +18,12 @@ const Pricing = () => {
         <div class="mt-32">
           <div class="text-start font-semibold mx-4 md:mx-44">
             <h1 class="text-4xl">
-              <span class="text-violet-500 font-semibold">Pricing </span>
-              <span className="text-white">Plans</span>
+              <span class="text-violet-500 font-bold font-mono">Pricing </span>
+              <span className="text-white font-mono">Plans</span>
             </h1>
           </div>
 
-          <div class=" sm:flex flex-wrap justify-center items-center gap-8 md:mx-16">
+          <div class=" sm:flex flex-wrap justify-center items-center gap-8 md:mx-16 p-4">
             {
               data?.length ?
                 data.map((item) => (

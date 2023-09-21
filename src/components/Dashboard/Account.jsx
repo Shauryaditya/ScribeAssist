@@ -78,7 +78,7 @@ const Account = () => {
                         <div class="mb-4">
 
                             <input
-                                class="shadow appearance-none border border-none text-xs bg-[#222331] rounded-xl w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                class="shadow appearance-none border border-none text-xs bg-[#222331] rounded-xl w-full py-3 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
                                 id="username"
                                 type="text"
                                 placeholder="Email"
@@ -87,7 +87,7 @@ const Account = () => {
                         <div class="mb-4">
 
                             <input
-                                class="shadow text-xs appearance-none border border-none bg-[#222331] rounded-xl w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                class="shadow text-xs appearance-none border border-none bg-[#222331] rounded-xl w-full py-3 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
                                 id="username"
                                 type="text"
                                 placeholder="Display Name"
@@ -95,7 +95,7 @@ const Account = () => {
                         </div>
                         <div class="mb-6">
 
-                            <div className="w-full flex justify-between shadow appearance-none border  bg-transparent rounded-xl  py-3 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline
+                            <div className="w-full flex justify-between shadow appearance-none border  bg-transparent rounded-xl  py-3 px-3 text-white mb-3 leading-tight focus:outline-none focus:shadow-outline
                              border-[#888C8C] ">
                                 <input
                                     className="outline-0 bg-transparent"

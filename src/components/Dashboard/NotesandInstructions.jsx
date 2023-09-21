@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Notes from "./Notes";
 import { useSearchParams } from "next/navigation";
 import getToken from "@/hook/getToken";
@@ -63,6 +63,7 @@ const NotesandInstructions = () => {
     fetchNotes(); // Call the function to initiate the API request
   }, [id, token]);
 
+
   console.log("Instructions >>", instructions);
 
   return (
@@ -96,9 +97,7 @@ const NotesandInstructions = () => {
 
           <div className="flex justify-between ">
 
-            <button className="text-xs text-white bg-[#2F303D] rounded-md px-4 py-2">
-              Cancel
-            </button>
+          
           </div>
         </div>
 
