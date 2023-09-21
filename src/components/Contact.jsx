@@ -57,8 +57,8 @@ const Contact = () => {
     <div className="max-w-screen-2xl mx-auto overflow-hidden bg-[#191A29] py-8">
       <div className="mx-4 lg:mx-48 sm:mx-12">
         <div className="flex flex-col gap-8">
-          <h1 className="text-4xl text-white">
-            <span className="text-[violet-500]">Contact</span> Us
+          <h1 className="text-4xl text-white font-mono font-bold ">
+            <span className="text-[#8167E6] font-mono ">Contact</span> Us
           </h1>
           <p className="text-white">
             SAAI is always here to help you. Our support system works tirelessly

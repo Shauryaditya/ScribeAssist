@@ -62,10 +62,40 @@ const Notes = ({ notes, id, name, gender, age }) => {
 
     };
 
+    // Function to copy the data to the clipboard
+    const copyToClipboard = () => {
+        const dataToCopy = `
+      Patient Name: ${patientName}
+      Gender: ${patientGender}
+      Age: ${patientAge}
+      Notes: ${updatedNotes}
+    `;
+
+        navigator.clipboard.writeText(dataToCopy)
+            .then(() => {
+                toast.success('Data copied to clipboard');
+            })
+            .catch((error) => {
+                console.error('Error copying data to clipboard:', error);
+                toast.error('Error copying data to clipboard');
+            });
+    };
+
 
     return (
         <div className='max-w-full '>
             <div className="flex flex-col gap-3">
+
+                <div className="flex justify-between">
+                    <p className='text-white font-[IBM Plex Mono] text-sm font-bold'>Patient</p>
+
+                    <button className="text-xs text-white bg-[#2F303D] rounded-md px-4 py-2"
+                        onClick={copyToClipboard}>
+                        Copy
+                    </button>
+
+                </div>
+
                 <form action="" onSubmit={(e) => {
                     updateSoapNote(e)
                 }}>
@@ -74,14 +104,7 @@ const Notes = ({ notes, id, name, gender, age }) => {
                         <div className="flex flex-col gap-2">
 
 
-                            <div className="flex justify-between">
-                                <p className='text-white font-[IBM Plex Mono] text-sm font-bold'>Patient</p>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="w-6 h-6 text-white">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                </svg>
 
-
-                            </div>
                             <div className='flex flex-row gap-4'>
                                 <div className='flex flex-col'>
                                     <label className='text-white text-xs' htmlFor='patientName'>
@@ -138,7 +161,7 @@ const Notes = ({ notes, id, name, gender, age }) => {
                             {notes}
                         </p> */}
                             <textarea
-                                class="appearance-none block w-full h-80  bg-transparent text-white border border-gray-400 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500 text-xs overflow-y-scroll no-scrollbar"
+                                class="appearance-none block w-full h-80  bg-transparent text-white border border-gray-400 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500 text-sm overflow-y-scroll no-scrollbar"
                                 id="grid-password"
                                 value={updatedNotes}
                                 onChange={handleNotesChange}
@@ -149,7 +172,7 @@ const Notes = ({ notes, id, name, gender, age }) => {
                     </div>
                     <div className="flex justify-end mt-4">
                         <button
-                            className='px-4 py-2 px-4 mt-2 rounded-xl bg-violet-500 text-white text-xs'
+                            className='px-4 py-2  mt-2 rounded-xl bg-violet-500 text-white text-xs'
                             type='submit'
                         >
                             Save
