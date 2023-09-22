@@ -3,8 +3,8 @@ import React from 'react'
 const Footer = () => {
     return (
         <div>
-            <footer id='footer' className="px-4 divide-y bg-white dark:bg-gray-800 dark:text-gray-100 p-16 mt-20">
-                <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0 pl-28">
+            <footer id='footer' className="px-4 divide-y bg-white dark:bg-gray-800 dark:text-white p-4 md:p-16 mt-8 md:mt-20">
+                <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0 p-4 md:pl-28">
                     <div className="lg:w-1/3 ">
                         <div className="flex flex-col justify-start items-start gap-12 md:ml-16 -ml-4">
                             <div className="flex justify-start items-start">
@@ -36,7 +36,7 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-3">
+                    <div className="grid grid-cols-1 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-3">
                         <div className="space-y-3">
                             <h3 className="tracki font-[Raleway] font-bold dark:text-gray-50">Product</h3>
                             <ul className="space-y-6">

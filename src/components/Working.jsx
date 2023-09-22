@@ -16,8 +16,8 @@ const Working = () => {
             Resade.{" "}
           </p>
         </div>
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 justify-center py-12 pt-28 mx-auto gap-6 ">
-          <div className="relative flex justify-center items-center shrink-0 w-40 h-40   rounded-full  rotate-on-hover">
+        <div className="flex md:justify-between py-12 pt-28 mx-auto gap-6 overflow-x-scroll no-scrollbar ">
+          <div className="relative flex justify-center items-center shrink-0 w-40 h-40 md:w-52 md:h-52   rounded-full  rotate-on-hover">
             <div className="" >
               <svg
                 width="30"
@@ -44,7 +44,7 @@ const Working = () => {
             
 
           </div>
-          <div className="relative flex justify-center items-center shrink-0 w-40 h-40  rounded-full  rotate-on-hover">
+          <div className="relative flex justify-center items-center shrink-0 w-40 h-40 md:w-52 md:h-52    rounded-full  rotate-on-hover">
             <div className="">
               <svg
                 width="32"
@@ -68,7 +68,7 @@ const Working = () => {
             </div>
 
           </div>
-          <div className="relative flex justify-center  shrink-0 w-40 h-40  rounded-full  items-center rotate-on-hover">
+          <div className="relative flex justify-center  shrink-0 w-40 h-40 md:w-52 md:h-52   rounded-full  items-center rotate-on-hover">
             <div className="">
               <svg
                 width="30"
@@ -88,7 +88,7 @@ const Working = () => {
             </div>
 
           </div>
-          <div className="relative flex justify-center items-center shrink-0 w-40 h-40  rounded-full  rotate-on-hover">
+          <div className="relative flex justify-center items-center shrink-0 w-40 h-40 md:w-52 md:h-52  rounded-full  rotate-on-hover">
             <div className="">
               <svg
                 width="34"

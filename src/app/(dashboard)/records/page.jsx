@@ -22,6 +22,7 @@ import Image from "next/image";
 import { BASE_URL } from "@/constant";
 import getToken from "@/hook/getToken";
 import { redirect } from 'next/navigation'
+import Topbar from "@/components/Dashboard/Topbar";
 const Records = () => {
   const [response, setResponse] = useState([]);
   const access_token = getToken()
@@ -84,8 +85,9 @@ const Records = () => {
   }, []);
   if (token !== null) {
     return (
-      <div className="relative min-h-screen bg-[#222331] w-full  flex flex-col justify-between p-[40px]">
+      <div className="relative min-h-screen bg-[#222331] w-full  flex flex-col justify-between p-4">
         <div>
+          <Topbar />
           <TableContainer color={"white"} w={"full"}>
             <Table variant="simple">
               <Thead>
@@ -116,7 +118,6 @@ const Records = () => {
                           <button onClick={() => deletePatient(ele._id)}>
                             <Delete />
                           </button>
-                          <Add />
                           <a href={`/notes?id=${ele._id}`}><Next /></a>
                         </Box>
                       </Td>

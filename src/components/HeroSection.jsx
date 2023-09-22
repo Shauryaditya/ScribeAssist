@@ -4,11 +4,14 @@ import Image from "next/image";
 const HeroSection = () => {
 
   return (
-    <div className="max-w-screen-2xl h-[900px] bg-opacity-80 mx-auto -mt-20 bg-no-repeat bg-right bg-cover font-sans "
-      style={{ backgroundImage: `url('/Dna.png')` }}
+    <div className="max-w-screen-2xl h-[35rem] md:h-[40rem] lg:h-[50rem] bg-opacity-80 mx-auto -mt-20 bg-no-repeat  md:bg-right bg-cover font-sans "
+      style={{
+         backgroundImage: `url('/Dna.png')`,
+         backgroundPosition:'-20%,100%'
+     }}
     >
       <div className="w-full h-full flex flex-row justify-start items-center">
-        <div className="max-w-md flex flex-col p-5 mx-auto sm:ml-16 md:ml-24 lg:mx-32 max-sm:mt-10 mt-8">
+        <div className="max-w-md flex flex-col p-5 mx-auto sm:ml-16 md:ml-24 lg:mx-32 max-sm:mt-14 mt-8">
           <h1 className="text-[34px] text-white leading-10 font-mono font-bold">
             <span className="text-[#8167E6]">Write</span> Better Notes
           </h1>
