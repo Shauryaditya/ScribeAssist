@@ -10,7 +10,7 @@ import Diagnosis from "../components/Diagnosis"
 
 export default function Home() {
   return (
-    <main className=" max-w-full min-h-full bg-[#191A29]">
+    <main className=" max-w-full min-h-full bg-[#191A29] overflow-y-scroll no-scrollbar">
       <Navbar />
       <HeroSection />
        <Features /> 

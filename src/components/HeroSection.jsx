@@ -4,7 +4,7 @@ import Image from "next/image";
 const HeroSection = () => {
 
   return (
-    <div className="max-w-screen-2xl h-[35rem] md:h-[40rem] lg:h-[50rem] bg-opacity-80 mx-auto -mt-20 bg-no-repeat  md:bg-right bg-cover font-sans "
+    <div className="max-w-screen-2xl h-[35rem] md:h-[40rem] lg:h-[50rem] bg-opacity-80 mx-auto -mt-20 bg-no-repeat  md:bg-right bg-cover font-sans overflow-y-scroll no-scrollbar "
       style={{
          backgroundImage: `url('/Dna.png')`,
          backgroundPosition:'-20%,100%'

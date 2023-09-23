@@ -13,7 +13,7 @@ const Card = ({ props }) => {
 
 
   return (
-    <div className={`min-w-xs bg-[#222331]   shadow-xl rounded-[20px] p-12 transition duration-500 ease-in-out transform hover:bg-white hover:text-black ${cardStyle} `}
+    <div className={`max-w-sm md:min-w-xs bg-[#222331]   shadow-xl rounded-[20px] p-6 md:p-8 transition duration-500 ease-in-out transform hover:bg-white hover:text-black ${cardStyle} `}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{

@@ -48,10 +48,11 @@ const Login = () => {
   return (
     <div className="">
       <div
-        className="max-w-screen-2xl h-[25rem] sm:h-[30rem] md:h-[40rem] mx-auto -mt-20 bg-no-repeat bg-right bg-cover font-sans bg-[#191A29]"
-        style={{ backgroundImage: `url('/Dna.png')` }}
+        className="max-w-screen-2xl h-[35rem] sm:h-[30rem] md:h-[40rem] mx-auto -mt-20 bg-no-repeat bg-right bg-cover font-sans bg-[#191A29]"
+        style={{ backgroundImage: `url('/Dna.png')`,
+        backgroundPosition:'-20%,100%' }}
       >
-        <div className="max-w-md mx-48 pt-36">
+        <div className="max-w-md mx-4 md:mx-48 pt-36">
           <div className="flex flex-col gap-2">
             <h1 className="text-xl text-white">
               <span className="text-[#8167E6] font-semibold text-2xl font-mono">Login</span>

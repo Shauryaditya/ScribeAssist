@@ -2,7 +2,7 @@ import React from "react";
 
 const Working = () => {
   return (
-    <div className="max-w-screen-2xl mx-auto bg-[#222331] py-20">
+    <div className="max-w-screen-2xl mx-auto bg-[#222331] py-20 overflow-y-scroll no-scrollbar">
       <div className="mx-4 lg:mx-44 md:mx-16">
         <div className="flex flex-col justify-start gap-12">
           <h1 className="text-4xl text-white font-mono font-bold">
