@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Wave from './Wave'
 import { BASE_URL } from '@/constant';
 import getToken from '@/hook/getToken'
+import { createKey } from "next/dist/shared/lib/router/router";
 
 const RecordView = ({ sendAudioToAPI }) => {
   const [second, setSecond] = useState("00");
@@ -39,10 +40,12 @@ const RecordView = ({ sendAudioToAPI }) => {
 
   const {
     status,
+    error,
     startRecording,
     stopRecording,
     pauseRecording,
-
+    resumeRecording,
+    clearBlobUrl,
     mediaBlobUrl
   } = useReactMediaRecorder({
     video: false,
@@ -65,9 +68,10 @@ const RecordView = ({ sendAudioToAPI }) => {
 
   }, [mediaBlobUrl])
 
-
+  console.log('status', status);
 
   const handleRecordingStart = () => {
+    clearBlobUrl()
     setIsStartClicked(true)
     startRecording();
     setIsActive(true);
@@ -82,11 +86,8 @@ const RecordView = ({ sendAudioToAPI }) => {
   }
 
   return (
-    <div className="w-full"
-      style={{
+    <div className="relative w-full h-[230px] "
 
-        height: "230px"
-      }}
     >
       <div
         style={{
@@ -96,6 +97,21 @@ const RecordView = ({ sendAudioToAPI }) => {
       >
 
       </div>
+
+      {(status === 'recording' && !mediaBlobUrl) ?
+        <div>
+          <img className="absolute w-full h-32 mix-blend-color-dodge" src="/assets/audio-wave.gif" alt="audio-wave" />
+        </div>
+        : null
+      }
+      {
+        (status === 'paused' && !mediaBlobUrl) ?
+          <div>
+            <img className="absolute w-full h-32 mix-blend-color-dodge" src="/assets/audio-wave.png" alt="audio-wave" />
+          </div>
+          : null
+      }
+
 
       <Wave audioURL={mediaBlobUrl} />
       <div
@@ -151,7 +167,12 @@ const RecordView = ({ sendAudioToAPI }) => {
                 isStartClicked &&
                 <button
                   onClick={() => {
-                    pauseRecording()
+                    if (isActive) {
+                      pauseRecording()
+                    } else {
+                      resumeRecording()
+                    }
+
                     setIsActive((preValue) => !preValue)
                   }}
                   className="p-2 bg-white rounded-[5px]">
