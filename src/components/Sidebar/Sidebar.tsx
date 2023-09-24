@@ -1,6 +1,5 @@
-"use client";
-
-import React, { useState } from "react";
+'use client'
+import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation'
 import { Microphone } from "@/assets/icons/microphone";
 import { Notes } from "@/assets/icons/Notes";
@@ -8,6 +7,7 @@ import { Calender } from "@/assets/icons/Calender";
 import { Account } from "@/assets/icons/Account";
 import { Help } from "@/assets/icons/Help";
 import Link from "next/link";
+
 const Sidebar = () => {
   const options = [
     {
@@ -36,17 +36,31 @@ const Sidebar = () => {
       icon: <Help />,
     },
   ];
+  
   const [isSelected, setIsSelected] = useState("Home");
   const router = useRouter();
+
+  // Load the selected button state from localStorage on component mount
+  useEffect(() => {
+    const storedSelectedButton = localStorage.getItem("selectedButton");
+    if (storedSelectedButton) {
+      setIsSelected(storedSelectedButton);
+    }
+  }, []);
+
   const navigateToPage = (route: string) => {
     // Check if the selected route is "Appointments" or "Help"
     if (route === "Appointments" || route === "Help") {
       return; // Prevent navigation
     }
-  
+
     // Use router.push to navigate to the specified page for other routes
     router.push(`/${route.toLowerCase()}`);
+
+    // Save the selected button state to localStorage
+    localStorage.setItem("selectedButton", route);
   };
+
   return (
     <div className="w-full bg-[#191A29] min-h-full">
       <div className="w-full flex flex-col justify-center items-start px-[36px] gap-12 pt-[42px]">
@@ -60,7 +74,8 @@ const Sidebar = () => {
             return (
               <button
                 value={ele.title}
-                onClick={() =>{ setIsSelected(ele.title)
+                onClick={() => {
+                  setIsSelected(ele.title);
                   navigateToPage(ele.title);
                 }}
                 key={ele.key}

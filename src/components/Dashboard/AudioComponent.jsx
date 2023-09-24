@@ -107,7 +107,7 @@ const RecordView = ({ sendAudioToAPI }) => {
       {
         (status === 'paused' && !mediaBlobUrl) ?
           <div>
-            <img className="absolute w-full h-32 mix-blend-color-dodge" src="/assets/audio-wave.png" alt="audio-wave" />
+            <img className="absolute w-full h-60 -top-10 mix-blend-color-dodge" src="/assets/audio-wave.png" alt="audio-wave" />
           </div>
           : null
       }
@@ -115,7 +115,7 @@ const RecordView = ({ sendAudioToAPI }) => {
 
       <Wave audioURL={mediaBlobUrl} />
       <div
-        className="flex justify-between"
+        className="flex justify-between mt-6"
         style={{
 
           color: "white",
@@ -140,7 +140,7 @@ const RecordView = ({ sendAudioToAPI }) => {
           >
 
 
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center mt-4">
               {
                 !isStartClicked &&
                 <button

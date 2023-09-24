@@ -108,6 +108,8 @@ const NotesandInstructions = () => {
               id={id}
               instruction={instructions.patient_details?.patient_instruction}
               transcript={instructions.patient_details?.transcript}
+              instLike={instructions.patient_details?.instLike}
+              instDislike={instructions.patient_details?.instDislike}
             
             />
           ) : null}
@@ -126,7 +128,12 @@ const NotesandInstructions = () => {
           {selectedTab === 3 ? <Alaysis
             id={id}
             analysis={instructions.patient_details?.analyze_note} 
-            transcript={instructions.patient_details?.transcript}/> : null}
+            transcript={instructions.patient_details?.transcript}
+            clinicalLike={instructions.patient_details?.clinicalLike}
+            clinicalDislike={instructions.patient_details?.clinicalDislike}
+            billingLike={instructions.patient_details?.billingLike}
+            billingDislike={instructions.patient_details?.billingDislike}
+            /> : null}
         </div>
       </div>
     </div>
