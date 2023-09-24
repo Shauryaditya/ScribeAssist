@@ -140,7 +140,7 @@ const RecordView = ({ sendAudioToAPI }) => {
           >
 
 
-            <div className="flex justify-center items-center mt-4">
+            <div className="flex justify-center items-center ">
               {
                 !isStartClicked &&
                 <button
