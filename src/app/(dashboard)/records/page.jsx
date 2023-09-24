@@ -25,12 +25,14 @@ import { redirect } from 'next/navigation'
 import Topbar from "@/components/Dashboard/Topbar";
 const Records = () => {
   const [response, setResponse] = useState([]);
+
+  const [pagination, setPagination]= useState(1)
   const access_token = getToken()
   useEffect(() => {
     const fetchRecords = async () => {
       try {
         const response = await fetch(
-          `${BASE_URL}/api/get-patient-list?page=1&limit=10`,
+          `${BASE_URL}/api/get-patient-list?page=${pagination}&limit=10`,
           {
             method: "GET",
             headers: {
@@ -50,7 +52,8 @@ const Records = () => {
       }
     };
     fetchRecords();
-  }, [access_token]);
+  }, [access_token, pagination]);
+  console.log(response)
   const deletePatient = async (id) => {
     const data = { id: id };
     try {
@@ -85,10 +88,12 @@ const Records = () => {
   }, []);
   if (token !== null) {
     return (
+      
       <div className="relative min-h-screen bg-[#222331] w-full  flex flex-col justify-between p-4">
         <div>
           <Topbar />
-          <TableContainer color={"white"} w={"full"}>
+          {
+            response.length>0? <TableContainer color={"white"} w={"full"}>
             <Table variant="simple">
               <Thead>
                 <Tr>
@@ -126,14 +131,28 @@ const Records = () => {
                 })}
               </Tbody>
             </Table>
-          </TableContainer>
+          </TableContainer>:
+          <div className="w-full h-[70vh] flex justify-center items-center">
+            <p className="text-white text-[24px] font-semibold text-center">
+              No data found
+            </p>
+          </div>
+          }
+         
         </div>
         <div className="flex gap-2 self-end cursor-pointer">
-          <button>
+          <button onClick={()=>pagination >=2 && setPagination((prev)=>prev-1)}>
             <LeftArrow />
           </button>
-          <button>
-            <Image src={PaginationOne} alt="" />
+          <button style={{
+            borderRadius:"12px",
+            border:"1px solid #FFF",
+            background:"#222331",
+            color:"#FFFFFF",
+            width:"40px",
+            height:"40px",
+          }}>
+            {pagination}
           </button>
           <button>
             <Image src={PaginationMulti} alt="" />
@@ -141,11 +160,14 @@ const Records = () => {
           <button>
             <Image src={PaginationTwelve} alt="" />
           </button>
-          <button>
+          <button onClick={()=>pagination<=11 &&setPagination((prev)=>prev+1)}>
             <Image src={RightArrow} alt="" />
           </button>
         </div>
       </div >
+     
+
+     
     );
   }
 };
