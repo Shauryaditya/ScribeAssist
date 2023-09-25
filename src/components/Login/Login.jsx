@@ -35,6 +35,7 @@ const Login = () => {
         // Login was successful, you can redirect or perform other actions here
         console.log(data);
         localStorage.setItem("access_token", data.access_token);
+        localStorage.setItem("Username",data?.name)
         toast.success("Login Successful")
         router.push('/home')
       } else {

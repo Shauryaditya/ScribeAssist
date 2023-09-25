@@ -27,7 +27,6 @@ const Account = () => {
 
                 if (response.ok) {
                     const data = await response.json();
-                    localStorage.setItem("Username",data.user_details?.name)
                     setContact(data);
                 } else {
                     console.error("Failed to fetch data");
