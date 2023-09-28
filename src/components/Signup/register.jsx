@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 
 const Register = () => {
 
-
+  localStorage.clear();
   const [formData, setFormData] = useState({
     name: "",
     password: "",
