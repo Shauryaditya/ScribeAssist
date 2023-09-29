@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 
 const Register = () => {
 
-  localStorage.clear();
+  
   const [formData, setFormData] = useState({
     name: "",
     password: "",
@@ -58,7 +58,7 @@ const Register = () => {
     e.preventDefault()
     // You can now access formData and use it as needed.
     console.log(formData);
-
+    localStorage.clear();
     const apiUrl = `${BASE_URL}/api/register`;
 
     try {
